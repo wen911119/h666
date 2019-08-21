@@ -1,0 +1,50 @@
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.placeholder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -120px;
+}
+
+.sun {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  z-index: -1;
+  animation-name: rotate;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.cloud {
+  height: 70px;
+  width: 70px;
+}
+
+.loading-text {
+  color: #ccc;
+  font-size: 11px;
+  margin-top: -10px;
+}

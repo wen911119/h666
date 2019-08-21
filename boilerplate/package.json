@@ -1,0 +1,51 @@
+{
+  "name": "@ruiyun/preact-multi-page-template",
+  "version": "1.2.20",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "add-page": "h666 add-page",
+    "start": "h666 start --port=3000",
+    "build:dev": "h666 build --target=dev",
+    "build:pro": "h666 build --target=production",
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ruiyun/preact-m-nav": "^1.2.7",
+    "preact": "^10.0.0-beta.3"
+  },
+  "devDependencies": {
+    "@ruiyun/h666-cli": "^1.2.20",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "commonChunks": [
+    "p-to-r",
+    "preact-layout-suite",
+    "preact-m-nav"
+  ],
+  "pages": {
+    "index": "主页",
+    "list": "列表页"
+  },
+  "include": [
+    "@ruiyun",
+    "p-to-r",
+    "h5-indicator"
+  ]
+}

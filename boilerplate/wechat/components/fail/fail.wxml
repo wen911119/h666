@@ -1,0 +1,17 @@
+<view class="placeholder">
+  <view class="loading">
+    <image class="cloud" src="/assets/cloud.svg" />
+    <view class="rain">
+      <view class="drop drop1" />
+      <view class="drop drop2" />
+      <view class="drop drop3" />
+      <view class="drop drop4" />
+      <view class="drop drop5" />
+      <view class="drop drop6" />
+      <view class="drop drop7" />
+      <view class="drop drop8" />
+      <view class="drop drop9" />
+      <view class="drop drop10" /></view>
+  </view>
+  <text class="loading-text">网络错误，请稍后重试</text>
+</view>

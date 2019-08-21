@@ -1,0 +1,7 @@
+<view class="placeholder">
+  <view class="loading">
+    <image class="sun" src="/assets/sun.svg" />
+    <image class="cloud" src="/assets/cloud.svg" />
+  </view>
+  <text class="loading-text">加载中</text>
+</view>
