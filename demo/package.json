@@ -1,0 +1,91 @@
+{
+  "private": true,
+  "name": "h666-demo",
+  "version": "1.2.39",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "add": "h666 add",
+    "start": "h666 start --port=3000",
+    "build:dev": "h666 build --target=dev",
+    "build:pro": "h666 build --target=production"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ruiyun/ajax": "^1.0.5",
+    "@ruiyun/preact-button": "^1.2.39",
+    "@ruiyun/preact-form": "^1.2.7",
+    "@ruiyun/preact-image": "^1.2.39",
+    "@ruiyun/preact-image-uploader": "^1.2.39",
+    "@ruiyun/preact-input": "^1.2.39",
+    "@ruiyun/preact-layout-suite": "^1.2.39",
+    "@ruiyun/preact-line": "^1.2.39",
+    "@ruiyun/preact-loading": "^1.2.39",
+    "@ruiyun/preact-m-actionsheet": "^1.2.39",
+    "@ruiyun/preact-m-auto-list": "^1.2.39",
+    "@ruiyun/preact-m-dialog": "^1.2.39",
+    "@ruiyun/preact-m-form-component": "^1.2.39",
+    "@ruiyun/preact-m-image-preview": "^1.2.39",
+    "@ruiyun/preact-m-loading": "^1.2.39",
+    "@ruiyun/preact-m-nav": "^1.2.7",
+    "@ruiyun/preact-m-scroller": "^1.2.39",
+    "@ruiyun/preact-m-swiper": "^1.2.31",
+    "@ruiyun/preact-m-tabs": "^1.2.39",
+    "@ruiyun/preact-m-toast": "^1.2.39",
+    "@ruiyun/preact-m-tree-picker": "^1.2.39",
+    "@ruiyun/preact-modal": "^1.2.20",
+    "@ruiyun/preact-number-input": "^1.2.39",
+    "@ruiyun/preact-oss": "^1.2.38",
+    "@ruiyun/preact-switch": "^1.2.39",
+    "@ruiyun/preact-text": "^1.2.39",
+    "lodash.debounce": "^4.0.8",
+    "preact": "^10.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@ruiyun/h666-cli": "^1.2.22",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "commonChunks": [
+    "p-to-r",
+    "preact-layout-suite",
+    "preact-m-nav",
+    "@ruiyun/preact-text",
+    "core-js",
+    "regenerator-runtime"
+  ],
+  "pages": {
+    "index": "主页",
+    "list": "列表页",
+    "buttonDemo": "button示例",
+    "actionsheetDemo": "actionsheet演示",
+    "dialogDemo": "dialog示例",
+    "modalDemo": "模态框演示",
+    "swiperDemo": "轮播图演示",
+    "tabsDemo": "tabs演示",
+    "formDemo": "表单演示页面",
+    "switchDemo": "开关组件演示",
+    "treepickerDemo": "多级选择器演示",
+    "scrollerDemo": "滚动组件演示",
+    "autolistDemo": "自动列表演示",
+    "imageUploaderDemo": "图片上传组件演示"
+  },
+  "include": [
+    "@ruiyun"
+  ],
+  "browsers": [
+    "android >= 4.4",
+    "ios >= 8"
+  ]
+}

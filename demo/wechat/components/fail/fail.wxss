@@ -1,0 +1,101 @@
+.placeholder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -120px;
+}
+
+.cloud {
+  height: 70px;
+  width: 70px;
+}
+
+@keyframes drop {
+  50% {
+    height: 40px;
+    opacity: 0;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    height: 1px;
+    opacity: 0;
+  }
+}
+
+.rain {
+  height: 50px;
+  width: 50px;
+  margin-top: -22px;
+}
+.drop {
+    opacity: 1;
+    background: #9ea1a4;
+    display: block;
+    float: left;
+    width: 2px;
+    height: 6px;
+    margin-left: 3px;
+    border-radius: 4px 4px 4px 4px;
+    animation-name: drop;
+    animation-duration: 350ms;
+    animation-iteration-count: infinite;
+}
+
+.drop1 {
+  animation-delay: -130ms;
+}
+
+.drop2 {
+  animation-delay: -240ms;
+}
+
+.drop3 {
+  animation-delay: -390ms;
+}
+
+.drop4 {
+  animation-delay: -525ms;
+}
+
+.drop5 {
+  animation-delay: -640ms;
+}
+
+.drop6 {
+  animation-delay: -790ms;
+}
+
+.drop7 {
+  animation-delay: -900ms;
+}
+
+.drop8 {
+  animation-delay: -1050ms;
+}
+
+.drop9 {
+  animation-delay: -1130ms;
+}
+
+.drop10 {
+  animation-delay: -1300ms;
+}
+
+.loading-text {
+  color: #ccc;
+  font-size: 11px;
+  margin-top: -10px;
+}

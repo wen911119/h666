@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/index",
+    "pages/buttonDemo/index",
+    "pages/actionsheetDemo/index",
+    "pages/dialogDemo/index",
+    "pages/modalDemo/index",
+    "pages/swiperDemo/index",
+    "pages/tabsDemo/index",
+    "pages/formDemo/index",
+    "pages/switchDemo/index",
+    "pages/treepickerDemo/index",
+    "pages/scrollerDemo/index",
+    "pages/autolistDemo/index",
+    "pages/imageUploaderDemo/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#5581FA",
+    "list": [
+      {
+        "iconPath": "assets/tabbar-order.png",
+        "selectedIconPath": "assets/tabbar-order-selected.png",
+        "pagePath": "pages/index/index",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/buttonDemo/index",
+        "selectedIconPath": "assets/tabbar-account-selected.png",
+        "iconPath": "assets/tabbar-account.png",
+        "text": "账户"
+      },
+      {
+        "pagePath": "pages/dialogDemo/index",
+        "selectedIconPath": "assets/tabbar-shop-selected.png",
+        "iconPath": "assets/tabbar-shop.png",
+        "text": "门店"
+      },
+      {
+        "pagePath": "pages/swiperDemo/index",
+        "selectedIconPath": "assets/tabbar-me-selected.png",
+        "iconPath": "assets/tabbar-me.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "loading": "./components/loading/loading",
+    "error": "./components/fail/fail"
+  },
+  "sitemapLocation": "sitemap.json"
+}
