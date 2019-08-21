@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "add-page": "h666 add-page",
+    "add": "h666 add",
     "start": "h666 start --port=3000",
     "build:dev": "h666 build --target=dev",
     "build:pro": "h666 build --target=production",
@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@ruiyun/preact-m-nav": "^1.2.7",
-    "preact": "^10.0.0-beta.3"
+    "preact": "^10.0.0-rc.1"
   },
   "devDependencies": {
     "@ruiyun/h666-cli": "^1.2.20",
@@ -37,15 +37,21 @@
   "commonChunks": [
     "p-to-r",
     "preact-layout-suite",
-    "preact-m-nav"
+    "preact-m-nav",
+    "@ruiyun/ajax",
+    "@ruiyun/preact-text",
+    "core-js",
+    "regenerator-runtime"
   ],
   "pages": {
     "index": "主页",
     "list": "列表页"
   },
   "include": [
-    "@ruiyun",
-    "p-to-r",
-    "h5-indicator"
+    "@ruiyun"
+  ],
+  "browsers": [
+    "android >= 4.4",
+    "ios >= 8"
   ]
 }
