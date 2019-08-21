@@ -1,12 +1,14 @@
 import { h, Component } from 'preact'
 import AutoList from '@ruiyun/preact-m-auto-list'
 import { ColumnView, RowView } from '@ruiyun/preact-layout-suite'
+import WithNav from '@ruiyun/preact-m-nav'
 import Text from '@ruiyun/preact-text'
 import Line from '@ruiyun/preact-line'
 import Ajax from '@ruiyun/ajax'
 import className from './app.css'
 import SearchBar from './searchBar'
 
+@WithNav
 export default class AutolistDemo extends Component {
   state = {
     params: {
@@ -67,6 +69,9 @@ export default class AutolistDemo extends Component {
       </ColumnView>
     </div>
   )
+  goto = () => {
+    this.props.$nav.push('buttonDemo')
+  }
   render () {
     return (
       <div>
@@ -84,6 +89,7 @@ export default class AutolistDemo extends Component {
           height='400px'
           id='demo-scroller'
         />
+        <div onClick={this.goto}>go</div>
       </div>
     )
   }

@@ -43,7 +43,7 @@
     "preact": "^10.0.0-rc.1"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^1.2.22",
+    "@ruiyun/h666-cli": "^1.2.23",
     "eslint": "^5.9.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-config-standard-react": "^7.0.2",
