@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "add": "h666 add",
+    "add-page": "h666 add",
     "start": "h666 start --port=3000",
     "build:dev": "h666 build --target=dev",
     "build:pro": "h666 build --target=production"
@@ -31,6 +31,7 @@
     "@ruiyun/preact-m-nav": "^1.2.7",
     "@ruiyun/preact-m-scroller": "^1.2.41",
     "@ruiyun/preact-m-search-bar": "^1.2.41",
+    "@ruiyun/preact-m-search-picker": "^1.2.43",
     "@ruiyun/preact-m-swiper": "^1.2.31",
     "@ruiyun/preact-m-tabs": "^1.2.39",
     "@ruiyun/preact-m-toast": "^1.2.39",
@@ -80,7 +81,8 @@
     "treepickerDemo": "多级选择器演示",
     "scrollerDemo": "滚动组件演示",
     "autolistDemo": "自动列表演示",
-    "imageUploaderDemo": "图片上传组件演示"
+    "imageUploaderDemo": "图片上传组件演示",
+    "searchPicker": "搜索picker"
   },
   "include": [
     "@ruiyun"

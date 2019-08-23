@@ -13,7 +13,8 @@
     "pages/treepickerDemo/index",
     "pages/scrollerDemo/index",
     "pages/autolistDemo/index",
-    "pages/imageUploaderDemo/index"
+    "pages/imageUploaderDemo/index",
+    "pages/searchPickerDemo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -59,7 +59,7 @@ export default class AutolistDemo extends Component {
     this.list.scrollTo(0, false)
   }
   renderItem = item => (
-    <div className={className.item}>
+    <div>
       <ColumnView padding={[0, 30, 0, 30]} bgColor='#fff'>
         <RowView height={88}>
           <Text color='#535353' size={28}>
