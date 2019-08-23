@@ -5,8 +5,9 @@ import WithNav from '@ruiyun/preact-m-nav'
 import Text from '@ruiyun/preact-text'
 import Line from '@ruiyun/preact-line'
 import Ajax from '@ruiyun/ajax'
+import Icon from '@ruiyun/preact-icon'
+import SearchBar from '@ruiyun/preact-m-search-bar'
 import className from './app.css'
-import SearchBar from './searchBar'
 
 @WithNav
 export default class AutolistDemo extends Component {
@@ -74,9 +75,21 @@ export default class AutolistDemo extends Component {
   }
   render () {
     return (
-      <div>
-        <SearchBar onTextInput={this.onSearch} />
-        <Text className={className.backtotop} color='#fff' size={24} onClick={this.backToTop}>TOP</Text>
+      <ColumnView height='100%'>
+        <SearchBar
+          renderInputLeft={() => <Icon name='icon-sousuo' color='#9f9f9f' />}
+          onTextInput={this.onSearch}
+          placeholder='请输入医院名称'
+          textSize={26}
+        />
+        <Text
+          className={className.backtotop}
+          color='#fff'
+          size={24}
+          onClick={this.backToTop}
+        >
+          TOP
+        </Text>
         <AutoList
           pageSize={20}
           alias={{ pageNum: 'page', pageSize: 'page_size' }}
@@ -86,11 +99,10 @@ export default class AutolistDemo extends Component {
           keyExtractor={this.keyExtractor}
           format={this.format}
           ref={s => (this.list = s)}
-          height='400px'
+          height='flex1'
           id='demo-scroller'
         />
-        <div onClick={this.goto}>go</div>
-      </div>
+      </ColumnView>
     )
   }
 }
