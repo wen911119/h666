@@ -7,12 +7,12 @@ import Text from '@ruiyun/preact-text'
 import Line from '@ruiyun/preact-line'
 import Ajax from '@ruiyun/ajax'
 
-const Item = props => {
-  console.log('render-item', props.active)
+const Item3 = props => {
+  console.log('render-item-3', props.active)
   return (
     <XCenterView height={414}>
       <Button color='#f8584f' onClick={props.onClick} height={80} width={240}>
-        回到第一张
+        回到第二张
       </Button>
     </XCenterView>
   )
@@ -40,7 +40,7 @@ export default class ScrollerDemo extends Component {
     this.setState({ current: index })
   }
   doSwipe = () => {
-    this.setState({ current: 0, text: '第一张2' })
+    this.setState({ current: 1, text: '第一张2' })
   }
   fetchListData = async params => {
     const ret = await Ajax.get(
@@ -101,7 +101,7 @@ export default class ScrollerDemo extends Component {
           ref={s => (this.list = s)}
           height='400px'
         />
-        <Item onClick={this.doSwipe} />
+        <Item3 onClick={this.doSwipe} />
       </Swiper>
     )
   }

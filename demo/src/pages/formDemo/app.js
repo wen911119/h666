@@ -123,7 +123,10 @@ export default class FormDemo extends Component {
   }
   onReset = () => {
     this.form.init({
-      ad: true
+      ad: true,
+      name: '',
+      age: '',
+      phone: ''
     })
   }
   onSubmit = () => {
