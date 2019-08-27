@@ -42,7 +42,7 @@ export default class Index extends Component {
   render () {
     return (
       <div>
-        Index-1
+        Index-2
         <div className='test'>{this.state.name}</div>
         <div onClick={this.goto}>go to buttonDemo</div>
         <div onClick={this.goto2}>go to actionsheetDemo</div>
