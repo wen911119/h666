@@ -33,6 +33,7 @@
     "@ruiyun/preact-m-search-bar": "^1.2.41",
     "@ruiyun/preact-m-search-picker": "^1.2.43",
     "@ruiyun/preact-m-swiper": "^1.2.44",
+    "@ruiyun/preact-m-tabbar": "^1.2.45",
     "@ruiyun/preact-m-tabs": "^1.2.44",
     "@ruiyun/preact-m-toast": "^1.2.39",
     "@ruiyun/preact-m-tree-picker": "^1.2.44",

@@ -38,7 +38,12 @@ export default class Index extends Component {
   goto8 = () => {
     this.props.$nav.push('switchDemo')
   }
-
+  goto9 = () => {
+    this.props.$nav.push('searchPickerDemo')
+  }
+  goto10 = () => {
+    this.props.$nav.push('tabbarDemo')
+  }
   render () {
     return (
       <div>
@@ -52,6 +57,8 @@ export default class Index extends Component {
         <div onClick={this.goto6}>go to tabsDemo</div>
         <div onClick={this.goto7}>go to formDemo</div>
         <div onClick={this.goto8}>go to switchDemo</div>
+        <div onClick={this.goto9}>go to searchPickerDemo</div>
+        <div onClick={this.goto10}>go to tabbarDemo</div>
       </div>
     )
   }

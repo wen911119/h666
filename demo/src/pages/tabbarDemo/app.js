@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import TabBar from '../../components/TabBar'
+import TabBar from '@ruiyun/preact-m-tabbar'
 import Item1 from './tab1'
 import Item2 from './tab2'
 import Item3 from './tab3'
