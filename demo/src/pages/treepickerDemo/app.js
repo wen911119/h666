@@ -12,6 +12,30 @@ const mockData = [
     id: 2
   },
   {
+    name: '陕西省',
+    id: 3
+  },
+  {
+    name: '青海省',
+    id: 4
+  },
+  {
+    name: '云南省',
+    id: 5
+  },
+  {
+    name: '四川省',
+    id: 6
+  },
+  {
+    name: '甘肃省',
+    id: 7
+  },
+  {
+    name: '山西省',
+    id: 8
+  },
+  {
     name: '合肥市',
     id: 11,
     parentId: 1
