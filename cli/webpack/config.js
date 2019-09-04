@@ -111,8 +111,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[local]__[hash:base64:5]',
+              modules: {
+                localIdentName: '[local]__[hash:base64:5]'
+              },
               importLoaders: 1
             }
           },
@@ -152,7 +153,7 @@ module.exports = {
                 '@babel/preset-env',
                 {
                   useBuiltIns: 'usage',
-                  corejs: 2,
+                  corejs: 3,
                   modules: false,
                   targets: {
                     browsers: ['last 2 versions'].concat(customBrowsers)
@@ -175,7 +176,7 @@ module.exports = {
                 }
               ],
               [
-                'babel-plugin-transform-object-rest-spread',
+                '@babel/plugin-proposal-object-rest-spread',
                 {
                   useBuiltIns: true
                 }
@@ -183,7 +184,7 @@ module.exports = {
               'babel-plugin-transform-export-extensions',
               '@babel/plugin-transform-react-constant-elements',
               [
-                'babel-plugin-transform-react-jsx',
+                '@babel/plugin-transform-react-jsx',
                 {
                   pragma: 'h'
                 }
@@ -200,9 +201,7 @@ module.exports = {
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
       $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750)
     }),
-    new CleanWebpackPlugin(['dist'], {
-      root: process.cwd()
-    })
+    new CleanWebpackPlugin()
   ],
   optimization: {
     splitChunks: {
