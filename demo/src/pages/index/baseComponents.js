@@ -13,7 +13,7 @@ export default class BaseComponents extends Component {
         route: 'buttonDemo'
       },
       {
-        name: '开关2',
+        name: '开关3',
         route: 'switchDemo'
       }
     ]
