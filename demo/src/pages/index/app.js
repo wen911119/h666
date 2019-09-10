@@ -40,7 +40,7 @@ export default class Index extends Component {
         route: 'buttonDemo'
       },
       {
-        name: '开关',
+        name: '开关2',
         route: 'switchDemo'
       }
     ]
