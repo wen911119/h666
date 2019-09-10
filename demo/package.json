@@ -42,6 +42,7 @@
     "@ruiyun/preact-oss": "^1.2.38",
     "@ruiyun/preact-switch": "^1.2.39",
     "@ruiyun/preact-text": "^1.2.39",
+    "h5-indicator": "^1.0.8",
     "lodash.debounce": "^4.0.8",
     "preact": "^10.0.0-rc.1"
   },
@@ -69,7 +70,7 @@
     "regenerator-runtime"
   ],
   "pages": {
-    "index": "主页",
+    "index": "h666解决方案演示",
     "list": "列表页",
     "buttonDemo": "button示例",
     "actionsheetDemo": "actionsheet演示",
@@ -87,7 +88,8 @@
     "tabbarDemo": "tabbar演示"
   },
   "include": [
-    "@ruiyun"
+    "@ruiyun",
+    "h5-indicator"
   ],
   "browsers": [
     "android >= 4.4",

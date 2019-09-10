@@ -1,69 +1,71 @@
 import { h, Component } from 'preact'
-import WithNav from '@ruiyun/preact-m-nav'
+import TabBar from '@ruiyun/preact-m-tabbar'
+
+import BaseComponents from './baseComponents'
+import ComposeComponents from './composeComponents'
+
 import './app.css'
 
-@WithNav
+const tabbarConfig = {
+  options: [
+    {
+      text: '基础组件',
+      icon: 'icon-zujian'
+    },
+    {
+      text: '复合组件',
+      icon: 'icon-zujian1'
+    },
+    {
+      text: '表单',
+      icon: 'icon-biaodan'
+    },
+    {
+      text: '路由',
+      icon: 'icon-luyou'
+    }
+  ],
+  color: '#A9AEB1',
+  activeColor: '#30AD1C',
+  textSize: 24,
+  iconSize: 40
+}
+
 export default class Index extends Component {
   state = {
-    name: 'wenjun1991'
-  }
-  goto = () => {
-    this.props.$nav.push('buttonDemo')
-  }
-
-  goto2 = () => {
-    this.props.$nav.push('actionsheetDemo')
-  }
-
-  goto3 = () => {
-    this.props.$nav.push('dialogDemo')
-  }
-
-  goto4 = () => {
-    this.props.$nav.push('modalDemo')
-  }
-
-  goto5 = () => {
-    this.props.$nav.push('swiperDemo')
-  }
-
-  goto6 = () => {
-    this.props.$nav.push('tabsDemo')
-  }
-
-  goto7 = () => {
-    this.props.$nav.push('formDemo')
-  }
-
-  goto8 = () => {
-    this.props.$nav.push('switchDemo')
-  }
-  goto9 = () => {
-    this.props.$nav.push('searchPickerDemo')
-  }
-  goto10 = () => {
-    this.props.$nav.push('tabbarDemo')
-  }
-  goto11 = () => {
-    this.props.$nav.push('treepickerDemo')
+    name: 'wenjun1991',
+    demos: [
+      {
+        name: '按钮',
+        route: 'buttonDemo'
+      },
+      {
+        name: '开关',
+        route: 'switchDemo'
+      }
+    ]
+    // demos: [
+    //   'buttonDemo',
+    //   'actionsheetDemo',
+    //   'dialogDemo',
+    //   'modalDemo',
+    //   'swiperDemo',
+    //   'tabsDemo',
+    //   'formDemo',
+    //   'switchDemo',
+    //   'searchPickerDemo',
+    //   'tabbarDemo',
+    //   'treepickerDemo'
+    // ]
   }
   render () {
     return (
-      <div>
-        Index-7
-        <div className='test'>{this.state.name}</div>
-        <div onClick={this.goto}>go to buttonDemo</div>
-        <div onClick={this.goto2}>go to actionsheetDemo</div>
-        <div onClick={this.goto3}>go to dialogDemo</div>
-        <div onClick={this.goto4}>go to modalDemo</div>
-        <div onClick={this.goto5}>go to swiperDemo</div>
-        <div onClick={this.goto6}>go to tabsDemo</div>
-        <div onClick={this.goto7}>go to formDemo</div>
-        <div onClick={this.goto8}>go to switchDemo</div>
-        <div onClick={this.goto9}>go to searchPickerDemo</div>
-        <div onClick={this.goto10}>go to tabbarDemo</div>
-        <div onClick={this.goto11}>go to treepickerDemo</div>
-      </div>
+      <TabBar config={tabbarConfig}>
+        <BaseComponents />
+        <ComposeComponents />
+        <BaseComponents />
+        <BaseComponents />
+      </TabBar>
     )
   }
 }
