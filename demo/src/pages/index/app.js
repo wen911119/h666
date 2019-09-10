@@ -32,32 +32,20 @@ const tabbarConfig = {
 }
 
 export default class Index extends Component {
-  state = {
-    name: 'wenjun1991',
-    demos: [
-      {
-        name: '按钮',
-        route: 'buttonDemo'
-      },
-      {
-        name: '开关2',
-        route: 'switchDemo'
-      }
-    ]
-    // demos: [
-    //   'buttonDemo',
-    //   'actionsheetDemo',
-    //   'dialogDemo',
-    //   'modalDemo',
-    //   'swiperDemo',
-    //   'tabsDemo',
-    //   'formDemo',
-    //   'switchDemo',
-    //   'searchPickerDemo',
-    //   'tabbarDemo',
-    //   'treepickerDemo'
-    // ]
-  }
+  // demos: [
+  //   'buttonDemo',
+  //   'actionsheetDemo',
+  //   'dialogDemo',
+  //   'modalDemo',
+  //   'swiperDemo',
+  //   'tabsDemo',
+  //   'formDemo',
+  //   'switchDemo',
+  //   'searchPickerDemo',
+  //   'tabbarDemo',
+  //   'treepickerDemo'
+  // ]
+
   render () {
     return (
       <TabBar config={tabbarConfig}>
