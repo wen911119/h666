@@ -3,12 +3,15 @@ import { XCenterView } from '@ruiyun/preact-layout-suite'
 import Button from '@ruiyun/preact-button'
 import Form from '@ruiyun/preact-form'
 import Line from '@ruiyun/preact-line'
+import Ajax from '@ruiyun/ajax'
+
 import {
   FormTextInput,
   FormActionSheetInput,
   FormNumberInput,
   FormPickerInput,
-  FormSwitchInput
+  FormSwitchInput,
+  FormTreePickerInput
 } from '@ruiyun/preact-m-form-component'
 
 import { required, range } from '../../components/Validate'
@@ -139,6 +142,28 @@ export default class FormDemo extends Component {
       }
     )
   }
+  getChildren = async parent => {
+    if (!this.mockData) {
+      this.mockData = []
+      const ret = await Ajax.get(
+        'https://uapi.dev.quancheng-ec.com/uac/groups',
+        {
+          params: {
+            type: 'GT_REGION'
+          },
+          headers: {
+            loading: 'false',
+            identifier: 'hrg-mp'
+          }
+        }
+      )
+      if (ret && ret.success) {
+        this.mockData = ret.result.data
+      }
+    }
+    const parentId = parent ? parent.id : ''
+    return this.mockData.filter(item => item.pid === parentId)
+  }
   componentDidMount () {
     this.form.init({
       ad: true
@@ -171,6 +196,14 @@ export default class FormDemo extends Component {
             validate={[required, phoneCheck]}
           >
             <FormNumberInput required limit={11} placeholder='请输入手机号' />
+          </Form.Field>
+          <Line />
+          <Form.Field label='地区' field='regions'>
+            <FormTreePickerInput
+              getLabel={item => item.name}
+              placeholder='请选择地区'
+              getChildren={this.getChildren}
+            />
           </Form.Field>
           <Line />
           <Form.Field label='接受职位信息推送' field='ad'>

@@ -14,6 +14,10 @@ export default class ComposeComponents extends Component {
       {
         name: '全自动列表',
         route: 'autolistDemo'
+      },
+      {
+        name: '表单',
+        route: 'formDemo'
       }
     ]
   }
