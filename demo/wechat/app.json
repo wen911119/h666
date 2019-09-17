@@ -16,7 +16,22 @@
     "pages/imageUploaderDemo/index",
     "pages/searchPickerDemo/index",
     "pages/tabbarDemo/index",
-    "pages/pickerDemo/index"
+    "pages/pickerDemo/index",
+    "pages/textDemo/index",
+    "pages/layoutDemo/index",
+    "pages/imageDemo/index",
+    "pages/iconDemo/index",
+    "pages/imagePreviewDemo/index",
+    "pages/inputDemo/index",
+    "pages/lineDemo/index",
+    "pages/countdownDemo/index",
+    "pages/loadingDemo/index",
+    "pages/navDemo/index",
+    "pages/navDemo2/index",
+    "pages/navDemo3/index",
+    "pages/analytics/index",
+    "pages/timing/index",
+    "pages/errorLog/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

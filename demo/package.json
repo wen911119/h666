@@ -87,7 +87,22 @@
     "imageUploaderDemo": "图片上传组件演示",
     "searchPicker": "搜索picker",
     "tabbarDemo": "tabbar演示",
-    "pickerDemo": "选择器演示"
+    "pickerDemo": "选择器演示",
+    "textDemo": "文本组件演示",
+    "layoutDemo": "布局套件演示",
+    "imageDemo": "图片组件演示",
+    "iconDemo": "图标组件演示",
+    "imagePreviewDemo": "图片预览api演示",
+    "inputDemo": "输入框组件演示",
+    "lineDemo": "线条组件演示",
+    "countdownDemo": "倒计时组件演示",
+    "loadingDemo": "加载组件演示",
+    "navDemo": "路由演示",
+    "navDemo2": "路由演示2",
+    "navDemo3": "路由演示3",
+    "analytics": "访问信息",
+    "timing": "加载性能",
+    "errorLog": "错误日志"
   },
   "include": [
     "@ruiyun",

@@ -3,6 +3,8 @@ import TabBar from '@ruiyun/preact-m-tabbar'
 
 import BaseComponents from './baseComponents'
 import DecoratorComponents from './decoratorComponents'
+import ComposeComponents from './composeComponents'
+import Metric from './metric'
 
 import './app.css'
 
@@ -13,16 +15,16 @@ const tabbarConfig = {
       icon: 'icon-zujian'
     },
     {
-      text: '装饰器',
+      text: '复合组件',
       icon: 'icon-zujian1'
     },
     {
-      text: '表单',
-      icon: 'icon-biaodan'
+      text: 'API',
+      icon: 'icon-api1'
     },
     {
-      text: '路由',
-      icon: 'icon-luyou'
+      text: '指标',
+      icon: 'icon-zhibiao2'
     }
   ],
   color: '#A9AEB1',
@@ -32,27 +34,13 @@ const tabbarConfig = {
 }
 
 export default class Index extends Component {
-  // demos: [
-  //   'buttonDemo',
-  //   'actionsheetDemo',
-  //   'dialogDemo',
-  //   'modalDemo',
-  //   'swiperDemo',
-  //   'tabsDemo',
-  //   'formDemo',
-  //   'switchDemo',
-  //   'searchPickerDemo',
-  //   'tabbarDemo',
-  //   'treepickerDemo'
-  // ]
-
   render () {
     return (
       <TabBar config={tabbarConfig}>
         <BaseComponents />
+        <ComposeComponents />
         <DecoratorComponents />
-        <BaseComponents />
-        <BaseComponents />
+        <Metric />
       </TabBar>
     )
   }

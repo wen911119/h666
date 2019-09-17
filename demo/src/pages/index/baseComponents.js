@@ -10,12 +10,32 @@ export default class BaseComponents extends Component {
   state = {
     demos: [
       {
+        name: '文本',
+        route: 'textDemo'
+      },
+      {
         name: '按钮',
         route: 'buttonDemo'
       },
       {
+        name: '图标',
+        route: 'iconDemo'
+      },
+      {
+        name: '图片',
+        route: 'imageDemo'
+      },
+      {
+        name: '布局套件',
+        route: 'layoutDemo'
+      },
+      {
         name: '开关',
         route: 'switchDemo'
+      },
+      {
+        name: '输入框',
+        route: 'inputDemo'
       }
     ]
   }
