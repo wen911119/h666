@@ -2,7 +2,7 @@ import { h, Component } from 'preact'
 import TabBar from '@ruiyun/preact-m-tabbar'
 
 import BaseComponents from './baseComponents'
-import ComposeComponents from './composeComponents'
+import DecoratorComponents from './decoratorComponents'
 
 import './app.css'
 
@@ -13,7 +13,7 @@ const tabbarConfig = {
       icon: 'icon-zujian'
     },
     {
-      text: '复合组件',
+      text: '装饰器',
       icon: 'icon-zujian1'
     },
     {
@@ -50,7 +50,7 @@ export default class Index extends Component {
     return (
       <TabBar config={tabbarConfig}>
         <BaseComponents />
-        <ComposeComponents />
+        <DecoratorComponents />
         <BaseComponents />
         <BaseComponents />
       </TabBar>
