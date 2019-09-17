@@ -15,7 +15,7 @@ Page({
     wx.reportAnalytics('init-time', {
       mpLoading: this.webStartAt - this.mpDoneAt,
       empty: this.webDoneAt - this.webStartAt,
-      page: 'searchPicker'
+      page: 'pickerDemo'
     })
   },
 
@@ -24,7 +24,7 @@ Page({
    */
   onLoad: function (routeParams) {
     const app = getApp()
-    const url = `${app.globalData.host}/searchPickerDemo.html?_c=mp&_p=${routeParams._p}`
+    const url = `${app.globalData.host}/pickerDemo.html?_c=mp&_p=${routeParams._p}`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()
@@ -43,7 +43,7 @@ Page({
           // 启动预加载报错上报
           wx.reportAnalytics('pre-load-error', {
             error: JSON.stringify(error),
-            page: 'searchPicker'
+            page: 'pickerDemo'
           })
         })
       }

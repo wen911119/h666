@@ -86,7 +86,8 @@
     "autolistDemo": "自动列表演示",
     "imageUploaderDemo": "图片上传组件演示",
     "searchPicker": "搜索picker",
-    "tabbarDemo": "tabbar演示"
+    "tabbarDemo": "tabbar演示",
+    "pickerDemo": "选择器演示"
   },
   "include": [
     "@ruiyun",

@@ -24,7 +24,7 @@ Page({
    */
   onLoad: function (routeParams) {
     const app = getApp()
-    const url = `${app.globalData.host}/index.html?_c=mp&_p=${routeParams._p}`
+    const url = `${app.globalData.host}/index.html?_c=mp&_p=${routeParams._p}&_r=1`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()

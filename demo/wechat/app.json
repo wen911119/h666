@@ -15,7 +15,8 @@
     "pages/autolistDemo/index",
     "pages/imageUploaderDemo/index",
     "pages/searchPickerDemo/index",
-    "pages/tabbarDemo/index"
+    "pages/tabbarDemo/index",
+    "pages/pickerDemo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
