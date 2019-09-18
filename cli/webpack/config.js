@@ -8,7 +8,7 @@ const {
 } = require('fs-extra')
 
 const ip = require('ip')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TARGET_PROJECT_PATH = process.cwd()
 const packageInfo = require(path.resolve(TARGET_PROJECT_PATH, './package.json'))
@@ -88,6 +88,7 @@ const customTemplate = path.resolve(TARGET_PROJECT_PATH, './template.html')
 const HtmlWebpackPlugins = Object.keys(entries).map(
   k =>
     new HtmlWebpackPlugin({
+      multihtmlCache: true,
       title: pageTitlesMap[k] || k,
       filename: `${k}.html`,
       template: existsSync(customTemplate)
@@ -100,7 +101,7 @@ module.exports = {
   entry: entries,
   output: {
     path: path.resolve(process.cwd(), 'dist'),
-    filename: '[name].[hash].js' // string
+    filename: '[chunkhash].bundle.js' // string
   },
   module: {
     rules: [
@@ -213,10 +214,6 @@ module.exports = {
         }
       }
     }
-  },
-  devServer: {
-    host: ip.address(),
-    hot: true
   },
   resolve: {
     modules: [

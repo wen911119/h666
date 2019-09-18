@@ -7,12 +7,15 @@ const ip = require('ip')
 module.exports = function (port) {
   webpackConfig.mode = 'development'
   webpackConfig.devtool = 'cheap-module-eval-source-map'
+  webpackConfig.output.filename = '[name].bundle.js'
   const compiler = webpack(webpackConfig)
-  const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+  const devServerOptions = {
+    host: ip.address(),
+    hot: true,
     stats: {
       colors: true
     }
-  })
+  }
 
   const server = new WebpackDevServer(compiler, devServerOptions)
 
