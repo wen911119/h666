@@ -8,7 +8,7 @@ const {
 } = require('fs-extra')
 
 const ip = require('ip')
-const HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TARGET_PROJECT_PATH = process.cwd()
 const packageInfo = require(path.resolve(TARGET_PROJECT_PATH, './package.json'))
