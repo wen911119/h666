@@ -101,7 +101,7 @@ module.exports = {
   entry: entries,
   output: {
     path: path.resolve(process.cwd(), 'dist'),
-    filename: '[chunkhash].bundle.js' // string
+    filename: '[name].[chunkhash].bundle.js' // string
   },
   module: {
     rules: [
