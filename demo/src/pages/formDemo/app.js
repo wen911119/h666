@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { XCenterView } from '@ruiyun/preact-layout-suite'
+import { ColumnView, RowView } from '@ruiyun/preact-layout-suite'
 import Button from '@ruiyun/preact-button'
 import Form from '@ruiyun/preact-form'
 import Line from '@ruiyun/preact-line'
@@ -16,6 +16,7 @@ import {
 
 import { required, range } from '../../components/Validate'
 import SalaryInput from './components/salaryInput'
+import DemoPage from '../../components/DemoPage'
 
 const phoneCheck = async phoneNum => {
   const p = new Promise(resolve => {
@@ -126,10 +127,7 @@ export default class FormDemo extends Component {
   }
   onReset = () => {
     this.form.init({
-      ad: true,
-      name: '',
-      age: '',
-      phone: ''
+      ad: true
     })
   }
   onSubmit = () => {
@@ -171,92 +169,101 @@ export default class FormDemo extends Component {
   }
   render () {
     return (
-      <div>
-        <Form ref={form => (this.form = form)}>
-          <Form.Field label='姓名' field='name' validate={[required]}>
-            <FormTextInput required maxLength={3} placeholder='请输入姓名' />
-          </Form.Field>
-          <Line />
-          <Form.Field label='年龄' field='age' validate={[range(0, 150)]}>
-            <FormNumberInput limit={3} placeholder='请输入年龄' />
-          </Form.Field>
-          <Line />
-          <Form.Field label='籍贯' field='region' validate={[required]}>
-            <FormPickerInput
-              required
-              title='请选择'
-              placeholder='请选择你的籍贯'
-              options={regionOptions}
-            />
-          </Form.Field>
-          <Line />
-          <Form.Field
-            label='手机号'
-            field='phone'
-            validate={[required, phoneCheck]}
-          >
-            <FormNumberInput required limit={11} placeholder='请输入手机号' />
-          </Form.Field>
-          <Line />
-          <Form.Field label='地区' field='regions'>
-            <FormTreePickerInput
-              getLabel={item => item.name}
-              placeholder='请选择地区'
-              getChildren={this.getChildren}
-            />
-          </Form.Field>
-          <Line />
-          <Form.Field label='接受职位信息推送' field='ad'>
-            <FormSwitchInput />
-          </Form.Field>
-          <Line />
-
-          <Form.Fragment namespace='apply'>
-            <Form.Field label='申请的职位' field='role'>
-              <FormActionSheetInput
-                placeholder='请选择你期望的职位'
-                options={['开发工程师', '测试工程师', '运营专员', '产品经理']}
+      <DemoPage title='Form'>
+        <ColumnView padding={[0, 30, 0, 30]}>
+          <Form ref={form => (this.form = form)}>
+            <Form.Field label='姓名' field='name' validate={[required]}>
+              <FormTextInput required maxLength={3} placeholder='请输入姓名' />
+            </Form.Field>
+            <Line />
+            <Form.Field label='年龄' field='age' validate={[range(0, 150)]}>
+              <FormNumberInput limit={3} placeholder='请输入年龄' />
+            </Form.Field>
+            <Line />
+            <Form.Field label='籍贯' field='region' validate={[required]}>
+              <FormPickerInput
+                required
+                title='请选择'
+                placeholder='请选择你的籍贯'
+                options={regionOptions}
               />
             </Form.Field>
             <Line />
             <Form.Field
-              label='期望的薪资'
-              field='salary'
-              validate={[range(0, 30)]}
-              link={{ role: 'apply.role' }}
+              label='手机号'
+              field='phone'
+              validate={[required, phoneCheck]}
             >
-              <SalaryInput placeholder='请输入期望的薪资' />
+              <FormNumberInput required limit={11} placeholder='请输入手机号' />
             </Form.Field>
             <Line />
-            <Form.Field label='期望工作城市' field='city' validate={[required]}>
-              <FormPickerInput
-                placeholder='请选择期望的工作的城市'
-                options={cityOptions}
-                mode={3}
+            <Form.Field label='地区' field='regions'>
+              <FormTreePickerInput
+                getLabel={item => item.name}
+                placeholder='请选择地区'
+                getChildren={this.getChildren}
               />
             </Form.Field>
             <Line />
-          </Form.Fragment>
-          <XCenterView height={200}>
-            <Button
-              onClick={this.onReset}
-              style={{ boxShadow: '0px 8px 8px 0px rgba(0,0,0,0.1)' }}
-              color='#e42506'
-              padding={[10, 30, 10, 30]}
-            >
-              重置
-            </Button>
-            <Button
-              onClick={this.onSubmit}
-              style={{ boxShadow: '0px 8px 8px 0px rgba(0,0,0,0.1)' }}
-              color='#5581fa'
-              padding={[10, 30, 10, 30]}
-            >
-              提交
-            </Button>
-          </XCenterView>
-        </Form>
-      </div>
+            <Form.Field label='接受职位信息推送' field='ad'>
+              <FormSwitchInput />
+            </Form.Field>
+            <Line />
+
+            <Form.Fragment namespace='apply'>
+              <Form.Field label='申请的职位' field='role'>
+                <FormActionSheetInput
+                  placeholder='请选择你期望的职位'
+                  options={['开发工程师', '测试工程师', '运营专员', '产品经理']}
+                />
+              </Form.Field>
+              <Line />
+              <Form.Field
+                label='期望的薪资'
+                field='salary'
+                validate={[range(0, 30)]}
+                link={{ role: 'apply.role' }}
+              >
+                <SalaryInput placeholder='请输入期望的薪资' />
+              </Form.Field>
+              <Line />
+              <Form.Field
+                label='期望工作城市'
+                field='city'
+                validate={[required]}
+              >
+                <FormPickerInput
+                  placeholder='请选择期望的工作的城市'
+                  options={cityOptions}
+                  mode={3}
+                  required
+                />
+              </Form.Field>
+              <Line />
+            </Form.Fragment>
+            <RowView height={200} hAlign='between'>
+              <Button
+                onClick={this.onReset}
+                style={{ boxShadow: '0px 8px 8px 0px rgba(0,0,0,0.1)' }}
+                color='#f8584f'
+                height={80}
+                width={300}
+              >
+                重置
+              </Button>
+              <Button
+                onClick={this.onSubmit}
+                style={{ boxShadow: '0px 8px 8px 0px rgba(0,0,0,0.1)' }}
+                color='#07c160'
+                height={80}
+                width={300}
+              >
+                提交
+              </Button>
+            </RowView>
+          </Form>
+        </ColumnView>
+      </DemoPage>
     )
   }
 }
