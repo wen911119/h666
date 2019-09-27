@@ -1,60 +1,150 @@
 import { h, Component } from 'preact'
-import { ScrollerWithRefreshAndLoadMore } from '@ruiyun/preact-m-scroller'
-import { XCenterView, ColumnView } from '@ruiyun/preact-layout-suite'
+import Scroller, {
+  ScrollerWithRefreshAndLoadMore,
+  ScrollerWithRefresh,
+  ScrollerWithLoadMore
+} from '@ruiyun/preact-m-scroller'
+import { XCenterView, ColumnView, RowView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
-import style from './app.css'
+
+import DemoPage from '../../components/DemoPage'
 
 export default class ScrollerDemo extends Component {
   state = {
-    // list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    list: [1, 2]
+    list1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    list2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    list3: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    list4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   }
-  onLoadMore = async done => {
-    const p = new Promise(resolve => {
-      setTimeout(resolve, 2000)
-    })
-    await p
-    let arr = []
-    const oldList = this.state.list
-    for (let l = oldList.length, i = l + 1; i <= l + 10; i++) {
-      arr.push(i)
+  onRefresh = done => {
+    setTimeout(() => {
+      this.setState(
+        {
+          list2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        done
+      )
+    }, 1500)
+  }
+  onLoadMore = done => {
+    let newList = Array.from(this.state.list3)
+    for (let l = newList.length, j = l + 1; j <= l + 10; j++) {
+      newList.push(j)
     }
-    this.setState({
-      list: Array.from(oldList).concat(arr)
-    }, done)
+    const isNoMore = newList.length >= 50
+    setTimeout(() => {
+      this.setState(
+        {
+          list3: newList
+        },
+        () => done(isNoMore)
+      )
+    }, 1500)
+  }
+  onRefreshForList4 = done => {
+    setTimeout(() => {
+      this.setState(
+        {
+          list4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        done
+      )
+    }, 1500)
+  }
+  onLoadMoreForList4 = done => {
+    let newList = Array.from(this.state.list4)
+    for (let l = newList.length, j = l + 1; j <= l + 10; j++) {
+      newList.push(j)
+    }
+    const isNoMore = newList.length >= 50
+    setTimeout(() => {
+      this.setState(
+        {
+          list4: newList
+        },
+        () => done(isNoMore)
+      )
+    }, 1500)
   }
   render () {
+    const { list1, list2, list3, list4 } = this.state
     return (
-      <div>
-        {/* <XCenterView height={200}>
-          <Text>啦啦啦啦啦啦</Text>
-        </XCenterView> */}
-        <ColumnView height='100%'>
-          <XCenterView height={200}>
-            <Text>啦啦啦啦啦啦</Text>
+      <DemoPage title='Scroller'>
+        <ColumnView padding={[0, 30, 0, 30]}>
+          <XCenterView height={100}>
+            <Text size={28}>固定高度(300px)的默认Scroller</Text>
           </XCenterView>
-          <div style={{ flex: 1, overflow: 'hidden' }}>
-            <ScrollerWithRefreshAndLoadMore height='600px' onLoadMore={this.onLoadMore}>
-              <div>
-                {this.state.list.map(item => (
-                  <XCenterView key={item} height={200} bgColor='#ccc'>
-                    <Text>{item}</Text>
-                  </XCenterView>
-                ))}
-              </div>
-            </ScrollerWithRefreshAndLoadMore>
-          </div>
-        </ColumnView>
-        {/* <ScrollerWithRefreshAndLoadMore onLoadMore={this.onLoadMore}>
-          <div>
-            {this.state.list.map(item => (
-              <XCenterView key={item} height={200}>
-                <Text>{item}</Text>
-              </XCenterView>
+          <Scroller height='300px'>
+            {list1.map(item => (
+              <RowView
+                key={item}
+                height={200}
+                bgColor='#99CCCC'
+                hAlign='center'
+                margin={[0, 0, 30, 0]}
+              >
+                <Text color='#fff'>item-{item}</Text>
+              </RowView>
             ))}
-          </div>
-        </ScrollerWithRefreshAndLoadMore> */}
-      </div>
+          </Scroller>
+          <RowView height={100} />
+          <XCenterView height={100}>
+            <Text size={28}>带下拉刷新的Scroller</Text>
+          </XCenterView>
+          <ScrollerWithRefresh height='300px' onRefresh={this.onRefresh}>
+            {list2.map(item => (
+              <RowView
+                key={item}
+                height={200}
+                bgColor='#99CC66'
+                hAlign='center'
+                margin={[0, 0, 30, 0]}
+              >
+                <Text color='#fff'>item-{item}</Text>
+              </RowView>
+            ))}
+          </ScrollerWithRefresh>
+          <RowView height={100} />
+          <XCenterView height={100}>
+            <Text size={28}>带加载更多的Scroller</Text>
+          </XCenterView>
+          <ScrollerWithLoadMore height='300px' onLoadMore={this.onLoadMore}>
+            {list3.map(item => (
+              <RowView
+                key={item}
+                height={200}
+                bgColor='#99CCFF'
+                hAlign='center'
+                margin={[0, 0, 30, 0]}
+              >
+                <Text color='#fff'>item-{item}</Text>
+              </RowView>
+            ))}
+          </ScrollerWithLoadMore>
+          <RowView height={100} />
+          <XCenterView height={100}>
+            <Text size={28}>带下拉刷新和加载更多的Scroller</Text>
+          </XCenterView>
+          <ScrollerWithRefreshAndLoadMore
+            height='300px'
+            onRefresh={this.onRefreshForList4}
+            onLoadMore={this.onLoadMoreForList4}
+          >
+            {list4.map(item => (
+              <RowView
+                key={item}
+                height={200}
+                bgColor='#FFCC99'
+                hAlign='center'
+                margin={[0, 0, 30, 0]}
+              >
+                <Text color='#fff'>item-{item}</Text>
+              </RowView>
+            ))}
+          </ScrollerWithRefreshAndLoadMore>
+          <RowView height={300} />
+        </ColumnView>
+      </DemoPage>
     )
   }
 }
