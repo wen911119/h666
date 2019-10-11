@@ -1,3 +1,7 @@
-.test {
-  color: red;
+.input {
+  text-indent: 0.2rem;
+  border-radius: 0;
+}
+.searchinput {
+  line-height: 0.8rem !important;
 }
