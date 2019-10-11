@@ -12,7 +12,7 @@ import classNames from './app.css'
 const InputDemo = () => {
   const [keywords, updateKeywords] = useState()
   return (
-    <DemoPage title='input'>
+    <DemoPage title='Input'>
       <SlotColumnView hAlign='center' vAlign='center' slot={20} padding={[0, 0, 100, 0]}>
         <Text color='#FF9966'>最基本的文本输入框(最多5个字)</Text>
         <Input
