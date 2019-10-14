@@ -1,9 +1,13 @@
 import { h, Component } from 'preact'
 import { WithDialog } from '@ruiyun/preact-m-dialog'
 import Image from '@ruiyun/preact-image'
+import { SlotColumnView } from '@ruiyun/preact-layout-suite'
+import Button from '@ruiyun/preact-button'
+import imageDemo from '../../assets/img-demo.jpg'
+import DemoPage from '../../components/DemoPage'
 
 @WithDialog
-export default class TabsDemo extends Component {
+export default class DialogDemo extends Component {
   onBtnClick = (index, value) => {
     console.log('kkk', index, value)
   }
@@ -43,28 +47,23 @@ export default class TabsDemo extends Component {
     this.props.$alert({
       title: '我是标题',
       // content:
-      //   '我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
+      //   '自定义插槽可以是任何内容比如图片',
       btn: '确定',
       cb: this.onBtnClick,
-      slot: () => (
-        <Image
-          src='https://img.banggo.com/sources/cms/banggo2017/APP/LB65-1.jpg'
-          width={200}
-          height={100}
-        />
-      )
+      slot: () => <Image src={imageDemo} width={300} height={150} />
     })
   }
 
   render () {
     return (
-      <div>
-        <div style={{ height: '1000px' }} />
-        <div onClick={this.openAlert}>打开alert</div>
-        <div onClick={this.openConfirm}>打开confirm</div>
-        <div onClick={this.openPrompt}>打开prompt</div>
-        <div onClick={this.openSlotDialog}>打开slot-dialog</div>
-      </div>
+      <DemoPage title='Dialog'>
+        <SlotColumnView hAlign='center' slot={30}>
+          <Button onClick={this.openAlert} color='#99CC33' width={600} height={80}>alert</Button>
+          <Button onClick={this.openConfirm} color='#99CCFF' width={600} height={80}>confirm</Button>
+          <Button onClick={this.openPrompt} color='#99CCCC' width={600} height={80}>prompt</Button>
+          <Button onClick={this.openSlotDialog} color='#CC6699' width={600} height={80}>slot-dialog</Button>
+        </SlotColumnView>
+      </DemoPage>
     )
   }
 }
