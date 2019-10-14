@@ -1,7 +1,10 @@
 import { h, Component } from 'preact'
-import { XCenterView } from '@ruiyun/preact-layout-suite'
+import { XCenterView, SlotColumnView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import { WithModal } from '@ruiyun/preact-modal'
+import Button from '@ruiyun/preact-button'
+
+import DemoPage from '../../components/DemoPage'
 
 const renderModalContent = () => (
   <XCenterView height={300} bgColor='#fff' width={600}>
@@ -64,13 +67,50 @@ export default class TabsDemo extends Component {
   }
   render () {
     return (
-      <div>
-        <div onClick={this.openCenterModal}>打开modal(中间)</div>
-        <div onClick={this.openLeftModal}>打开modal(左边)</div>
-        <div onClick={this.openRightModal}>打开modal(右边)</div>
-        <div onClick={this.openTopModal}>打开modal(上边)</div>
-        <div onClick={this.openBottomModal}>打开modal(下边)</div>
-      </div>
+      <DemoPage title='Modal'>
+        <SlotColumnView hAlign='center' slot={30}>
+          <Button
+            onClick={this.openCenterModal}
+            color='#99CC33'
+            width={600}
+            height={80}
+          >
+            打开modal(中间)
+          </Button>
+          <Button
+            onClick={this.openLeftModal}
+            color='#99CCFF'
+            width={600}
+            height={80}
+          >
+            打开modal(左边)
+          </Button>
+          <Button
+            onClick={this.openRightModal}
+            color='#99CCCC'
+            width={600}
+            height={80}
+          >
+            打开modal(右边)
+          </Button>
+          <Button
+            onClick={this.openTopModal}
+            color='#CCCCFF'
+            width={600}
+            height={80}
+          >
+            打开modal(上边)
+          </Button>
+          <Button
+            onClick={this.openBottomModal}
+            color='#CC6699'
+            width={600}
+            height={80}
+          >
+            打开modal(下边)
+          </Button>
+        </SlotColumnView>
+      </DemoPage>
     )
   }
 }
