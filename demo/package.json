@@ -25,7 +25,7 @@
     "@ruiyun/preact-loading": "^1.2.39",
     "@ruiyun/preact-m-actionsheet": "^1.2.62",
     "@ruiyun/preact-m-auto-list": "^1.2.64",
-    "@ruiyun/preact-m-dialog": "^1.2.62",
+    "@ruiyun/preact-m-dialog": "^1.2.67",
     "@ruiyun/preact-m-form-component": "^1.2.66",
     "@ruiyun/preact-m-image-preview": "^1.2.63",
     "@ruiyun/preact-m-nav": "^1.2.7",
