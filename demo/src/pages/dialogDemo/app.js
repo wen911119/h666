@@ -46,13 +46,20 @@ export default class TabsDemo extends Component {
       //   '我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容',
       btn: '确定',
       cb: this.onBtnClick,
-      slot: () => <Image src='https://img.banggo.com/sources/cms/banggo2017/APP/LB65-1.jpg' width={200} height={100} />
+      slot: () => (
+        <Image
+          src='https://img.banggo.com/sources/cms/banggo2017/APP/LB65-1.jpg'
+          width={200}
+          height={100}
+        />
+      )
     })
   }
 
   render () {
     return (
       <div>
+        <div style={{ height: '1000px' }} />
         <div onClick={this.openAlert}>打开alert</div>
         <div onClick={this.openConfirm}>打开confirm</div>
         <div onClick={this.openPrompt}>打开prompt</div>
