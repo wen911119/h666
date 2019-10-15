@@ -1,6 +1,11 @@
 import { h, Component } from 'preact'
-import style from './app.css'
 import { WithTreePicker } from '@ruiyun/preact-m-tree-picker'
+import { RowView, SlotColumnView } from '@ruiyun/preact-layout-suite'
+import Text from '@ruiyun/preact-text'
+import Icon from '@ruiyun/preact-icon'
+import Ajax from '@ruiyun/ajax'
+
+import DemoPage from '../../components/DemoPage'
 
 const mockData = [
   {
@@ -86,11 +91,54 @@ const mockData = [
     parentId: 213
   }
 ]
+
+const PickerItem = ({ onClick, values = [], children }) => (
+  <RowView
+    padding={[30, 30, 30, 30]}
+    onClick={onClick}
+    bgColor='#fff'
+    hAlign='between'
+  >
+    <Text>{children}</Text>
+    <SlotColumnView hAlign='center'>
+      {values.map(item => (
+        <Text color='#CC6699' key={item}>
+          {item.name}
+        </Text>
+      ))}
+    </SlotColumnView>
+
+    <Icon name='icon-qianjin' color='#919191' />
+  </RowView>
+)
 @WithTreePicker
 export default class TreepickerDemo extends Component {
   state = {
     name: 'wenjun',
-    value: undefined
+    value1: undefined,
+    value2: undefined
+  }
+  getChildren = async parent => {
+    if (!this.mockData) {
+      this.mockData = []
+      const ret = await Ajax.get(
+        'https://uapi.dev.quancheng-ec.com/uac/groups',
+        {
+          params: {
+            type: 'GT_REGION'
+          },
+          headers: {
+            loading: 'false',
+            identifier: 'hrg-mp'
+          }
+        }
+      )
+      if (ret && ret.success) {
+        this.mockData = ret.result.data
+      }
+    }
+    const parentId = parent ? parent.id : ''
+    return this.mockData.filter(item => item.pid === parentId)
   }
   openTreePicker = () => {
     this.props
@@ -101,23 +149,40 @@ export default class TreepickerDemo extends Component {
           const parentId = parent && parent.id
           return mockData.filter(item => item.parentId === parentId)
         },
-        value: this.state.value
+        value: this.state.value1
       })
       .then(v => {
-        console.log(v)
         this.setState({
-          value: v
+          value1: v
+        })
+      })
+  }
+  openTreePicker2 = () => {
+    this.props
+      .$treepicker({
+        title: '请选择地区',
+        getLabel: item => item.name,
+        getChildren: this.getChildren,
+        value: this.state.value2
+      })
+      .then(v => {
+        this.setState({
+          value2: v
         })
       })
   }
   render () {
     return (
-      <div>
-        TreepickerDemo
-        <div className={style.test} onClick={this.openTreePicker}>
-          {this.state.name}
-        </div>
-      </div>
+      <DemoPage title='TreePicker'>
+        <SlotColumnView padding={[0, 30, 0, 30]} slot={30}>
+          <PickerItem values={this.state.value1} onClick={this.openTreePicker}>
+            静态数据、层级不固定
+          </PickerItem>
+          <PickerItem values={this.state.value2} onClick={this.openTreePicker2}>
+            动态数据、层级固定
+          </PickerItem>
+        </SlotColumnView>
+      </DemoPage>
     )
   }
 }
