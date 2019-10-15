@@ -8,7 +8,6 @@ import {
 } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import Icon from '@ruiyun/preact-icon'
-import Indicator from 'h5-indicator'
 import DemoPage from '../../components/DemoPage'
 
 @WithDialog
@@ -32,22 +31,13 @@ export default class NavDemo2 extends Component {
       }, 300)
     }
   }
-  componentDidMount () {
-    this.props.$nav.onWakeUp(() => {
-      Indicator.toast('页面唤醒', {
-        timeout: 3000
-      })
-    })
+  goNext = () => {
+    this.props.$nav.push('navDemo3')
   }
   render () {
     return (
       <DemoPage title='Navigation2'>
         <SlotColumnView padding={[0, 30, 0, 30]} slot={20}>
-          <RowView padding={[0, 50, 0, 50]}>
-            <Text color='#996699' size={26} style={{ textAlign: 'center' }}>
-              可以尝试把应用(微信或浏览器)切后台再回来，体验onWakeUp唤醒事件
-            </Text>
-          </RowView>
           <RowView bgColor='#FFFFCC' height={200} padding={[0, 30, 0, 30]}>
             <Text color='#CCCCFF'>上一页传来的参数：</Text>
             <Text>{JSON.stringify(this.props.$nav.params)}</Text>
@@ -61,6 +51,17 @@ export default class NavDemo2 extends Component {
           >
             <Text>带参返回上一页</Text>
             <Icon name='icon-fanhui3' color='#919191' />
+          </RowView>
+          <RowView
+            height={100}
+            padding={[0, 30, 0, 30]}
+            onClick={this.goNext}
+            bgColor='#fff'
+            hAlign='between'
+            margin={[0, 0, 20, 0]}
+          >
+            <Text>去下一页体验唤醒事件</Text>
+            <Icon name='icon-qianjin' color='#919191' />
           </RowView>
         </SlotColumnView>
       </DemoPage>
