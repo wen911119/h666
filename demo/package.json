@@ -105,7 +105,8 @@
     "navDemo3": "路由演示3",
     "analytics": "访问信息",
     "timing": "加载性能",
-    "errorLog": "错误日志"
+    "errorLog": "错误日志",
+    "indicatorDemo": "指示器演示"
   },
   "include": [
     "@ruiyun",

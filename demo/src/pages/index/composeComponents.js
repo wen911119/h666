@@ -9,16 +9,24 @@ export default class ComposeComponents extends Component {
   state = {
     demos: [
       {
+        name: '表单',
+        route: 'formDemo'
+      },
+      {
+        name: '图片上传',
+        route: 'imageUploaderDemo'
+      },
+      {
+        name: '全自动列表AutoList',
+        route: 'autolistDemo'
+      },
+      {
         name: '滑动切换Swiper',
         route: 'swiperDemo'
       },
       {
         name: 'Scroller',
         route: 'scrollerDemo'
-      },
-      {
-        name: '全自动列表AutoList',
-        route: 'autolistDemo'
       },
       {
         name: 'Tab切换',
@@ -29,8 +37,8 @@ export default class ComposeComponents extends Component {
         route: 'tabbarDemo'
       },
       {
-        name: '表单',
-        route: 'formDemo'
+        name: '倒计时',
+        route: 'countdownDemo'
       }
     ]
   }

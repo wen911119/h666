@@ -31,7 +31,8 @@
     "pages/navDemo3/index",
     "pages/analytics/index",
     "pages/timing/index",
-    "pages/errorLog/index"
+    "pages/errorLog/index",
+    "pages/indicatorDemo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -13,16 +13,8 @@ export default class DecoratorComponents extends Component {
         route: 'navDemo'
       },
       {
-        name: 'ActionSheet',
-        route: 'actionsheetDemo'
-      },
-      {
-        name: '对话框Dialog',
-        route: 'dialogDemo'
-      },
-      {
-        name: '模态框Modal',
-        route: 'modalDemo'
+        name: '图片预览',
+        route: 'imagePreviewDemo'
       },
       {
         name: '选择器Picker',
@@ -33,12 +25,24 @@ export default class DecoratorComponents extends Component {
         route: 'treepickerDemo'
       },
       {
+        name: '对话框Dialog',
+        route: 'dialogDemo'
+      },
+      {
+        name: '模态框Modal',
+        route: 'modalDemo'
+      },
+      {
+        name: 'ActionSheet',
+        route: 'actionsheetDemo'
+      },
+      {
         name: '搜索选择器SearchPicker',
         route: 'searchPickerDemo'
       },
       {
-        name: '图片预览',
-        route: 'imagePreviewDemo'
+        name: '指示器Indicator',
+        route: 'indicatorDemo'
       }
     ]
   }
