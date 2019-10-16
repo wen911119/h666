@@ -32,7 +32,10 @@
     "pages/analytics/index",
     "pages/timing/index",
     "pages/errorLog/index",
-    "pages/indicatorDemo/index"
+    "pages/indicatorDemo/index",
+    "pages/redundantPage1/index",
+    "pages/redundantPage2/index",
+    "pages/redundantPage3/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

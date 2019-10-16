@@ -106,7 +106,10 @@
     "analytics": "访问信息",
     "timing": "加载性能",
     "errorLog": "错误日志",
-    "indicatorDemo": "指示器演示"
+    "indicatorDemo": "指示器演示",
+    "redundantPage1": "redundant1",
+    "redundantPage2": "redundant2",
+    "redundantPage3": "redundant3"
   },
   "include": [
     "@ruiyun",
