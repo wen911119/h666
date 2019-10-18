@@ -3,21 +3,11 @@ import Uploader from '@ruiyun/preact-image-uploader'
 import { WithOSS } from '@ruiyun/preact-oss'
 import { RowView, SlotColumnView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
-import style from './app.css'
+import Line from '@ruiyun/preact-line'
+import DemoPage from '../../components/DemoPage'
 
-const getOSSConfig = async () =>
-  // const { success, data } = await getSts()
-  // if (success) {
-  //   return {
-  //     region: 'oss-cn-shanghai',
-  //     accessKeyId: data.AccessKeyId,
-  //     accessKeySecret: data.AccessKeySecret,
-  //     bucket: 'zhongzhi-dev-idcard-image',
-  //     stsToken: data.SecurityToken,
-  //     secure: true
-  //   }
-  // }
-  // return null
+// 可以是async异步获取
+const getOSSConfig = () =>
   ({
     region: 'oss-cn-shanghai',
     accessKeyId: 'LTAIpnyXCaVMB88z',
@@ -52,26 +42,51 @@ export default class ImageUploaderDemo extends Component {
   )
   render () {
     return (
-      <div>
-        ImageUploaderDemo
-        <div className={style.test}>{this.state.name}</div>
-        <RowView padding={[30, 30, 30, 30]}>
-          <ImageUploaderWithOSS
-            size={[330, 200]}
-            rowSlot={30}
-            rowItems={2}
-            max={2}
-            onChange={this.onUpload}
-            placeholder={this.renderPlaceHolder}
-          />
-        </RowView>
-        <RowView padding={[30, 30, 30, 30]}>
-          <ImageUploaderWithOSS
-            max={9}
-            onChange={this.onUpload}
-          />
-        </RowView>
-      </div>
+      <DemoPage title='ImageUploader'>
+        <SlotColumnView slot={30} padding={[0, 0, 100, 0]}>
+          <RowView padding={[0, 50, 50, 50]}>
+            <Text size={26} style={{ textAlign: 'center' }} color='#CC9999'>
+              图片上传组件需要装载驱动才可以使用。这里演示的是上传到阿里云OSS，用的是@ruiyun/preact-oss这个驱动。如果需要上传到其它平台，则更换其它驱动即可。
+            </Text>
+          </RowView>
+          <SlotColumnView slot={10} padding={[0, 30, 0, 30]}>
+            <Text color='#FF9900' weight='bold'>
+              默认形态:
+            </Text>
+            <Text size={24} color='#99CCCC'>
+              配置：max=3，size=[190, 190]
+            </Text>
+          </SlotColumnView>
+          <RowView padding={[30, 30, 30, 30]} bgColor='#fff'>
+            <ImageUploaderWithOSS
+              size={[210, 210]}
+              max={3}
+              onChange={this.onUpload}
+            />
+          </RowView>
+          <RowView height={60}>
+            <Line color='#ccc' />
+          </RowView>
+          <SlotColumnView slot={10} padding={[0, 30, 0, 30]}>
+            <Text color='#FF9900' weight='bold'>
+              自定义形态:
+            </Text>
+            <Text size={24} color='#99CCCC'>
+              配置：max=2，size=[330, 200], rowSlot=30, rowItems=2
+            </Text>
+          </SlotColumnView>
+          <RowView padding={[30, 30, 30, 30]} bgColor='#fff'>
+            <ImageUploaderWithOSS
+              size={[330, 200]}
+              rowSlot={30}
+              rowItems={2}
+              max={2}
+              onChange={this.onUpload}
+              placeholder={this.renderPlaceHolder}
+            />
+          </RowView>
+        </SlotColumnView>
+      </DemoPage>
     )
   }
 }
