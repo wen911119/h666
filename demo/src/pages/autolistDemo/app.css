@@ -3,7 +3,10 @@
   bottom: 30%;
   right: 0.4rem;
   z-index: 1;
-  padding: 0.4rem;
   background-color: rgba(0,0,0,0.3);
   border-radius: 0.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
 }
