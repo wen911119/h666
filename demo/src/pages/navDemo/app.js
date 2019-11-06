@@ -1,6 +1,8 @@
 import { h, Component } from 'preact'
 import Text from '@ruiyun/preact-text'
 import { WithDialog } from '@ruiyun/preact-m-dialog'
+import Indicator from 'h5-indicator'
+
 import {
   RowView,
   SlotColumnView
@@ -25,7 +27,7 @@ export default class NavDemo extends Component {
   }
   goNext = () => {
     this.props.$prompt({
-      title: '访客姓名',
+      title: '访客姓名2',
       placeholder: '请输入姓名',
       btns: ['取消', '确定'],
       config: {
@@ -38,6 +40,24 @@ export default class NavDemo extends Component {
     this.props.$nav.onPop(params => {
       this.setState({ nextPageParams: params })
     })
+    document.addEventListener(
+      'resume',
+      () => {
+        Indicator.toast('resume', {
+          timeout: 10000
+        })
+      },
+      false
+    )
+    document.addEventListener(
+      'pause',
+      () => {
+        Indicator.toast('pause', {
+          timeout: 10000
+        })
+      },
+      false
+    )
   }
   render () {
     const { nextPageParams } = this.state
