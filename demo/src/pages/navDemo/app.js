@@ -3,10 +3,7 @@ import Text from '@ruiyun/preact-text'
 import { WithDialog } from '@ruiyun/preact-m-dialog'
 import Indicator from 'h5-indicator'
 
-import {
-  RowView,
-  SlotColumnView
-} from '@ruiyun/preact-layout-suite'
+import { RowView, SlotColumnView } from '@ruiyun/preact-layout-suite'
 import WithNav from '@ruiyun/preact-m-nav'
 import Icon from '@ruiyun/preact-icon'
 
@@ -35,29 +32,16 @@ export default class NavDemo extends Component {
       },
       cb: this.onPrompt
     })
+    // eslint-disable-next-line
+    // plus.gallery.pick()
   }
   componentDidMount () {
     this.props.$nav.onPop(params => {
       this.setState({ nextPageParams: params })
     })
-    document.addEventListener(
-      'resume',
-      () => {
-        Indicator.toast('resume', {
-          timeout: 10000
-        })
-      },
-      false
-    )
-    document.addEventListener(
-      'pause',
-      () => {
-        Indicator.toast('pause', {
-          timeout: 10000
-        })
-      },
-      false
-    )
+    this.props.$nav.onWakeUp(() => {
+      Indicator.toast('onWakeUp')
+    })
   }
   render () {
     const { nextPageParams } = this.state
@@ -65,7 +49,7 @@ export default class NavDemo extends Component {
       <DemoPage title='Navigation'>
         <RowView padding={[0, 50, 0, 50]}>
           <Text color='#CC9966' size={26} style={{ textAlign: 'center' }}>
-            相较于小程序原生导航有所增强，增加了路由传参，带参返回，页面唤醒和页面休眠生命周期
+            相较于小程序原生导航有所增强，增加了路由传参，带参返回，页面唤醒和页面休眠生命周期4
           </Text>
         </RowView>
         <SlotColumnView padding={[100, 30, 100, 30]} slot={30}>

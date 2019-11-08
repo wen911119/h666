@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ruiyun/preact-m-nav": "^1.2.7",
+    "@ruiyun/preact-m-nav": "^1.2.70",
     "preact": "^10.0.0-rc.1"
   },
   "devDependencies": {
