@@ -24,7 +24,7 @@ export default class NavDemo extends Component {
   }
   goNext = () => {
     this.props.$prompt({
-      title: '访客姓名2',
+      title: '访客姓名',
       placeholder: '请输入姓名',
       btns: ['取消', '确定'],
       config: {
@@ -37,6 +37,9 @@ export default class NavDemo extends Component {
   }
   componentDidMount () {
     this.props.$nav.onPop(params => {
+      this.setState({ nextPageParams: params })
+    })
+    this.props.$nav.onBack(params => {
       this.setState({ nextPageParams: params })
     })
     this.props.$nav.onWakeUp(() => {

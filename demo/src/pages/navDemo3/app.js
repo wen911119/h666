@@ -10,7 +10,9 @@ import DemoPage from '../../components/DemoPage'
 @WithNav
 export default class NavDemo3 extends Component {
   goRoot = () => {
-    this.props.$nav.backTo('navDemo')
+    this.props.$nav.backTo('navDemo', {
+      age: 88
+    })
   }
   componentDidMount () {
     this.props.$nav.onWakeUp(() => {
