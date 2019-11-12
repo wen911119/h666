@@ -1,9 +1,12 @@
 // const fse = require('fs-extra')
 const webpack = require('webpack')
 
-module.exports = function (buildTarget) {
+module.exports = function (buildTarget, container) {
   if (typeof buildTarget !== 'string') {
     buildTarget = 'production'
+  }
+  if (container==='h5plus') {
+    process.env.BUILD_CONTAINER = container
   }
   process.env.BUILD_TARGET = buildTarget
   let webpackConfig = require('../webpack/config')

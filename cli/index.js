@@ -37,10 +37,11 @@ program
 // build command
 program
   .command('build')
-  .option('-t, --target', 'build for dev or production? default production')
+  .option('-t, --target', 'dev开发环境还是production生产环境? 默认生产环境')
+  .option('-c, --container', '为哪个平台构建？默认浏览器环境,目前可选h5plus')
   .description('打包最终代码')
-  .action(target => {
-    require('./commands/build')(target)
+  .action((target, container) => {
+    require('./commands/build')(target, container)
   })
 program.parse(process.argv)
 
