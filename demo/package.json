@@ -50,10 +50,10 @@
     "h5-indicator": "^1.0.8",
     "lodash.debounce": "^4.0.8",
     "lodash.set": "^4.3.2",
-    "preact": "^10.0.0-rc.3"
+    "preact": "^10.0.5"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-beta.3",
+    "@ruiyun/h666-cli": "^2.0.0-beta.5",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-config-standard-react": "^7.0.2",
