@@ -8,7 +8,9 @@
     "add-page": "h666 add",
     "start": "h666 start --port=3000",
     "build:dev": "h666 build --target=dev",
-    "build:pro": "h666 build --target=production"
+    "build:pro": "h666 build --target=production",
+    "build:dev:h5plus": "h666 build --target=dev --container=h5plus",
+    "build:pro:h5plus": "h666 build --target=production --container=h5plus"
   },
   "author": "",
   "license": "ISC",
