@@ -3,10 +3,10 @@
   "parser": "babel-eslint",
   "rules": {
     "semi": ["error", "never"],
-    "indent": ["error", 2],
     "react/prop-types": 0,
     "react/display-name": 0,
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/jsx-handler-names": 0
   },
   "parserOptions": {
     "ecmaFeatures": {
