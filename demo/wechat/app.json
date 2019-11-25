@@ -35,7 +35,8 @@
     "pages/indicatorDemo/index",
     "pages/redundantPage1/index",
     "pages/redundantPage2/index",
-    "pages/redundantPage3/index"
+    "pages/redundantPage3/index",
+    "pages/dateRangePickerDemo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
