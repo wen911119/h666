@@ -7,17 +7,22 @@ export default class List extends Component {
   state = {
     name: 'wenjun'
   }
+
   back = () => {
     this.props.$nav.pop()
   }
+
   changeTitle = () => {
     this.props.$nav.setTitle('123456')
   }
-  render () {
+
+  render() {
     return (
       <div>
         List
-        <div className={style.test} onClick={this.changeTitle}>{this.state.name}</div>
+        <div className={style.test} onClick={this.changeTitle}>
+          {this.state.name}
+        </div>
         <div onClick={this.back}>back</div>
       </div>
     )

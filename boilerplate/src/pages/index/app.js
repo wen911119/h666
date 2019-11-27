@@ -7,10 +7,12 @@ export default class Index extends Component {
   state = {
     name: 'wenjun1991'
   }
+
   goto = () => {
     this.props.$nav.push('list')
   }
-  render () {
+
+  render() {
     return (
       <div>
         Index
