@@ -162,12 +162,12 @@ export default class FormDemo extends Component {
     const parentId = parent ? parent.id : ''
     return this.mockData.filter(item => item.pid === parentId)
   }
-  componentDidMount () {
+  componentDidMount() {
     this.form.init({
       ad: true
     })
   }
-  render () {
+  render() {
     return (
       <DemoPage title='Form'>
         <ColumnView padding={[0, 30, 0, 30]}>

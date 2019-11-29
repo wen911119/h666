@@ -47,7 +47,7 @@ export default class BaseComponents extends Component {
       }
     ]
   }
-  render () {
+  render() {
     return (
       <Scroller height='flex1'>
         <ColumnView padding={[0, 30, 0, 30]}>

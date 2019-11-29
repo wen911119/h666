@@ -75,14 +75,15 @@ export default class AutolistDemo extends Component {
       btn: '确定'
     })
   }
-  componentDidMount () {
+  componentDidMount() {
     this.props.$alert({
       title: '自动列表',
-      content: 'AutoList是通过高阶组件抽象列表常用逻辑,然后拼装组合实现的UI无关的高级列表组件。使用时只要简单配置就可以完成一个全功能的列表开发。包括下拉刷新、加载分页、筛选(搜索)。并且对点击事件绑定和rerender做了优化。',
+      content:
+        'AutoList是通过高阶组件抽象列表常用逻辑,然后拼装组合实现的UI无关的高级列表组件。使用时只要简单配置就可以完成一个全功能的列表开发。包括下拉刷新、加载分页、筛选(搜索)。并且对点击事件绑定和rerender做了优化。',
       btn: '了解了'
     })
   }
-  render () {
+  render() {
     return (
       <ColumnView height='100%'>
         <SearchBar
