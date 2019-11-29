@@ -45,9 +45,7 @@
     "preact-layout-suite",
     "preact-m-nav",
     "@ruiyun/ajax",
-    "@ruiyun/preact-text",
-    "core-js",
-    "regenerator-runtime"
+    "@ruiyun/preact-text"
   ],
   "pages": {
     "index": "主页",
