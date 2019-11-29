@@ -41,8 +41,8 @@ program
   .option('-c, --container <container>', '为哪个平台构建？默认browser,目前可选h5plus', 'browser')
   .option('-a, --analyse <analyse>', '构建分析文件路径,默认不生成')
   .description('打包最终代码')
-  .action(({target, container, profile}) => {
-    require('./commands/build')(target, container, profile)
+  .action(({target, container, analyse}) => {
+    require('./commands/build')(target, container, analyse)
   })
 program.parse(process.argv)
 
