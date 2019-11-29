@@ -28,20 +28,20 @@ program
 // start dev server
 program
   .command('start')
-  .option('-p, --port', 'dev server port, default 8080')
+  .option('-p, --port <port>', 'dev server port, default 8080', 8080)
   .description('启动开发服务器')
-  .action(port => {
-    require('./commands/start')(port || 8080)
+  .action(({port}) => {
+    require('./commands/start')(port)
   })
 
 // build command
 program
   .command('build')
-  .option('-t, --target', 'dev开发环境还是production生产环境? 默认生产环境')
-  .option('-c, --container', '为哪个平台构建？默认浏览器环境,目前可选h5plus')
-  .option('-p, --profile', '构建分析文件路径,默认不生成')
+  .option('-t, --target <target>', 'dev开发环境还是production生产环境? 默认生产环境', 'production')
+  .option('-c, --container <container>', '为哪个平台构建？默认browser,目前可选h5plus', 'browser')
+  .option('-a, --analyse <analyse>', '构建分析文件路径,默认不生成')
   .description('打包最终代码')
-  .action((target, container, profile) => {
+  .action(({target, container, profile}) => {
     require('./commands/build')(target, container, profile)
   })
 program.parse(process.argv)
