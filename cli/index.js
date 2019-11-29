@@ -39,9 +39,10 @@ program
   .command('build')
   .option('-t, --target', 'dev开发环境还是production生产环境? 默认生产环境')
   .option('-c, --container', '为哪个平台构建？默认浏览器环境,目前可选h5plus')
+  .option('-p, --profile', '构建分析文件路径,默认不生成')
   .description('打包最终代码')
-  .action((target, container) => {
-    require('./commands/build')(target, container)
+  .action((target, container, profile) => {
+    require('./commands/build')(target, container, profile)
   })
 program.parse(process.argv)
 

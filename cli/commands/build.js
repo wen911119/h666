@@ -1,7 +1,8 @@
 // const fse = require('fs-extra')
 const webpack = require('webpack')
-
-module.exports = function (buildTarget, container) {
+const fs = require('fs')
+const path = require('path')
+module.exports = function (buildTarget, container, profile) {
   if (typeof buildTarget !== 'string') {
     buildTarget = 'production'
   }
@@ -16,11 +17,15 @@ module.exports = function (buildTarget, container) {
       console.log(err || stats)
     }
     else {
+      if (profile) {
+        fs.writeFileSync(path.resolve(process.cwd(), profile), JSON.stringify(stats.toJson()))
+      } else {
+        console.log(stats.toString({
+          chunks: true,  // Makes the build much quieter
+          colors: true    // Shows colors in the console
+        }))
+      }
       console.log('build success')
-      console.log(stats.toString({
-        chunks: true,  // Makes the build much quieter
-        colors: true    // Shows colors in the console
-      }))
     }
   })
 

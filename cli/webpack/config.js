@@ -15,7 +15,12 @@ const customInclude = packageInfo.include || []
 const customBrowsers = packageInfo.browsers || []
 const commonChunks = (packageInfo.commonChunks || []).concat([
   'preact',
-  'style-loader'
+  'style-loader',
+  'css-loader',
+  'axios',
+  'process',
+  'regenerator-runtime',
+  'core-js'
 ])
 const commonChunksReg = new RegExp(`[\\/](${commonChunks.join('|')})[\\/]`)
 const genEntry = (appJsPath, pageName) => {
