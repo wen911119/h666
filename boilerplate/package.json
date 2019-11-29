@@ -8,7 +8,7 @@
     "start": "h666 start --port=3000",
     "build:dev": "h666 build --target=dev",
     "build:pro": "h666 build --target=production",
-    "build:pro:analyse": "h666 build --target=production --profile=./stats.json",
+    "build:pro:analyse": "h666 build --target=production --analyse=./stats.json",
     "build:dev:h5plus": "h666 build --target=dev --container=h5plus",
     "build:pro:h5plus": "h666 build --target=production --container=h5plus",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore"
