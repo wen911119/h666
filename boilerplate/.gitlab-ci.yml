@@ -1,0 +1,21 @@
+stages:
+  - build-and-release
+develop:
+  stage: build-and-release
+  script:
+    - docker -v
+    - echo "DEV=>starting h5 build and release。"
+    - docker build --no-cache --build-arg region=#OSS_REGION_NAME# --build-arg accessKeyId=$accessKeyId --build-arg accessKeySecret=$accessKeySecret --build-arg bucket=#OSS_BUCKET_NAME# --build-arg BUILD_TARGET=dev .
+    - echo "DEV=>Build And Publish Success."
+  only:
+    - develop
+
+production:
+  stage: build-and-release
+  script:
+    - docker -v
+    - echo "PRO=>starting h5 build and release"
+    - docker build --no-cache --build-arg region=#OSS_REGION_NAME# --build-arg accessKeyId=$accessKeyId --build-arg accessKeySecret=$accessKeySecret --build-arg bucket=#OSS_BUCKET_NAME# --build-arg BUILD_TARGET=pro .
+    - echo "PRO=>Build And Publish Success."
+  only:
+    - /^release-.*$/
