@@ -17,7 +17,12 @@
   "license": "ISC",
   "dependencies": {
     "@ruiyun/preact-m-nav": "^1.2.81",
-    "preact": "^10.1.0"
+    "preact": "^10.1.1",
+    "@ruiyun/preact-layout-suite": "^1.2.77",
+    "@ruiyun/preact-icon": "^1.2.39",
+    "@ruiyun/preact-text": "^1.2.39",
+    "h5-indicator": "^1.0.8",
+    "@ruiyun/ajax": "^1.0.5"
   },
   "devDependencies": {
     "@ruiyun/h666-cli": "^2.0.0-beta.10",
@@ -52,7 +57,8 @@
     "list": "列表页"
   },
   "include": [
-    "@ruiyun"
+    "@ruiyun",
+    "h5-indicator"
   ],
   "browsers": [
     "android >= 4.4",
