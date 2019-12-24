@@ -15,7 +15,7 @@ Page({
     wx.reportAnalytics('init-time', {
       mpLoading: this.webStartAt - this.mpDoneAt,
       empty: this.webDoneAt - this.webStartAt,
-      page: 'list'
+      page: this.page
     })
   },
 
@@ -24,7 +24,33 @@ Page({
    */
   onLoad: function (routeParams) {
     const app = getApp()
-    const url = `${app.globalData.host}/list.html?_c=mp&_p=${routeParams._p}`
+    const {_p, page = app.globalData.home } = routeParams
+    this.page = page
+    let config = routeParams.headerConfig
+    if (config) {
+      try {
+        config = JSON.parse(decodeURI(config))
+      }catch(err){
+        config = {}
+        wx.reportAnalytics('route-params-parse-error', {
+          error: JSON.stringify(err),
+          page
+        })
+      }
+      const { title, titleColor, bgColor} = config
+      if (title) {
+        wx.setNavigationBarTitle({
+          title
+        })
+      }
+      if (bgColor) {
+        wx.setNavigationBarColor({
+          frontColor: titleColor || '#ffffff',
+          backgroundColor: bgColor
+        })
+      }
+    }
+    const url = `${app.globalData.host}/${page}.html?_c=mp&ts=${Date.now()}&_p=${_p}`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()
@@ -43,7 +69,7 @@ Page({
           // 启动预加载报错上报
           wx.reportAnalytics('pre-load-error', {
             error: JSON.stringify(error),
-            page: 'list'
+            page
           })
         })
       }

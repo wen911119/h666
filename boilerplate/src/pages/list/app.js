@@ -8,6 +8,20 @@ export default class List extends Component {
     name: 'wenjun'
   }
 
+  gotoDetail = () => {
+    this.props.$nav.push('detail')
+  }
+
+  replaceDetail = () => {
+    this.props.$nav.replace(
+      'detail',
+      {},
+      {
+        bgColor: '#ccc'
+      }
+    )
+  }
+
   back = () => {
     this.props.$nav.pop()
   }
@@ -23,6 +37,8 @@ export default class List extends Component {
         <div className={style.test} onClick={this.changeTitle}>
           {this.state.name}
         </div>
+        <div onClick={this.gotoDetail}>go to detail</div>
+        <div onClick={this.replaceDetail}>replace to detail</div>
         <div onClick={this.back}>back</div>
       </div>
     )

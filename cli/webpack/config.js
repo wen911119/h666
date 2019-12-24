@@ -237,7 +237,8 @@ module.exports = {
     ...HtmlWebpackPlugins,
     new webpack.DefinePlugin({
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
-      $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750)
+      $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750),
+      $PAGES_TITLE_MAP$: JSON.stringify(pageTitlesMap)
     }),
     new CleanWebpackPlugin()
   ],

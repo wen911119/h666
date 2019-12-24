@@ -25,7 +25,7 @@
     "@ruiyun/ajax": "^1.0.5"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-beta.10",
+    "@ruiyun/h666-cli": "^2.0.0-rc.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -54,7 +54,8 @@
   ],
   "pages": {
     "index": "主页",
-    "list": "列表页"
+    "list": "列表页",
+    "detail": "详情页"
   },
   "include": [
     "@ruiyun",

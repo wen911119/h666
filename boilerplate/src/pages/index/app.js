@@ -9,7 +9,10 @@ export default class Index extends Component {
   }
 
   goto = () => {
-    this.props.$nav.push('list')
+    this.props.$nav.push('list', {}, {
+      title: '商品列表',
+      bgColor: '#f8584f'
+    })
   }
 
   render() {
