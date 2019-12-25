@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/page1/index",
-    "pages/page2/index",
-    "pages/page3/index",
-    "pages/page4/index",
-    "pages/page5/index"
+    "pages/h666Entry/index",
+    "pages/h666Container2/index",
+    "pages/h666Container3/index",
+    "pages/h666Container4/index",
+    "pages/h666Container5/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

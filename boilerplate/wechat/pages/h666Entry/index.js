@@ -23,8 +23,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (routeParams) {
-    const app = getApp()
-    const {_p, page = app.globalData.home } = routeParams
+    const h666Config = getApp().globalData.h666
+    const {_p, page = h666Config.home.name, host = h666Config.host } = routeParams
     this.page = page
     let config = routeParams.headerConfig
     if (config) {
@@ -50,7 +50,7 @@ Page({
         })
       }
     }
-    const url = `${app.globalData.host}/${page}.html?_c=mp&ts=${Date.now()}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&ts=${Date.now()}&_p=${_p}`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()
