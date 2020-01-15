@@ -1,4 +1,3 @@
-// pages/index/index.js
 Page({
 
   /**
@@ -24,20 +23,20 @@ Page({
    */
   onLoad: function (routeParams) {
     const h666Config = getApp().globalData.h666
-    const {_p, page, host = h666Config.host } = routeParams
+    const { _p, page, host = h666Config.host } = routeParams
     let config = routeParams.headerConfig
     this.page = page
     if (config) {
       try {
-        config = JSON.parse(decodeURI(config))
-      }catch(err){
+        config = JSON.parse(decodeURIComponent(config))
+      } catch (err) {
         config = {}
         wx.reportAnalytics('route-params-parse-error', {
           error: JSON.stringify(err),
           page
         })
       }
-      const { title, titleColor, bgColor} = config
+      const { title, titleColor, bgColor } = config
       if (title) {
         wx.setNavigationBarTitle({
           title
@@ -50,7 +49,7 @@ Page({
         })
       }
     }
-    const url = `${host}/${page}.html?_c=mp&ts=${Date.now()}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&depth=3&_v=${h666Config.version}&_p=${_p}`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()
@@ -116,5 +115,27 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onPop: function (params) {
+    this.setData({ url: this.data.url.replace(/#.*/, '') + '#onPopParams=' + encodeURIComponent(JSON.stringify(params || {})) })
+  },
+
+  onBack: function (params) {
+    this.setData({ url: this.data.url.replace(/#.*/, '') + '#onBackParams=' + encodeURIComponent(JSON.stringify(params || {})) })
+  },
+
+  onMessage: function (event) {
+    if (event.detail.data && event.detail.data[0]) {
+      var message = event.detail.data[0]
+      var pages = getCurrentPages()
+      if (message.type === 'pop-params') {
+        var lastPage = pages[pages.length - 2]
+        lastPage && lastPage.onPop && lastPage.onPop(message.params)
+      } else if (message.type = 'back-params') {
+        var targetPage = pages[pages.length - message.steps - 1]
+        targetPage && targetPage.onBack && targetPage.onBack(message.params)
+      }
+    }
   }
 })

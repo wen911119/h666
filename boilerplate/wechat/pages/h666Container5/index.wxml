@@ -1,4 +1,3 @@
-<!--index.wxml-->
-<web-view wx:if="{{status==='ok'}}" src="{{url}}" bindload="webLoaded"></web-view>
+<web-view wx:if="{{status==='ok'}}" src="{{url}}" bindload="webLoaded" bindmessage="onMessage"></web-view>
 <loading wx:elif="{{status==='loading'}}" />
 <error wx:elif="{{status==='err'}}" />

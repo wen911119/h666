@@ -2,12 +2,15 @@
 App({
   globalData: {
     h666: {
-      host: 'http://10.100.1.252:3000',
-      // host: 'https://zufang.ruiyun2015.com'
+      host: 'http://10.100.1.165:3000',
+      // host: 'https://uplatform-re-dev.quancheng-ec.com',
       home: {
-        title: '主页',
-        name: 'index'
-      }
+        name: 'index',
+        headerConfig: {
+          title: '首页'
+        }
+      },
+      version: Date.now()
     }
   }
 })

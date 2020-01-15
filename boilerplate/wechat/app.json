@@ -1,14 +1,16 @@
 {
   "pages": [
-    "pages/h666Entry/index",
+    "pages/h666Container1/index",
     "pages/h666Container2/index",
     "pages/h666Container3/index",
     "pages/h666Container4/index",
-    "pages/h666Container5/index"
+    "pages/h666Container5/index",
+    "pages/h666Container6/index",
+    "pages/h666Container7/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },

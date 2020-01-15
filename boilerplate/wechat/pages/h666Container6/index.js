@@ -49,7 +49,7 @@ Page({
         })
       }
     }
-    const url = `${host}/${page}.html?_c=mp&depth=5&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&depth=6&_v=${h666Config.version}&_p=${_p}`
     const self = this
     // 小程序加载完成
     self.mpDoneAt = Date.now()
