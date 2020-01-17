@@ -23,14 +23,13 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
 	"appid": "wx3ef1a9b4b4e88424",
-	"projectname": "miniprogram-hybird",
+	"projectname": "h666-demo",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"cloudfunctionRoot": "functions/",
 	"condition": {
 		"search": {
 			"current": -1,
