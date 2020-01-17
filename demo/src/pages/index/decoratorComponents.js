@@ -46,9 +46,9 @@ export default class DecoratorComponents extends Component {
       }
     ]
   }
-  render () {
+  render() {
     return (
-      <Scroller height='flex1'>
+      <Scroller>
         <ColumnView padding={[0, 30, 0, 30]}>
           <SlotColumnView slot={30} padding={[80, 50, 80, 50]}>
             <Text size={44}>API</Text>

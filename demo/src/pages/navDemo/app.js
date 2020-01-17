@@ -1,16 +1,16 @@
 import { h, Component } from 'preact'
 import Text from '@ruiyun/preact-text'
 import { WithDialog } from '@ruiyun/preact-m-dialog'
-import Indicator from 'h5-indicator'
+// import Indicator from 'h5-indicator'
 
 import { RowView, SlotColumnView } from '@ruiyun/preact-layout-suite'
-import WithNav from '@ruiyun/preact-m-nav'
+import WithRouter from '@ruiyun/preact-m-router'
 import Icon from '@ruiyun/preact-icon'
 
 import DemoPage from '../../components/DemoPage'
 
 @WithDialog
-@WithNav
+@WithRouter
 export default class NavDemo extends Component {
   state = {
     nextPageParams: {}
@@ -18,7 +18,7 @@ export default class NavDemo extends Component {
   onPrompt = (index, value) => {
     if (index === 1) {
       setTimeout(() => {
-        this.props.$nav.push('navDemo2', { name: value })
+        this.props.$router.push('navDemo2', { name: value })
       }, 300)
     }
   }
@@ -35,18 +35,18 @@ export default class NavDemo extends Component {
     // eslint-disable-next-line
     // plus.gallery.pick()
   }
-  componentDidMount () {
-    this.props.$nav.onPop(params => {
+  componentDidMount() {
+    this.props.$router.onPop(params => {
       this.setState({ nextPageParams: params })
     })
-    this.props.$nav.onBack(params => {
+    this.props.$router.onBack(params => {
       this.setState({ nextPageParams: params })
     })
-    this.props.$nav.onWakeUp(() => {
-      Indicator.toast('onWakeUp')
-    })
+    // this.props.$router.onWakeUp(() => {
+    //   Indicator.toast('onWakeUp')
+    // })
   }
-  render () {
+  render() {
     const { nextPageParams } = this.state
     return (
       <DemoPage title='Navigation'>

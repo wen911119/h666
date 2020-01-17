@@ -1,14 +1,14 @@
 import { h, Component } from 'preact'
-import WithNav from '@ruiyun/preact-m-nav'
+import WithRouter from '@ruiyun/preact-m-router'
 
-@WithNav
+@WithRouter
 export default class Detail extends Component {
   state = {
     name: 'wenjun'
   }
 
   back = () => {
-    this.props.$nav.pop()
+    this.props.$router.pop()
   }
 
   render() {

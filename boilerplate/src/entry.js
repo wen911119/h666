@@ -5,7 +5,7 @@ import {
   setLoadingMethod,
   setOnRequestHandler
 } from '@ruiyun/ajax'
-import { nav } from '@ruiyun/preact-m-nav'
+import { router } from '@ruiyun/preact-m-router'
 import { TOKEN_KEY } from './constants/other'
 
 export default function onEntry() {
@@ -25,7 +25,7 @@ export default function onEntry() {
         window.localStorage.setItem(TOKEN_KEY, '')
         Indicator.toast('授权过期')
         // 跳转登录页面
-        nav.replace('login')
+        router.replace('login')
       } else if (status < 500) {
         Indicator.toast(error.response.data.message)
       } else {

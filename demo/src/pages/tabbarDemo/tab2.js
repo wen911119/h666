@@ -2,24 +2,28 @@ import { h, Component } from 'preact'
 import Text from '@ruiyun/preact-text'
 
 export default class Item2 extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     console.log('tab-item-2===>constructor')
   }
 
-  onActive = () => {
-    console.log('tab-item-2 is active!')
+  onTabShow = () => {
+    console.log('tab-item-2 is show!')
   }
 
-  componentDidMount () {
+  onTabHide = () => {
+    console.log('tab-item-2 is hide!')
+  }
+
+  componentDidMount() {
     console.log('tab-item-2', 'componentDidMount')
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     console.log('tab-item-2', 'componentWillUnmount')
   }
 
-  render () {
+  render() {
     return <Text>tab-item-2</Text>
   }
 }

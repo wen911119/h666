@@ -1,19 +1,19 @@
 import { h, Component } from 'preact'
-import WithNav from '@ruiyun/preact-m-nav'
+import WithRouter from '@ruiyun/preact-m-router'
 import style from './app.css'
 
-@WithNav
+@WithRouter
 export default class List extends Component {
   state = {
     name: 'wenjun'
   }
 
   gotoDetail = () => {
-    this.props.$nav.push('detail')
+    this.props.$router.push('detail')
   }
 
   replaceDetail = () => {
-    this.props.$nav.replace(
+    this.props.$router.replace(
       'detail',
       {},
       {
@@ -23,11 +23,11 @@ export default class List extends Component {
   }
 
   back = () => {
-    this.props.$nav.pop()
+    this.props.$router.pop()
   }
 
   changeTitle = () => {
-    this.props.$nav.setTitle('123456')
+    this.props.$router.setTitle('123456')
   }
 
   render() {

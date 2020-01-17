@@ -1,17 +1,14 @@
 import { h, Component } from 'preact'
-import WithNav from '@ruiyun/preact-m-nav'
+import WithRouter from '@ruiyun/preact-m-router'
 import { WithDialog } from '@ruiyun/preact-m-dialog'
 
-import {
-  RowView,
-  SlotColumnView
-} from '@ruiyun/preact-layout-suite'
+import { RowView, SlotColumnView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import Icon from '@ruiyun/preact-icon'
 import DemoPage from '../../components/DemoPage'
 
 @WithDialog
-@WithNav
+@WithRouter
 export default class NavDemo2 extends Component {
   goBack = () => {
     this.props.$prompt({
@@ -27,20 +24,20 @@ export default class NavDemo2 extends Component {
   goBackWithParams = (index, value) => {
     if (index === 1) {
       setTimeout(() => {
-        this.props.$nav.pop({ age: value })
+        this.props.$router.pop({ age: value })
       }, 300)
     }
   }
   goNext = () => {
-    this.props.$nav.push('navDemo3')
+    this.props.$router.push('navDemo3')
   }
-  render () {
+  render() {
     return (
       <DemoPage title='Navigation2'>
         <SlotColumnView padding={[0, 30, 0, 30]} slot={20}>
           <RowView bgColor='#FFFFCC' height={200} padding={[0, 30, 0, 30]}>
             <Text color='#CCCCFF'>上一页传来的参数：</Text>
-            <Text>{JSON.stringify(this.props.$nav.params)}</Text>
+            <Text>{JSON.stringify(this.props.$router.params)}</Text>
           </RowView>
           <RowView
             hAlign='between'

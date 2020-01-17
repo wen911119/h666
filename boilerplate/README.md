@@ -64,7 +64,7 @@ export default function onEntry () {
 可以参考[browserl.ist](https://browserl.ist/)来设置你想要的兼容性。
 
 ### 自定义后编译的包
-默认只会编译src下面的js文件。但是有些npm包是需要编译后再使用的(个人推荐这种方式),比如@ruiyun/preact-m-nav,@ruiyun/preact-layout-suite等。可以在package.json中加入
+默认只会编译src下面的js文件。但是有些npm包是需要编译后再使用的(个人推荐这种方式),比如@ruiyun/preact-m-router,@ruiyun/preact-layout-suite等。可以在package.json中加入
 ```json
 {
   "include": [

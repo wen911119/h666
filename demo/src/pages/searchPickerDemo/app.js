@@ -26,7 +26,6 @@ export default class SearchPicker extends Component {
         format: this.format,
         renderItem: this.renderItem,
         pageSize: 20,
-        alias: { pageNum: 'page', pageSize: 'page_size' },
         itemClickHandler: this.onChose,
         params: {
           type: 'hospital'
@@ -38,11 +37,15 @@ export default class SearchPicker extends Component {
       )
     })
   }
-  fetchListData = async params => {
+  fetchListData = async ({ pageSize, pageNum, ...otherProps }) => {
     const ret = await Ajax.get(
       'https://uapi.dev.quancheng-ec.com/rhea/hospitals',
       {
-        params,
+        params: {
+          page: pageNum,
+          page_size: pageSize,
+          ...otherProps
+        },
         headers: {
           loading: 'false'
         }
@@ -54,7 +57,7 @@ export default class SearchPicker extends Component {
     return {
       data: [],
       pageInfo: {
-        currentPage: params.pageNum
+        currentPage: pageNum
       }
     }
   }
@@ -81,7 +84,7 @@ export default class SearchPicker extends Component {
       </ColumnView>
     </div>
   )
-  render () {
+  render() {
     return (
       <div>
         SearchPicker

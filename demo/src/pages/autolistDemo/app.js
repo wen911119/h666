@@ -16,11 +16,15 @@ export default class AutolistDemo extends Component {
       keyword: ''
     }
   }
-  fetchListData = async params => {
+  fetchListData = async ({ pageSize, pageNum, ...otherProps }) => {
     const ret = await Ajax.get(
       'https://uapi.dev.quancheng-ec.com/rhea/hospitals',
       {
-        params,
+        params: {
+          page: pageNum,
+          page_size: pageSize,
+          ...otherProps
+        },
         headers: {
           loading: 'false',
           identifier: 'hrg-mp'
@@ -33,7 +37,7 @@ export default class AutolistDemo extends Component {
     return {
       data: [],
       pageInfo: {
-        currentPage: params.pageNum
+        currentPage: pageNum
       }
     }
   }
@@ -103,14 +107,12 @@ export default class AutolistDemo extends Component {
         </Text>
         <AutoList
           pageSize={20}
-          alias={{ pageNum: 'page', pageSize: 'page_size' }}
           params={this.state.params}
           fetchListData={this.fetchListData}
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
           format={this.format}
           ref={s => (this.list = s)}
-          height='flex1'
           itemClickHandler={this.onItemClick}
         />
       </ColumnView>

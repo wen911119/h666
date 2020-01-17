@@ -1,15 +1,15 @@
 import { h, Component } from 'preact'
-import WithNav from '@ruiyun/preact-m-nav'
+import WithRouter from '@ruiyun/preact-m-router'
 import style from './app.css'
 
-@WithNav
+@WithRouter
 export default class Index extends Component {
   state = {
     name: 'wenjun1991'
   }
 
   goto = () => {
-    this.props.$nav.push('list', {}, {
+    this.props.$router.push('list', {}, {
       title: '商品列表',
       bgColor: '#f8584f'
     })
