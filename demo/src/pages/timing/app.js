@@ -23,6 +23,7 @@ export default class Timing extends Component {
         Timing
         <input type='file' name='audio' accept='video/*' capture='user' />
         <div className={style.test}>{this.state.name}</div>
+        <input type='file' />
       </div>
     )
   }
