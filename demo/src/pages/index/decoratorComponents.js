@@ -25,6 +25,10 @@ export default class DecoratorComponents extends Component {
         route: 'treepickerDemo'
       },
       {
+        name: '日期区间选择器dateRangePicker',
+        route: 'dateRangePickerDemo'
+      },
+      {
         name: '对话框Dialog',
         route: 'dialogDemo'
       },

@@ -8,6 +8,8 @@ import Metric from './metric'
 
 import './app.css'
 
+window.alert('serviceWorker' in navigator)
+
 const tabbarConfig = {
   options: [
     {

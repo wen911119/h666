@@ -2,7 +2,7 @@
 App({
   globalData: {
     h666: {
-      // host: 'http://10.100.1.165:3000',
+      // host: 'http://192.168.31.156:3000',
       host: 'https://h666-demo.ruiyun2015.com',
       home: {
         name: 'index',

@@ -1,5 +1,6 @@
 import { h, Component } from 'preact'
 import { WithDateRangePicker } from '@ruiyun/preact-m-date-range-picker'
+import dayjs from 'dayjs'
 
 import { XCenterView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
@@ -21,8 +22,8 @@ export default class DateRangePickerDemo extends Component {
     this.props.$dateRangePicker.show({
       start,
       end,
-      min: '2015/04/01',
-      max: '2019/11/24',
+      min: dayjs().subtract(30, 'day').format('YYYY/MM/DD'),
+      max: dayjs().add(30, 'day').format('YYYY/MM/DD'),
       cb: this.onChose
     })
   }
