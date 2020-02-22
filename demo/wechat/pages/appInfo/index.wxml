@@ -1,0 +1,6 @@
+<!--pages/appInfo/index.wxml-->
+<text>最后更新于</text>
+<text>{{versionFormat}}</text>
+<button type="default"
+       bindtap="onfetchAppInfo"> 检查更新 </button>
+

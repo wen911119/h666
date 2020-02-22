@@ -19,7 +19,12 @@ export default class Metric extends Component {
       {
         name: '错误日志',
         route: 'errorLog'
-      }
+      },
+      {
+        name: '关于',
+        route: 'appInfo',
+        action: 'pushToNative'
+      },
     ]
   }
   render() {
@@ -33,7 +38,7 @@ export default class Metric extends Component {
             </Text>
           </SlotColumnView>
           {this.state.demos.map(demo => (
-            <DemoLink demo={demo} key={demo.route} />
+            <DemoLink demo={demo} key={demo.route} action={demo.action} />
           ))}
         </ColumnView>
       </Scroller>

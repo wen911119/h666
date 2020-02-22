@@ -4,11 +4,11 @@ import { RowView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import Icon from '@ruiyun/preact-icon'
 
-const DemoLink = ({ demo, $router }) => (
+const DemoLink = ({ demo, $router, action = 'push' }) => (
   <RowView
     height={100}
     padding={[0, 30, 0, 30]}
-    onClick={() => $router.push(demo.route)}
+    onClick={() => $router[action](demo.route)}
     bgColor='#fff'
     hAlign='between'
     margin={[0, 0, 20, 0]}
