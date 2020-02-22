@@ -1,7 +1,11 @@
-// const fse = require('fs-extra')
 const webpack = require('webpack')
-const fs = require('fs')
 const path = require('path')
+const {
+  readdirSync,
+  outputJSON,
+  writeFileSync
+} = require('fs-extra')
+
 module.exports = function (buildTarget, container, profile) {
   if (typeof buildTarget !== 'string') {
     buildTarget = 'production'
@@ -18,20 +22,26 @@ module.exports = function (buildTarget, container, profile) {
     }
     else {
       if (profile) {
-        fs.writeFileSync(path.resolve(process.cwd(), profile), JSON.stringify(stats.toJson()))
+        writeFileSync(path.resolve(process.cwd(), profile), JSON.stringify(stats.toJson()))
       } else {
         console.log(stats.toString({
           chunks: true,  // Makes the build much quieter
           colors: true    // Shows colors in the console
         }))
+        const distDir = path.resolve(process.cwd(), './dist')
+        const appInfo = {
+          version: Date.now(),
+          hash: {}
+        }
+        readdirSync(distDir).forEach(file => {
+          const matched = file.match(/(.+)\.(.+)\.bundle\.js/)
+          if (matched) {
+            appInfo.hash[matched[1]] = matched[2]
+          }
+        })
+        outputJSON(path.resolve(process.cwd(), './dist/app.json'), appInfo)
       }
       console.log('build success')
     }
   })
-
-  // 改小程序的endpoint
-  // const wechatAppJsPath = process.cwd() + '/wechat/app.js'
-  // let content = fse.readFileSync(wechatAppJsPath, 'utf8')
-  // content = content.replace(/\d+\.\d+\.\d+\.\d+:\d+/, `${ip.address()}:${port}`)
-  // fse.writeFile(wechatAppJsPath, content, 'utf8')
 }
