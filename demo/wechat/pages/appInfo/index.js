@@ -4,7 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    version: wx.getStorageSync('H666_APP_VERSION'),
     versionFormat: '无'
   },
 
@@ -12,8 +11,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (this.data.version) {
-      const t = new Date(this.data.version)
+    const version = wx.getStorageSync('H666_APP_VERSION')
+    if (version) {
+      const t = new Date(version)
       this.setData({
         versionFormat:
           t.getFullYear() +
@@ -77,8 +77,9 @@ Page({
         },
         success(res) {
           if (res && res.data) {
+            const localVersion = wx.getStorageSync('H666_APP_VERSION')
             const v = res.data.version
-            if (v !== self.data.version) {
+            if (v !== localVersion) {
               wx.setStorage({
                 key: 'H666_APP_VERSION',
                 data: v,
@@ -92,7 +93,7 @@ Page({
                     success: function(res) {
                       if (res.confirm) {
                         wx.reLaunch({
-                          url: 'pages/h666Container1/index'
+                          url: '/pages/h666Container1/index'
                         })
                       }
                     }
