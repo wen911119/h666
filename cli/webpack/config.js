@@ -236,7 +236,9 @@ module.exports = {
   },
   plugins: [
     ...HtmlWebpackPlugins,
-    new ScriptExtHtmlWebpackPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
+    }),
     new webpack.DefinePlugin({
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
       $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750),
