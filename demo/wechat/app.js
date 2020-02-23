@@ -32,10 +32,14 @@ if (host.includes('https')) {
     },
     success(res) {
       if (res && res.data) {
-        wx.setStorage({
-          key: 'H666_APP_VERSION',
-          data: res.data.version,
-        })
+        const remoteVersion = res.data.version
+        if (localVersion !== remoteVersion) {
+          wx.setStorage({
+            key: 'H666_APP_VERSION',
+            data: remoteVersion,
+          })
+          getApp().globalData.h666.version = remoteVersion
+        }
       }
     }
   })
