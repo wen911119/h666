@@ -8,6 +8,7 @@ const {
 } = require('fs-extra')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TARGET_PROJECT_PATH = process.cwd()
 const packageInfo = require(path.resolve(TARGET_PROJECT_PATH, './package.json'))
@@ -235,6 +236,7 @@ module.exports = {
   },
   plugins: [
     ...HtmlWebpackPlugins,
+    new ScriptExtHtmlWebpackPlugin(),
     new webpack.DefinePlugin({
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
       $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750),
