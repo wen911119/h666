@@ -51,28 +51,32 @@ Page({
     }
     const url = `${host}/${page}.html?_c=mp&depth=2&_v=${h666Config.version}&_p=${_p}`
     const self = this
-    // 小程序加载完成
-    self.mpDoneAt = Date.now()
-    wx.request({
-      url: url,
-      success: function (ret) {
-        // webview预加载完成
-        self.setData({ url: url, status: 'ok' }, function () {
-          // webview开始正式加载
-          self.webStartAt = Date.now()
-        })
-      },
-      fail: function (error) {
-        // 显示错误页
-        self.setData({ status: 'err' }, function () {
-          // 启动预加载报错上报
-          wx.reportAnalytics('pre-load-error', {
-            error: JSON.stringify(error),
-            page
-          })
-        })
-      }
+    self.setData({ url: url, status: 'ok' }, function () {
+      // webview开始正式加载
+      self.webStartAt = Date.now()
     })
+    // 小程序加载完成
+    // self.mpDoneAt = Date.now()
+    // wx.request({
+    //   url: url,
+    //   success: function (ret) {
+    //     // webview预加载完成
+    //     self.setData({ url: url, status: 'ok' }, function () {
+    //       // webview开始正式加载
+    //       self.webStartAt = Date.now()
+    //     })
+    //   },
+    //   fail: function (error) {
+    //     // 显示错误页
+    //     self.setData({ status: 'err' }, function () {
+    //       // 启动预加载报错上报
+    //       wx.reportAnalytics('pre-load-error', {
+    //         error: JSON.stringify(error),
+    //         page
+    //       })
+    //     })
+    //   }
+    // })
   },
 
   /**
