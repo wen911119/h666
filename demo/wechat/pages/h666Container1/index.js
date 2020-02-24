@@ -52,7 +52,7 @@ Page({
         backgroundColor: bgColor
       })
     }
-    const url = `${host}/${page}.html?_c=mp&depth=1&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/wechat.html?_c=mp&_v=${h666Config.version}#_p=${_p}&depth=1&page=${page}`
     const self = this
     self.setData({ url: url, status: 'ok' }, function() {
       // webview开始正式加载
@@ -115,8 +115,8 @@ Page({
   onPop: function(params) {
     this.setData({
       url:
-        this.data.url.replace(/#.*/, '') +
-        '#onPopParams=' +
+        this.data.url.replace(/onPopParams=.*&/, '').replace(/&onPopParams=.*$/, '') +
+        '&onPopParams=' +
         encodeURIComponent(JSON.stringify(params || {}))
     })
   },
@@ -124,8 +124,8 @@ Page({
   onBack: function(params) {
     this.setData({
       url:
-        this.data.url.replace(/#.*/, '') +
-        '#onBackParams=' +
+      this.data.url.replace(/onBackParams=.*&/, '').replace(/&onBackParams=.*$/, '') +
+        '&onBackParams=' +
         encodeURIComponent(JSON.stringify(params || {}))
     })
   },

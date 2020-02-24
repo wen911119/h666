@@ -49,7 +49,9 @@ Page({
         })
       }
     }
-    const url = `${host}/${page}.html?_c=mp&depth=3&_v=${h666Config.version}&_p=${_p}`
+    // const url = `${host}/${page}.html?_c=mp&depth=3&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/wechat.html?_c=mp&_v=${h666Config.version}#_p=${_p}&depth=3&page=${page}`
+
     const self = this
     self.setData({ url: url, status: 'ok' }, function () {
       // webview开始正式加载
@@ -121,12 +123,22 @@ Page({
 
   },
 
-  onPop: function (params) {
-    this.setData({ url: this.data.url.replace(/#.*/, '') + '#onPopParams=' + encodeURIComponent(JSON.stringify(params || {})) })
+  onPop: function(params) {
+    this.setData({
+      url:
+        this.data.url.replace(/onPopParams=.*&/, '').replace(/&onPopParams=.*$/, '') +
+        '&onPopParams=' +
+        encodeURIComponent(JSON.stringify(params || {}))
+    })
   },
 
-  onBack: function (params) {
-    this.setData({ url: this.data.url.replace(/#.*/, '') + '#onBackParams=' + encodeURIComponent(JSON.stringify(params || {})) })
+  onBack: function(params) {
+    this.setData({
+      url:
+      this.data.url.replace(/onBackParams=.*&/, '').replace(/&onBackParams=.*$/, '') +
+        '&onBackParams=' +
+        encodeURIComponent(JSON.stringify(params || {}))
+    })
   },
 
   onMessage: function (event) {

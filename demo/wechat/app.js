@@ -1,5 +1,5 @@
-const host = 'https://h666-demo.ruiyun2015.com'
-// const host = 'http://192.168.31.156:3000'
+// const host = 'https://h666-demo.ruiyun2015.com'
+const host = 'http://10.100.1.165:3000'
 let appVersion = Date.now()
 
 const localVersion = wx.getStorageSync('H666_APP_VERSION')

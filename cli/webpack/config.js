@@ -1,32 +1,35 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require("path");
+const webpack = require("webpack");
 const {
   readdirSync,
   existsSync,
   createFileSync,
   writeFileSync
-} = require('fs-extra')
+} = require("fs-extra");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const TARGET_PROJECT_PATH = process.cwd()
-const packageInfo = require(path.resolve(TARGET_PROJECT_PATH, './package.json'))
-const customInclude = packageInfo.include || []
-const customBrowsers = packageInfo.browsers || []
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TARGET_PROJECT_PATH = process.cwd();
+const packageInfo = require(path.resolve(
+  TARGET_PROJECT_PATH,
+  "./package.json"
+));
+const customInclude = packageInfo.include || [];
+const customBrowsers = packageInfo.browsers || [];
 const commonChunks = (packageInfo.commonChunks || []).concat([
-  'preact',
-  'style-loader',
-  'css-loader',
-  'axios',
-  'process',
-  'regenerator-runtime',
-  'core-js'
-])
-const commonChunksReg = new RegExp(`[\\/](${commonChunks.join('|')})[\\/]`)
+  "preact",
+  "style-loader",
+  "css-loader",
+  "axios",
+  "process",
+  "regenerator-runtime",
+  "core-js"
+]);
+const commonChunksReg = new RegExp(`[\\/](${commonChunks.join("|")})[\\/]`);
 const genEntry = (appJsPath, pageName) => {
-  let entryContent = ''
-  if (process.env.BUILD_CONTAINER === 'h5plus') {
+  let entryContent = "";
+  if (process.env.BUILD_CONTAINER === "h5plus") {
     entryContent = `
       const isH5Plus = navigator.userAgent.indexOf('Html5Plus') > -1;
       const isH5PlusLocalPath = window.location.href.indexOf('http') < 0;
@@ -57,9 +60,9 @@ const genEntry = (appJsPath, pageName) => {
           document.addEventListener('plusready', plusReady, false)
         };
       };
-    `
+    `;
   }
-  if (process.env.BUILD_TARGET !== 'local') {
+  if (process.env.BUILD_TARGET !== "local") {
     entryContent += `
     const { h, render } = require('preact');
     let App = require('${appJsPath}')
@@ -68,9 +71,8 @@ const genEntry = (appJsPath, pageName) => {
     if (typeof App === 'function') {
       render(h(App), root || document.body);
     };
-      `
-  }
-  else {
+      `;
+  } else {
     entryContent += `
     const { h, render } = require('preact');
     require('preact/debug');
@@ -90,39 +92,39 @@ const genEntry = (appJsPath, pageName) => {
         );
       init();
     };
-      `
+      `;
   }
-  const pageOnEntryHandlerPath = path.resolve(appJsPath, '../entry.js')
+  const pageOnEntryHandlerPath = path.resolve(appJsPath, "../entry.js");
   if (existsSync(pageOnEntryHandlerPath)) {
     // 提供了页面级的OnEntryHandler
-    entryContent += `const onEntryHandler = require('${pageOnEntryHandlerPath}').default;onEntryHandler();`
-  }
-  else {
+    entryContent += `const onEntryHandler = require('${pageOnEntryHandlerPath}').default;onEntryHandler();`;
+  } else {
     const commonOnEntryHandlerPath = path.resolve(
       TARGET_PROJECT_PATH,
-      './src/entry.js'
-    )
+      "./src/entry.js"
+    );
     if (existsSync(commonOnEntryHandlerPath)) {
-      entryContent += `const onEntryHandler = require('${commonOnEntryHandlerPath}').default;onEntryHandler();`
+      entryContent += `const onEntryHandler = require('${commonOnEntryHandlerPath}').default;onEntryHandler();`;
     }
   }
 
-  const entryFilePath = path.resolve(__dirname, `./entries/${pageName}.js`)
-  createFileSync(entryFilePath)
-  writeFileSync(entryFilePath, entryContent)
-  return entryFilePath
-}
+  const entryFilePath = path.resolve(__dirname, `./entries/${pageName}.js`);
+  createFileSync(entryFilePath);
+  writeFileSync(entryFilePath, entryContent);
+  return entryFilePath;
+};
 const getEntries = dir => {
-  const pagesDir = path.resolve(process.cwd(), dir)
-  let entry = {}
+  const pagesDir = path.resolve(process.cwd(), dir);
+  let entry = {};
   readdirSync(pagesDir).forEach(file => {
-    entry[file] = genEntry(path.join(pagesDir, file, 'app.js'), file)
-  })
-  return entry
-}
-const entries = getEntries('./src/pages')
-const pageTitlesMap = packageInfo.pages || {}
-const customTemplate = path.resolve(TARGET_PROJECT_PATH, './template.html')
+    entry[file] = genEntry(path.join(pagesDir, file, "app.js"), file);
+  });
+  return entry;
+};
+const entries = getEntries("./src/pages");
+const pageTitlesMap = packageInfo.pages || {};
+const customTemplate = path.resolve(TARGET_PROJECT_PATH, "./template.html");
+const wechatTemplate = path.resolve(TARGET_PROJECT_PATH, "./wechat.html");
 const HtmlWebpackPlugins = Object.keys(entries).map(
   k =>
     new HtmlWebpackPlugin({
@@ -131,40 +133,73 @@ const HtmlWebpackPlugins = Object.keys(entries).map(
       filename: `${k}.html`,
       template: existsSync(customTemplate)
         ? customTemplate
-        : path.resolve(__dirname, './template.html'),
-      chunks: ['common', k]
+        : path.resolve(__dirname, "./template.html"),
+      chunks: ["common", k]
     })
-)
+);
+HtmlWebpackPlugins.push(
+  new HtmlWebpackPlugin({
+    multihtmlCache: true,
+    title: "h666",
+    filename: `wechat.html`,
+    template: wechatTemplate,
+    chunks: [],
+    templateParameters: (compilation, assets, assetTags, options) => {
+      const hashMap = {};
+      compilation.chunks
+        .map(i => i.files)
+        .forEach(item => {
+          const matched = item[0].match(/(.+)\.(.+)\.bundle\.js/);
+          if (matched) {
+            hashMap[matched[1]] = matched[2];
+          }
+        });
+      return {
+        compilation,
+        webpackConfig: compilation.options,
+        htmlWebpackPlugin: {
+          tags: assetTags,
+          files: assets,
+          options
+        },
+        appInfo: {
+          version: Date.now(),
+          hash: hashMap
+        }
+      };
+    }
+  })
+);
 module.exports = {
   entry: entries,
   output: {
-    path: path.resolve(process.cwd(), 'dist'),
-    filename: '[name].[chunkhash].bundle.js' // string
+    path: path.resolve(process.cwd(), "dist"),
+    filename: "[name].[chunkhash].bundle.js" // string
   },
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
-                localIdentName: '[local]__[hash:base64:5]'
+                localIdentName: "[local]__[hash:base64:5]"
               },
               importLoaders: 1
             }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               plugins: [
-                require('postcss-preset-env')({
-                  browsers: ['last 2 versions'].concat(customBrowsers)
+                require("postcss-preset-env")({
+                  browsers: ["last 2 versions"].concat(customBrowsers)
                 }),
-                require('cssnano')({
-                  preset: 'default'
+                require("cssnano")({
+                  preset: "default"
                 })
               ]
             }
@@ -173,59 +208,57 @@ module.exports = {
       },
       {
         test: /\.(svg|woff2?|ttf|eot|jpe?g|png|webp|gif|mp4|mov|ogg|webm)(\?.*)?$/i,
-        loader: 'file-loader'
+        loader: "file-loader"
       },
       {
         test: /\.jsx?$/,
-        include: [
-          path.resolve(TARGET_PROJECT_PATH, './src'),
-        ].concat(
+        include: [path.resolve(TARGET_PROJECT_PATH, "./src")].concat(
           customInclude.map(packageName =>
             path.resolve(TARGET_PROJECT_PATH, `./node_modules/${packageName}`)
           )
         ),
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             presets: [
               [
-                '@babel/preset-env',
+                "@babel/preset-env",
                 {
-                  useBuiltIns: 'usage',
+                  useBuiltIns: "usage",
                   corejs: 3,
                   modules: false,
                   targets: {
-                    browsers: ['last 2 versions'].concat(customBrowsers)
+                    browsers: ["last 2 versions"].concat(customBrowsers)
                   }
                 }
               ]
             ],
             plugins: [
-              '@babel/plugin-syntax-dynamic-import',
+              "@babel/plugin-syntax-dynamic-import",
               [
-                '@babel/plugin-proposal-decorators',
+                "@babel/plugin-proposal-decorators",
                 {
                   legacy: true
                 }
               ],
               [
-                '@babel/plugin-proposal-class-properties',
+                "@babel/plugin-proposal-class-properties",
                 {
                   loose: true
                 }
               ],
               [
-                '@babel/plugin-proposal-object-rest-spread',
+                "@babel/plugin-proposal-object-rest-spread",
                 {
                   useBuiltIns: true
                 }
               ],
-              'babel-plugin-transform-export-extensions',
-              '@babel/plugin-transform-react-constant-elements',
+              "babel-plugin-transform-export-extensions",
+              "@babel/plugin-transform-react-constant-elements",
               [
-                '@babel/plugin-transform-react-jsx',
+                "@babel/plugin-transform-react-jsx",
                 {
-                  pragma: 'h'
+                  pragma: "h"
                 }
               ]
             ]
@@ -237,7 +270,7 @@ module.exports = {
   plugins: [
     ...HtmlWebpackPlugins,
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
+      defaultAttribute: "defer"
     }),
     new webpack.DefinePlugin({
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
@@ -250,35 +283,35 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         common: {
-          chunks: 'all',
+          chunks: "all",
           test: commonChunksReg,
-          name: 'common'
+          name: "common"
         }
       }
     }
   },
   resolve: {
     modules: [
-      'node_modules',
-      path.resolve(TARGET_PROJECT_PATH, './node_modules'),
+      "node_modules",
+      path.resolve(TARGET_PROJECT_PATH, "./node_modules"),
       path.resolve(
         TARGET_PROJECT_PATH,
-        './node_modules/@ruiyun/h666-cli/node_modules'
+        "./node_modules/@ruiyun/h666-cli/node_modules"
       )
     ],
     alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
-      'react-addons-css-transition-group': 'preact-css-transition-group'
+      react: "preact/compat",
+      "react-dom": "preact/compat",
+      "react-addons-css-transition-group": "preact-css-transition-group"
     }
   },
   resolveLoader: {
     modules: [
-      path.resolve(TARGET_PROJECT_PATH, './node_modules'),
+      path.resolve(TARGET_PROJECT_PATH, "./node_modules"),
       path.resolve(
         TARGET_PROJECT_PATH,
-        './node_modules/@ruiyun/h666-cli/node_modules'
+        "./node_modules/@ruiyun/h666-cli/node_modules"
       )
     ]
   }
-}
+};
