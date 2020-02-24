@@ -1,11 +1,11 @@
-// const host = 'https://h666-demo.ruiyun2015.com'
-const host = 'http://10.100.1.165:3000'
-let appVersion = Date.now()
+const host = 'https://h666-demo.ruiyun2015.com'
+// const host = 'http://10.100.1.165:3000'
+// let appVersion = Date.now()
 
-const localVersion = wx.getStorageSync('H666_APP_VERSION')
-if (localVersion) {
-  appVersion = localVersion
-}
+// const localVersion = wx.getStorageSync('H666_APP_VERSION')
+// if (localVersion) {
+//   appVersion = localVersion
+// }
 
 App({
   globalData: {
@@ -17,30 +17,30 @@ App({
           title: '首页'
         }
       },
-      version: appVersion
+      version: Date.now()
     }
   }
 })
 
-if (host.includes('https')) {
-  // 非本地时启用
-  // 异步更新，下一次启动时生效
-  wx.request({
-    url: host + '/app.json',
-    data: {
-      ts: Date.now()
-    },
-    success(res) {
-      if (res && res.data) {
-        const remoteVersion = res.data.version
-        if (localVersion !== remoteVersion) {
-          wx.setStorage({
-            key: 'H666_APP_VERSION',
-            data: remoteVersion,
-          })
-          getApp().globalData.h666.version = remoteVersion
-        }
-      }
-    }
-  })
-}
+// if (host.includes('https')) {
+//   // 非本地时启用
+//   // 异步更新，下一次启动时生效
+//   wx.request({
+//     url: host + '/app.json',
+//     data: {
+//       ts: Date.now()
+//     },
+//     success(res) {
+//       if (res && res.data) {
+//         const remoteVersion = res.data.version
+//         if (localVersion !== remoteVersion) {
+//           wx.setStorage({
+//             key: 'H666_APP_VERSION',
+//             data: remoteVersion,
+//           })
+//           getApp().globalData.h666.version = remoteVersion
+//         }
+//       }
+//     }
+//   })
+// }
