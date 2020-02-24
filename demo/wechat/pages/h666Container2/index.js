@@ -1,5 +1,4 @@
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,7 +7,7 @@ Page({
     status: 'loading'
   },
 
-  webLoaded: function () {
+  webLoaded: function() {
     this.webDoneAt = Date.now()
     // 启动性能数据上报
     wx.reportAnalytics('init-time', {
@@ -21,7 +20,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (routeParams) {
+  onLoad: function(routeParams) {
     const h666Config = getApp().globalData.h666
     const { _p, page, host = h666Config.host } = routeParams
     let config = routeParams.headerConfig
@@ -53,7 +52,7 @@ Page({
     const url = `${host}/wechat.html?_c=mp&_v=${h666Config.version}#_p=${_p}&depth=2&page=${page}`
 
     const self = this
-    self.setData({ url: url, status: 'ok' }, function () {
+    self.setData({ url: url, status: 'ok' }, function() {
       // webview开始正式加载
       self.webStartAt = Date.now()
     })
@@ -84,71 +83,68 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: function() {},
 
   onPop: function(params) {
     this.setData({
       url:
-        this.data.url.replace(/onPopParams=.*&/, '').replace(/&onPopParams=.*$/, '') +
+        this.data.url
+          .replace(/onPopParams=.*&/, '')
+          .replace(/&onPopParams=.*$/, '')
+          .replace(/onBackParams=.*&/, '')
+          .replace(/&onBackParams=.*$/, '') +
         '&onPopParams=' +
         encodeURIComponent(JSON.stringify(params || {}))
     })
   },
 
   onBack: function(params) {
+    const newUrl =
+      this.data.url
+        .replace(/onBackParams=.*&/, '')
+        .replace(/&onBackParams=.*$/, '')
+        .replace(/onPopParams=.*&/, '')
+        .replace(/&onPopParams=.*$/, '') +
+      '&onBackParams=' +
+      encodeURIComponent(JSON.stringify(params || {}))
     this.setData({
-      url:
-      this.data.url.replace(/onBackParams=.*&/, '').replace(/&onBackParams=.*$/, '') +
-        '&onBackParams=' +
-        encodeURIComponent(JSON.stringify(params || {}))
+      url: newUrl
     })
   },
 
-  onMessage: function (event) {
+  onMessage: function(event) {
     if (event.detail.data && event.detail.data[0]) {
       var message = event.detail.data[0]
       var pages = getCurrentPages()
       if (message.type === 'pop-params') {
         var lastPage = pages[pages.length - 2]
         lastPage && lastPage.onPop && lastPage.onPop(message.params)
-      } else if (message.type = 'back-params') {
+      } else if ((message.type = 'back-params')) {
         var targetPage = pages[pages.length - message.steps - 1]
         targetPage && targetPage.onBack && targetPage.onBack(message.params)
       }

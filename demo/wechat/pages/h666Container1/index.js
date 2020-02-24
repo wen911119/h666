@@ -23,7 +23,7 @@ Page({
   onLoad: function(routeParams) {
     const h666Config = getApp().globalData.h666
     const {
-      _p,
+      _p = '',
       page = h666Config.home.name,
       host = h666Config.host
     } = routeParams
@@ -115,18 +115,27 @@ Page({
   onPop: function(params) {
     this.setData({
       url:
-        this.data.url.replace(/onPopParams=.*&/, '').replace(/&onPopParams=.*$/, '') +
+        this.data.url
+          .replace(/onPopParams=.*&/, '')
+          .replace(/&onPopParams=.*$/, '')
+          .replace(/onBackParams=.*&/, '')
+          .replace(/&onBackParams=.*$/, '') +
         '&onPopParams=' +
         encodeURIComponent(JSON.stringify(params || {}))
     })
   },
 
   onBack: function(params) {
+    const newUrl =
+      this.data.url
+        .replace(/onBackParams=.*&/, '')
+        .replace(/&onBackParams=.*$/, '')
+        .replace(/onPopParams=.*&/, '')
+        .replace(/&onPopParams=.*$/, '') +
+      '&onBackParams=' +
+      encodeURIComponent(JSON.stringify(params || {}))
     this.setData({
-      url:
-      this.data.url.replace(/onBackParams=.*&/, '').replace(/&onBackParams=.*$/, '') +
-        '&onBackParams=' +
-        encodeURIComponent(JSON.stringify(params || {}))
+      url: newUrl
     })
   },
 
