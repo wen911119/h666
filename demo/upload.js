@@ -20,7 +20,7 @@ if (region && accessKeyId && accessKeySecret && bucket) {
       console.log(basePath + '/' + file)
       const cacheControl = file.includes('.html')
         ? 'no-cache'
-        : file.includes('/sw.js')
+        : file.includes('sw.js')
         ? 'no-store'
         : 'max-age=63072000'
       client
