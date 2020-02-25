@@ -3,10 +3,6 @@ let accessKeyId = process.env.accessKeyId;
 let accessKeySecret = process.env.accessKeySecret;
 const bucket = process.env.bucket;
 const targetDir = process.env.targetDir || "/";
-console.log(region, 1111)
-console.log(accessKeyId, 2222)
-console.log(accessKeySecret, 3333)
-console.log(bucket, 4444)
 
 if (region && accessKeyId && accessKeySecret && bucket) {
   const fs = require("fs");
