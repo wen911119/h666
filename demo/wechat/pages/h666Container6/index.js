@@ -49,36 +49,13 @@ Page({
         })
       }
     }
-    // const url = `${host}/${page}.html?_c=mp&depth=6&_v=${h666Config.version}&_p=${_p}`
-    const url = `${host}/wechat.html?_c=mp&_v=${h666Config.version}#_p=${_p}&depth=6&page=${page}`
+    const url = `${host}/${page}.html?_c=mp&depth=6&_v=${h666Config.version}&_p=${_p}`
 
     const self = this
     self.setData({ url: url, status: 'ok' }, function () {
       // webview开始正式加载
       self.webStartAt = Date.now()
     })
-    // 小程序加载完成
-    // self.mpDoneAt = Date.now()
-    // wx.request({
-    //   url: url,
-    //   success: function (ret) {
-    //     // webview预加载完成
-    //     self.setData({ url: url, status: 'ok' }, function () {
-    //       // webview开始正式加载
-    //       self.webStartAt = Date.now()
-    //     })
-    //   },
-    //   fail: function (error) {
-    //     // 显示错误页
-    //     self.setData({ status: 'err' }, function () {
-    //       // 启动预加载报错上报
-    //       wx.reportAnalytics('pre-load-error', {
-    //         error: JSON.stringify(error),
-    //         page
-    //       })
-    //     })
-    //   }
-    // })
   },
 
   /**
@@ -126,27 +103,18 @@ Page({
   onPop: function(params) {
     this.setData({
       url:
-        this.data.url
-          .replace(/onPopParams=.*&/, '')
-          .replace(/&onPopParams=.*$/, '')
-          .replace(/onBackParams=.*&/, '')
-          .replace(/&onBackParams=.*$/, '') +
-        '&onPopParams=' +
+        this.data.url.replace(/#.*/, '') +
+        '#onPopParams=' +
         encodeURIComponent(JSON.stringify(params || {}))
     })
   },
 
   onBack: function(params) {
-    const newUrl =
-      this.data.url
-        .replace(/onBackParams=.*&/, '')
-        .replace(/&onBackParams=.*$/, '')
-        .replace(/onPopParams=.*&/, '')
-        .replace(/&onPopParams=.*$/, '') +
-      '&onBackParams=' +
-      encodeURIComponent(JSON.stringify(params || {}))
     this.setData({
-      url: newUrl
+      url:
+        this.data.url.replace(/#.*/, '') +
+        '#onBackParams=' +
+        encodeURIComponent(JSON.stringify(params || {}))
     })
   },
 

@@ -124,7 +124,6 @@ const getEntries = dir => {
 const entries = getEntries("./src/pages");
 const pageTitlesMap = packageInfo.pages || {};
 const customTemplate = path.resolve(TARGET_PROJECT_PATH, "./template.html");
-const wechatTemplate = path.resolve(TARGET_PROJECT_PATH, "./wechat.html");
 const HtmlWebpackPlugins = Object.keys(entries).map(
   k =>
     new HtmlWebpackPlugin({
@@ -136,39 +135,6 @@ const HtmlWebpackPlugins = Object.keys(entries).map(
         : path.resolve(__dirname, "./template.html"),
       chunks: ["common", k]
     })
-);
-HtmlWebpackPlugins.push(
-  new HtmlWebpackPlugin({
-    multihtmlCache: true,
-    title: "h666",
-    filename: `wechat.html`,
-    template: wechatTemplate,
-    chunks: [],
-    templateParameters: (compilation, assets, assetTags, options) => {
-      const hashMap = {};
-      compilation.chunks
-        .map(i => i.files)
-        .forEach(item => {
-          const matched = item[0].match(/(.+)\.(.+)\.bundle\.js/);
-          if (matched) {
-            hashMap[matched[1]] = matched[2];
-          }
-        });
-      return {
-        compilation,
-        webpackConfig: compilation.options,
-        htmlWebpackPlugin: {
-          tags: assetTags,
-          files: assets,
-          options
-        },
-        appInfo: {
-          version: Date.now(),
-          hash: hashMap
-        }
-      };
-    }
-  })
 );
 module.exports = {
   entry: entries,
