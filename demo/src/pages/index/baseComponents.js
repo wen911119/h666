@@ -10,7 +10,7 @@ export default class BaseComponents extends Component {
   state = {
     demos: [
       {
-        name: '布局套件',
+        name: '布局套件2',
         route: 'layoutDemo'
       },
       {
