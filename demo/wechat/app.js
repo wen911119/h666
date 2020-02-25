@@ -17,30 +17,7 @@ App({
           title: '首页'
         }
       },
-      version: Date.now()
+      version: '9527'
     }
   }
 })
-
-// if (host.includes('https')) {
-//   // 非本地时启用
-//   // 异步更新，下一次启动时生效
-//   wx.request({
-//     url: host + '/app.json',
-//     data: {
-//       ts: Date.now()
-//     },
-//     success(res) {
-//       if (res && res.data) {
-//         const remoteVersion = res.data.version
-//         if (localVersion !== remoteVersion) {
-//           wx.setStorage({
-//             key: 'H666_APP_VERSION',
-//             data: remoteVersion,
-//           })
-//           getApp().globalData.h666.version = remoteVersion
-//         }
-//       }
-//     }
-//   })
-// }

@@ -1,11 +1,8 @@
 import { setIconFontUrl } from '@ruiyun/preact-icon'
-import Indicator from 'h5-indicator'
 
 export default function onEntry() {
   // 下面的代码每个页面初始化时都会执行
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-  Indicator.toast('service worker is ' + ('serviceWorker' in navigator))
-  Indicator.toast('isIOS is ' + isIOS)
   if ('serviceWorker' in navigator && !isIOS) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js').then(function(registration) {
