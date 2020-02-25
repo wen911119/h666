@@ -170,7 +170,7 @@ export default class FormDemo extends Component {
   render() {
     return (
       <DemoPage title='Form'>
-        <div>{'serviceWorker' in navigator ? 'ok' : 'not'}</div>
+        <div>{'serviceWorker' in navigator ? 'ojbk' : 'not ok'}</div>
         <ColumnView padding={[0, 30, 0, 30]}>
           <Form ref={form => (this.form = form)}>
             <Form.Field label='姓名' field='name' validate={[required]}>
