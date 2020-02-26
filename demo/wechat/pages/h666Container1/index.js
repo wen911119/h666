@@ -29,6 +29,7 @@ Page({
     } = routeParams
     let config = h666Config.home.headerConfig
     this.page = page
+    let _t = ''
     if (routeParams.headerConfig) {
       try {
         config = JSON.parse(decodeURIComponent(routeParams.headerConfig))
@@ -42,6 +43,7 @@ Page({
     }
     const { title, titleColor, bgColor } = config
     if (title) {
+      _t = title
       wx.setNavigationBarTitle({
         title
       })
@@ -52,7 +54,7 @@ Page({
         backgroundColor: bgColor
       })
     }
-    const url = `${host}/${page}.html?_c=mp&depth=1&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&depth=1&_v=${h666Config.version}&_p=${_p}&_t=${_t}`
     const self = this
     self.setData({ url: url, status: 'ok' }, function() {
       // webview开始正式加载

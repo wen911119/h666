@@ -26,6 +26,7 @@ Page({
     const { _p, page, host = h666Config.host } = routeParams
     let config = routeParams.headerConfig
     this.page = page
+    let _t = ''
     if (config) {
       try {
         config = JSON.parse(decodeURIComponent(config))
@@ -38,6 +39,7 @@ Page({
       }
       const { title, titleColor, bgColor } = config
       if (title) {
+        _t = title
         wx.setNavigationBarTitle({
           title
         })
@@ -49,7 +51,7 @@ Page({
         })
       }
     }
-    const url = `${host}/${page}.html?_c=mp&depth=6&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&depth=6&_v=${h666Config.version}&_p=${_p}&_t=${_t}`
 
     const self = this
     self.setData({ url: url, status: 'ok' }, function () {

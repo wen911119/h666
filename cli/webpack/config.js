@@ -16,6 +16,8 @@ const packageInfo = require(path.resolve(
   "./package.json"
 ));
 const customInclude = packageInfo.include || [];
+const pageTitlesMap = packageInfo.pages || {};
+
 const customBrowsers = packageInfo.browsers || [];
 const commonChunks = (packageInfo.commonChunks || []).concat([
   "preact",
@@ -64,6 +66,9 @@ const genEntry = (appJsPath, pageName) => {
   }
   if (process.env.BUILD_TARGET !== "local") {
     entryContent += `
+    const title = (window.location.search.substr(1).match(/(^|&)_t=([^&]*)(&|$)/) || [])[2]
+    document.title = title ? decodeURIComponent(title) : '${pageTitlesMap[pageName]}'
+
     const { h, render } = require('preact');
     let App = require('${appJsPath}')
       .default;
@@ -74,6 +79,9 @@ const genEntry = (appJsPath, pageName) => {
       `;
   } else {
     entryContent += `
+    const title = (window.location.search.substr(1).match(/(^|&)_t=([^&]*)(&|$)/) || [])[2]
+    document.title = title ? decodeURIComponent(title) : '${pageTitlesMap[pageName]}'
+
     const { h, render } = require('preact');
     require('preact/debug');
     let App = require('${appJsPath}')
@@ -122,7 +130,6 @@ const getEntries = dir => {
   return entry;
 };
 const entries = getEntries("./src/pages");
-const pageTitlesMap = packageInfo.pages || {};
 const customTemplate = path.resolve(TARGET_PROJECT_PATH, "./template.html");
 const HtmlWebpackPlugins = Object.keys(entries).map(
   k =>
@@ -241,8 +248,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
-      $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750),
-      $PAGES_TITLE_MAP$: JSON.stringify(pageTitlesMap)
+      $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750)
     }),
     new CleanWebpackPlugin()
   ],

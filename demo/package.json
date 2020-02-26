@@ -33,7 +33,7 @@
     "@ruiyun/preact-m-form-component": "^1.6.3",
     "@ruiyun/preact-m-image-preview": "^1.6.3",
     "@ruiyun/preact-m-picker": "^1.6.3",
-    "@ruiyun/preact-m-router": "^1.6.4",
+    "@ruiyun/preact-m-router": "^1.6.7",
     "@ruiyun/preact-m-scroller": "^1.6.0",
     "@ruiyun/preact-m-search-bar": "^1.5.9",
     "@ruiyun/preact-m-search-input": "^1.5.9",
@@ -57,7 +57,7 @@
     "preact": "^10.3.2"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.6",
+    "@ruiyun/h666-cli": "^2.0.0-rc.7",
     "ali-oss": "^6.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -81,7 +81,8 @@
     "preact-m-router",
     "@ruiyun/preact-text",
     "core-js",
-    "regenerator-runtime"
+    "regenerator-runtime",
+    "@ruiyun/preact-m-router"
   ],
   "pages": {
     "index": "h666解决方案演示",
