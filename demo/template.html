@@ -104,12 +104,15 @@
       </i>
     </div>
     <script>
-      // hack for bfcache
       window.MessageChannel = null;
       if (location.search.indexOf("_c=mp") > -1) {
         var wxscript = document.createElement("script");
         wxscript.src = "https://res.wx.qq.com/open/js/jweixin-1.3.2.js";
+        wxscript.defer = "defer";
         document.head.appendChild(wxscript);
+      } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        // hack for ios bfcache
+        // window.MessageChannel = null;
       }
     </script>
   </body>
