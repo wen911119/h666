@@ -130,6 +130,7 @@ const HtmlWebpackPlugins = Object.keys(entries).map(
       multihtmlCache: true,
       title: pageTitlesMap[k] || k,
       filename: `${k}.html`,
+      inject: 'head',
       template: existsSync(customTemplate)
         ? customTemplate
         : path.resolve(__dirname, "./template.html"),
