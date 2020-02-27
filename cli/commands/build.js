@@ -33,9 +33,15 @@ module.exports = function(buildTarget, container, profile) {
             colors: true // Shows colors in the console
           })
         );
-        const swPath = path.resolve(process.cwd(), "./sw.js");
-        // 存在servcie worker
-        if (existsSync(swPath)) {
+        const swPathCustom = path.resolve(process.cwd(), "./sw.js");
+        const swPathDefault = path.resolve(__dirname, "./sw.js");
+        const swPath = existsSync(swPathCustom) ? swPathCustom : swPathDefault
+        const packageInfo = require(path.resolve(
+          process.cwd(),
+          "./package.json"
+        ));
+        // 开启了servcie worker
+        if (packageInfo.ServiceWorker) {
           const distDir = path.resolve(process.cwd(), "./dist");
           const hashMap = {};
           readdirSync(distDir).forEach(file => {

@@ -29,6 +29,20 @@ const commonChunks = (packageInfo.commonChunks || []).concat([
   "core-js"
 ]);
 const commonChunksReg = new RegExp(`[\\/](${commonChunks.join("|")})[\\/]`);
+const serviceWorker = packageInfo.ServiceWorker ? `
+if ('serviceWorker' in navigator) {
+  if (new RegExp(${packageInfo.ServiceWorker}).test(navigator.userAgent)) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        console.log('service worker 注册完成', reg);
+        setInterval(reg.update, 300000)
+      }, function(err) {
+        console.log('注册失败', err);
+      });
+    });
+  }
+}
+` : ``
 const genEntry = (appJsPath, pageName) => {
   let entryContent = "";
   if (process.env.BUILD_CONTAINER === "h5plus") {
@@ -68,7 +82,7 @@ const genEntry = (appJsPath, pageName) => {
     entryContent += `
     const title = (window.location.search.substr(1).match(/(^|&)_t=([^&]*)(&|$)/) || [])[2]
     document.title = title ? decodeURIComponent(title) : '${pageTitlesMap[pageName]}'
-
+    ${serviceWorker}
     const { h, render } = require('preact');
     let App = require('${appJsPath}')
       .default;
@@ -81,7 +95,7 @@ const genEntry = (appJsPath, pageName) => {
     entryContent += `
     const title = (window.location.search.substr(1).match(/(^|&)_t=([^&]*)(&|$)/) || [])[2]
     document.title = title ? decodeURIComponent(title) : '${pageTitlesMap[pageName]}'
-
+    ${serviceWorker}
     const { h, render } = require('preact');
     require('preact/debug');
     let App = require('${appJsPath}')
@@ -138,6 +152,18 @@ const HtmlWebpackPlugins = Object.keys(entries).map(
       title: pageTitlesMap[k] || k,
       filename: `${k}.html`,
       inject: 'head',
+      templateParameters: (compilation, assets, assetTags, options) => {
+        return {
+          compilation,
+          webpackConfig: compilation.options,
+          htmlWebpackPlugin: {
+            tags: assetTags,
+            files: assets,
+            options
+          },
+          'DEBUG': packageInfo.debug || process.env.NODE_ENV === 'development'
+        };
+      },
       template: existsSync(customTemplate)
         ? customTemplate
         : path.resolve(__dirname, "./template.html"),
