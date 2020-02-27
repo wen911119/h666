@@ -84,6 +84,8 @@
     "regenerator-runtime",
     "@ruiyun/preact-m-router"
   ],
+  "debug": true,
+  "ServiceWorker": "/Android/i",
   "pages": {
     "index": "h666解决方案演示",
     "list": "列表页",
