@@ -34,7 +34,7 @@ module.exports = function(buildTarget, container, profile) {
           })
         );
         const swPathCustom = path.resolve(process.cwd(), "./sw.js");
-        const swPathDefault = path.resolve(__dirname, "./sw.js");
+        const swPathDefault = path.resolve(__dirname, "../webpack/sw.js");
         const swPath = existsSync(swPathCustom) ? swPathCustom : swPathDefault
         const packageInfo = require(path.resolve(
           process.cwd(),
