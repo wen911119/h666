@@ -161,7 +161,7 @@ const HtmlWebpackPlugins = Object.keys(entries).map(
             files: assets,
             options
           },
-          'DEBUG': packageInfo.debug || process.env.NODE_ENV === 'development'
+          'DEBUG': packageInfo.debug || process.env.DEBUG
         };
       },
       template: existsSync(customTemplate)

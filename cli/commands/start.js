@@ -1,10 +1,11 @@
 process.env.BUILD_TARGET = 'local'
 const fse = require('fs-extra')
 const webpack = require('webpack')
-let webpackConfig = require('../webpack/config')
+const webpackConfig = require('../webpack/config')
 const WebpackDevServer = require('webpack-dev-server')
 const ip = require('ip')
 module.exports = function (port) {
+  process.env.DEBUG = true
   webpackConfig.mode = 'development'
   webpackConfig.devtool = 'cheap-module-eval-source-map'
   webpackConfig.output.filename = '[name].bundle.js'
