@@ -54,7 +54,7 @@ module.exports = function(buildTarget, container, profile) {
           writeFileSync(
             path.resolve(process.cwd(), "./dist/sw.js"),
             swTemplate.replace(
-              `'__APP_PAGES_HASH_MAP_PLACEHOLDER__'`,
+              `"__APP_PAGES_HASH_MAP_PLACEHOLDER__"`,
               JSON.stringify(hashMap)
             )
           );
