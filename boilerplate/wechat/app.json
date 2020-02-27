@@ -6,7 +6,9 @@
     "pages/h666Container4/index",
     "pages/h666Container5/index",
     "pages/h666Container6/index",
-    "pages/h666Container7/index"
+    "pages/h666Container7/index",
+    "pages/pay/index",
+    "pages/scan/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

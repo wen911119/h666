@@ -2,7 +2,6 @@
 FROM wen911119/node-alpine-with-yarn AS yarn-builder
 ADD /src /root/src
 ADD package.json /root
-ADD template.html /root
 
 WORKDIR /root
 

@@ -1,8 +1,4 @@
-function pushToH666(path, headerConfig, params) {
-  if (!headerConfig) {
-    console.warn('缺少必要参数')
-    return
-  }
+function pushToH666(path, params, headerConfig) {
   var _p = {
     params: params || {}
   }
@@ -11,11 +7,7 @@ function pushToH666(path, headerConfig, params) {
   })
 }
 
-function replaceToH666(path, headerConfig, params) {
-  if (!headerConfig) {
-    console.warn('缺少必要参数')
-    return
-  }
+function replaceToH666(path, params, headerConfig) {
   var _p = {
     params: params || {}
   }

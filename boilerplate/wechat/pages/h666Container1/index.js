@@ -23,12 +23,13 @@ Page({
   onLoad: function(routeParams) {
     const h666Config = getApp().globalData.h666
     const {
-      _p,
+      _p = '',
       page = h666Config.home.name,
       host = h666Config.host
     } = routeParams
     let config = h666Config.home.headerConfig
     this.page = page
+    let _t = ''
     if (routeParams.headerConfig) {
       try {
         config = JSON.parse(decodeURIComponent(routeParams.headerConfig))
@@ -42,6 +43,7 @@ Page({
     }
     const { title, titleColor, bgColor } = config
     if (title) {
+      _t = title
       wx.setNavigationBarTitle({
         title
       })
@@ -52,29 +54,11 @@ Page({
         backgroundColor: bgColor
       })
     }
-    const url = `${host}/${page}.html?_c=mp&depth=1&_v=${h666Config.version}&_p=${_p}`
+    const url = `${host}/${page}.html?_c=mp&depth=1&_v=${h666Config.version}&_p=${_p}&_t=${_t}`
     const self = this
-    // 小程序加载完成
-    self.mpDoneAt = Date.now()
-    wx.request({
-      url: url,
-      success: function(ret) {
-        // webview预加载完成
-        self.setData({ url: url, status: 'ok' }, function() {
-          // webview开始正式加载
-          self.webStartAt = Date.now()
-        })
-      },
-      fail: function(error) {
-        // 显示错误页
-        self.setData({ status: 'err' }, function() {
-          // 启动预加载报错上报
-          wx.reportAnalytics('pre-load-error', {
-            error: JSON.stringify(error),
-            page
-          })
-        })
-      }
+    self.setData({ url: url, status: 'ok' }, function() {
+      // webview开始正式加载
+      self.webStartAt = Date.now()
     })
   },
 

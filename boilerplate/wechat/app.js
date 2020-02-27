@@ -1,16 +1,18 @@
-// app.js
+// 正式发布时换成正式域名
+// const host = 'https://demo.example.com'
+const host = 'http://192.168.31.156:3000'
+
 App({
   globalData: {
     h666: {
-      host: 'http://10.100.1.165:3000',
-      // host: 'https://uplatform-re-dev.quancheng-ec.com',
+      host,
       home: {
         name: 'index',
         headerConfig: {
-          title: '首页'
+          title: 'h666解决方案模版'
         }
       },
-      version: Date.now()
+      version: '9527'
     }
   }
 })

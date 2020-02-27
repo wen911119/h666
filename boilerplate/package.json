@@ -11,12 +11,13 @@
     "build:pro:analyse": "h666 build --target=production --analyse=./stats.json",
     "build:dev:h5plus": "h666 build --target=dev --container=h5plus",
     "build:pro:h5plus": "h666 build --target=production --container=h5plus",
-    "lint": "eslint ./ --cache --ignore-pattern .gitignore"
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "release": "node upload.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ruiyun/preact-m-router": "^1.5.3",
+    "@ruiyun/preact-m-router": "^1.6.7",
     "preact": "^10.3.2",
     "@ruiyun/preact-layout-suite": "^1.2.77",
     "@ruiyun/preact-icon": "^1.2.39",
@@ -25,16 +26,17 @@
     "@ruiyun/ajax": "^1.0.5"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.1",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-standard": "^14.1.0",
+    "@ruiyun/h666-cli": "^2.0.0-rc.10",
+    "ali-oss": "^6.5.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-standard": "^14.0.0",
     "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-standard": "^4.0.1",
     "pre-commit": "^1.2.2",
     "prettier": "^1.19.1"
@@ -52,6 +54,7 @@
     "@ruiyun/ajax",
     "@ruiyun/preact-text"
   ],
+  "ServiceWorker": "/Android/i",
   "pages": {
     "index": "主页",
     "list": "列表页",
