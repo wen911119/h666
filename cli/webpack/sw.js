@@ -8,11 +8,6 @@ self.addEventListener("fetch", function(event) {
         const page = /\.html/.test(event.request.url)
           ? event.request.url.replace(/.+\/(.+)\.html.*/, "$1")
           : "index";
-        const inMp = event.request.url.indexOf("_c=mp") > -1;
-        let mpScript = "";
-        if (inMp) {
-          mpScript = `<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js" defer="defer"></script>`;
-        }
         const appInfo = { hash: "__APP_PAGES_HASH_MAP_PLACEHOLDER__" };
         const html = `<!doctype html>
               <html lang="en">
@@ -23,7 +18,6 @@ self.addEventListener("fetch", function(event) {
                       <meta name="apple-mobile-web-app-capable" content="yes">
                       <script src="common.${appInfo.hash.common}.bundle.js" defer="defer"></script>
                       <script src="${page}.${appInfo.hash[page]}.bundle.js" defer="defer"></script>
-                      ${mpScript}
                       <style>
                           html {
                               font-size: 37.5px;
