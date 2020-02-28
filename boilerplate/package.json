@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ruiyun/preact-m-router": "^1.6.7",
+    "@ruiyun/preact-m-router": "^1.7.2",
     "preact": "^10.3.2",
     "@ruiyun/preact-layout-suite": "^1.2.77",
     "@ruiyun/preact-icon": "^1.2.39",
@@ -26,7 +26,7 @@
     "@ruiyun/ajax": "^1.0.5"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.12",
+    "@ruiyun/h666-cli": "^2.0.0-rc.13",
     "ali-oss": "^6.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
