@@ -28,9 +28,9 @@
     "@ruiyun/preact-loading": "^1.2.39",
     "@ruiyun/preact-m-actionsheet": "^1.6.3",
     "@ruiyun/preact-m-auto-list": "^1.6.0",
-    "@ruiyun/preact-m-date-range-picker": "^1.6.4",
+    "@ruiyun/preact-m-date-range-picker": "^1.7.4",
     "@ruiyun/preact-m-dialog": "^1.6.3",
-    "@ruiyun/preact-m-form-component": "^1.6.3",
+    "@ruiyun/preact-m-form-component": "^1.7.4",
     "@ruiyun/preact-m-image-preview": "^1.7.2",
     "@ruiyun/preact-m-picker": "^1.6.3",
     "@ruiyun/preact-m-router": "^1.7.2",
@@ -123,7 +123,8 @@
     "redundantPage2": "redundant2",
     "redundantPage3": "redundant3",
     "dateRangePickerDemo": "日期区间选择器",
-    "searchPickerDemo": "搜索选择器"
+    "searchPickerDemo": "搜索选择器",
+    "datePickerDemo": "日期选择器演示"
   },
   "include": [
     "@ruiyun",
