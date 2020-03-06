@@ -122,7 +122,8 @@
     "redundantPage1": "redundant1",
     "redundantPage2": "redundant2",
     "redundantPage3": "redundant3",
-    "dateRangePickerDemo": "日期区间选择器"
+    "dateRangePickerDemo": "日期区间选择器",
+    "searchPickerDemo": "搜索选择器"
   },
   "include": [
     "@ruiyun",
