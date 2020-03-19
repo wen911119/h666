@@ -11,10 +11,6 @@ export default class SearchPicker extends Component {
   state = {
     name: '打开search-picker'
   }
-  onChose = item => {
-    console.log(item)
-    this.props.$searchPicker.hide()
-  }
   openSearchPicker = () => {
     this.props.$searchPicker.show({
       searchbar: {
@@ -26,7 +22,6 @@ export default class SearchPicker extends Component {
         format: this.format,
         renderItem: this.renderItem,
         pageSize: 20,
-        itemClickHandler: this.onChose,
         params: {
           type: 'hospital'
         }
@@ -35,7 +30,7 @@ export default class SearchPicker extends Component {
         // eslint-disable-next-line
         <Text onClick={updateParams.bind(this, { type: 'wj' })}>slot</Text>
       )
-    })
+    }).then(console.log)
   }
   fetchListData = async ({ pageSize, pageNum, ...otherProps }) => {
     const ret = await Ajax.get(
