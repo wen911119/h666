@@ -17,6 +17,7 @@ module.exports = function(buildTarget, container, profile) {
   process.env.BUILD_TARGET = buildTarget;
   let webpackConfig = require("../webpack/config");
   webpackConfig.mode = "production";
+  webpackConfig.devtool = "source-map";
   webpack(webpackConfig, (err, stats) => {
     if (err || stats.hasErrors()) {
       console.log(err || stats);
@@ -35,7 +36,7 @@ module.exports = function(buildTarget, container, profile) {
         );
         const swPathCustom = path.resolve(process.cwd(), "./sw.js");
         const swPathDefault = path.resolve(__dirname, "../webpack/sw.js");
-        const swPath = existsSync(swPathCustom) ? swPathCustom : swPathDefault
+        const swPath = existsSync(swPathCustom) ? swPathCustom : swPathDefault;
         const packageInfo = require(path.resolve(
           process.cwd(),
           "./package.json"

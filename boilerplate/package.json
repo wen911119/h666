@@ -26,7 +26,7 @@
     "@ruiyun/ajax": "^1.0.5"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.14",
+    "@ruiyun/h666-cli": "^2.0.0-rc.15",
     "ali-oss": "^6.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",

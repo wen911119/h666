@@ -174,7 +174,8 @@ module.exports = {
   entry: entries,
   output: {
     path: path.resolve(process.cwd(), "dist"),
-    filename: "[name].[chunkhash].bundle.js" // string
+    filename: "[name].[chunkhash].bundle.js", // string
+    sourceMapFilename: "[name].[chunkhash].js.map"
   },
   module: {
     rules: [
