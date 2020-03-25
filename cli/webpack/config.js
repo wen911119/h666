@@ -26,7 +26,8 @@ const commonChunks = (packageInfo.commonChunks || []).concat([
   "axios",
   "process",
   "regenerator-runtime",
-  "core-js"
+  "core-js",
+  "@sentry/browser"
 ]);
 const commonChunksReg = new RegExp(`[\\/](${commonChunks.join("|")})[\\/]`);
 const serviceWorker = packageInfo.ServiceWorker ? `
@@ -43,43 +44,15 @@ if ('serviceWorker' in navigator) {
   }
 }
 ` : ``
+const sentry = packageInfo.sentry ? `
+  import * as Sentry from '@sentry/browser';
+  Sentry.init({ dsn: ${packageInfo.sentry} });
+` : ``
 const genEntry = (appJsPath, pageName) => {
   let entryContent = "";
-  if (process.env.BUILD_CONTAINER === "h5plus") {
-    entryContent = `
-      const isH5Plus = navigator.userAgent.indexOf('Html5Plus') > -1;
-      const isH5PlusLocalPath = window.location.href.indexOf('http') < 0;
-      if (isH5Plus && isH5PlusLocalPath) {
-        const plusReady = () => {
-          let quitWarning = false;
-          window.plus.key.addEventListener('backbutton', () => {
-            if (window.location.href.indexOf('index.html') > -1) {
-              if (quitWarning) {
-                window.plus.runtime.quit();
-              } else {
-                quitWarning = true;
-                setTimeout(() => {
-                  quitWarning = false;
-                }, 2000);
-                window.plus.nativeUI.toast('再按一次退出应用');
-                return false;
-              };
-            } else {
-              window.plus.webview.currentWebview().close('auto');
-              return false;
-            };
-          }, false);
-        };
-        if (window.plus) {
-          plusReady();
-        } else {
-          document.addEventListener('plusready', plusReady, false)
-        };
-      };
-    `;
-  }
   if (process.env.BUILD_TARGET !== "local") {
     entryContent += `
+    ${sentry}
     const title = (window.location.search.substr(1).match(/(^|&)_t=([^&]*)(&|$)/) || [])[2]
     document.title = title ? decodeURIComponent(title) : '${pageTitlesMap[pageName]}'
     ${serviceWorker}

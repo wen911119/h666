@@ -41,6 +41,17 @@ module.exports = function(buildTarget, container, profile) {
           process.cwd(),
           "./package.json"
         ));
+        let swTemplate = readFileSync(swPath, { encoding: "utf-8" });
+        let debugScript = ``
+        if (packageInfo.debug) {
+          debugScript = `
+          <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+          <script>
+            var vConsole = new VConsole();
+          </script>
+          `
+        }
+        swTemplate = swTemplate.replace('__APP_DEBUG_PLACEHOLDER__', debugScript)
         // 开启了servcie worker
         if (packageInfo.ServiceWorker) {
           const distDir = path.resolve(process.cwd(), "./dist");
@@ -51,7 +62,6 @@ module.exports = function(buildTarget, container, profile) {
               hashMap[matched[1]] = matched[2];
             }
           });
-          const swTemplate = readFileSync(swPath, { encoding: "utf-8" });
           writeFileSync(
             path.resolve(process.cwd(), "./dist/sw.js"),
             swTemplate.replace(

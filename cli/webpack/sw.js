@@ -98,6 +98,7 @@ self.addEventListener("fetch", function(event) {
                               }
                           }
                       </style>
+                      __APP_DEBUG_PLACEHOLDER__
                   </head>
                   <body>
                       <div>
