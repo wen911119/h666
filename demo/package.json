@@ -48,6 +48,7 @@
     "@ruiyun/preact-oss": "^1.2.73",
     "@ruiyun/preact-switch": "^1.2.39",
     "@ruiyun/preact-text": "^1.2.39",
+    "@sentry/browser": "^5.15.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.23",
     "h5-indicator": "^1.0.9",
@@ -57,7 +58,7 @@
     "preact": "^10.3.4"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.15",
+    "@ruiyun/h666-cli": "^2.0.0-rc.17",
     "ali-oss": "^6.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -85,6 +86,7 @@
     "@ruiyun/preact-m-router"
   ],
   "ServiceWorker": "/Android/i",
+  "sentry": "https://ef1638a78eee4f5db9884c4f3fd75d9d@sentry.io/5174260",
   "pages": {
     "index": "h666解决方案演示",
     "list": "列表页",

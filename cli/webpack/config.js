@@ -46,7 +46,7 @@ if ('serviceWorker' in navigator) {
 ` : ``
 const sentry = packageInfo.sentry ? `
   import * as Sentry from '@sentry/browser';
-  Sentry.init({ dsn: ${packageInfo.sentry} });
+  Sentry.init({ dsn: '${packageInfo.sentry}' });
 ` : ``
 const genEntry = (appJsPath, pageName) => {
   let entryContent = "";
