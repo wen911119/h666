@@ -33,7 +33,7 @@
     "@ruiyun/preact-m-form-component": "^1.7.7",
     "@ruiyun/preact-m-image-preview": "^1.7.2",
     "@ruiyun/preact-m-picker": "^1.6.3",
-    "@ruiyun/preact-m-router": "^1.7.2",
+    "@ruiyun/preact-m-router": "^1.8.5",
     "@ruiyun/preact-m-scroller": "^1.6.0",
     "@ruiyun/preact-m-search-bar": "^1.5.9",
     "@ruiyun/preact-m-search-input": "^1.5.9",
@@ -61,8 +61,8 @@
     "@ruiyun/h666-cli": "^2.0.0-rc.17",
     "ali-oss": "^6.5.1",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-config-standard": "^14.0.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
@@ -71,7 +71,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.2"
   },
   "pre-commit": [
     "lint"

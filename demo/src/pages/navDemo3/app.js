@@ -11,7 +11,7 @@ import DemoPage from '../../components/DemoPage'
 export default class NavDemo3 extends Component {
   goRoot = () => {
     this.props.$router.back(2, {
-      age: 88
+      age: Date.now()
     })
   }
   componentDidMount() {

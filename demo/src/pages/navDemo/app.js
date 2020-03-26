@@ -18,7 +18,10 @@ export default class NavDemo extends Component {
   onPrompt = (index, value) => {
     if (index === 1) {
       setTimeout(() => {
-        this.props.$router.push('navDemo2', { name: value })
+        this.props.$router.push('navDemo2', { name: value }, {
+          title: '自定义标题',
+          bgColor: '#f8584f'
+        })
       }, 300)
     }
   }
