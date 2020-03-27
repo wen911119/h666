@@ -8,7 +8,9 @@ const DemoLink = ({ demo, $router, action = 'push' }) => (
   <RowView
     height={100}
     padding={[0, 30, 0, 30]}
-    onClick={() => $router[action](demo.route)}
+    onClick={() => $router[action](demo.route, {}, {
+      title: demo.name
+    })}
     bgColor='#fff'
     hAlign='between'
     margin={[0, 0, 20, 0]}
