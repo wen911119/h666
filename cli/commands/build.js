@@ -4,7 +4,8 @@ const {
   readdirSync,
   writeFileSync,
   readFileSync,
-  existsSync
+  existsSync,
+  outputJSON
 } = require("fs-extra");
 
 module.exports = function(buildTarget, container, profile) {
@@ -42,26 +43,29 @@ module.exports = function(buildTarget, container, profile) {
           "./package.json"
         ));
         let swTemplate = readFileSync(swPath, { encoding: "utf-8" });
-        let debugScript = ``
+        let debugScript = ``;
         if (packageInfo.debug) {
           debugScript = `
           <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
           <script>
             var vConsole = new VConsole();
           </script>
-          `
+          `;
         }
-        swTemplate = swTemplate.replace('__APP_DEBUG_PLACEHOLDER__', debugScript)
+        swTemplate = swTemplate.replace(
+          "__APP_DEBUG_PLACEHOLDER__",
+          debugScript
+        );
+        const distDir = path.resolve(process.cwd(), "./dist");
+        const hashMap = {};
+        readdirSync(distDir).forEach(file => {
+          const matched = file.match(/(.+)\.(.+)\.bundle\.js/);
+          if (matched) {
+            hashMap[matched[1]] = matched[2];
+          }
+        });
         // 开启了servcie worker
         if (packageInfo.ServiceWorker) {
-          const distDir = path.resolve(process.cwd(), "./dist");
-          const hashMap = {};
-          readdirSync(distDir).forEach(file => {
-            const matched = file.match(/(.+)\.(.+)\.bundle\.js/);
-            if (matched) {
-              hashMap[matched[1]] = matched[2];
-            }
-          });
           writeFileSync(
             path.resolve(process.cwd(), "./dist/sw.js"),
             swTemplate.replace(
@@ -71,6 +75,11 @@ module.exports = function(buildTarget, container, profile) {
           );
         }
       }
+      const appInfo = {
+        version: Date.now(),
+        hash: hashMap
+      };
+      outputJSON(path.resolve(process.cwd(), "./dist/app.json"), appInfo);
       console.log("build success");
     }
   });

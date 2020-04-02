@@ -19,7 +19,7 @@ if (region && accessKeyId && accessKeySecret && bucket) {
     files.forEach(function(file) {
       const cacheControl = file.includes('.html')
         ? 'no-cache'
-        : file.includes('sw.js')
+        : file.includes('sw.js') || file.includes('app.json')
         ? 'no-store'
         : 'max-age=63072000'
       client
