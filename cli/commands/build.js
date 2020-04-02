@@ -74,12 +74,12 @@ module.exports = function(buildTarget, container, profile) {
             )
           );
         }
+        const appInfo = {
+          version: Date.now(),
+          hash: hashMap
+        };
+        outputJSON(path.resolve(process.cwd(), "./dist/app.json"), appInfo);
       }
-      const appInfo = {
-        version: Date.now(),
-        hash: hashMap
-      };
-      outputJSON(path.resolve(process.cwd(), "./dist/app.json"), appInfo);
       console.log("build success");
     }
   });
