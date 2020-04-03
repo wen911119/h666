@@ -86,6 +86,7 @@
     "@ruiyun/preact-m-router"
   ],
   "ServiceWorker": "/Android/i",
+  "debug": true,
   "sentry": "https://ef1638a78eee4f5db9884c4f3fd75d9d@sentry.io/5174260",
   "pages": {
     "index": "h666解决方案演示",
