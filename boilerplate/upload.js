@@ -16,6 +16,7 @@ if (region && accessKeyId && accessKeySecret && bucket) {
   })
   const basePath = path.resolve('./dist')
   fs.readdir(basePath, function(err, files) {
+    console.log(err)
     files.forEach(function(file) {
       const cacheControl = file.includes('.html')
         ? 'no-cache'

@@ -12,12 +12,13 @@
     "build:dev:h5plus": "h666 build --target=dev --container=h5plus",
     "build:pro:h5plus": "h666 build --target=production --container=h5plus",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "lintfix": "eslint ./ --cache --fix --ignore-pattern .gitignore",
     "release": "node upload.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ruiyun/preact-m-router": "^1.8.6",
+    "@ruiyun/preact-m-router": "^1.8.11",
     "preact": "^10.3.4",
     "@ruiyun/preact-layout-suite": "^1.2.77",
     "@ruiyun/preact-icon": "^1.2.39",
@@ -27,19 +28,19 @@
   },
   "devDependencies": {
     "@ruiyun/h666-cli": "^2.0.0-rc.19",
-    "ali-oss": "^6.5.1",
+    "ali-oss": "^6.6.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-config-standard": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
     "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-standard": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.4"
   },
   "pre-commit": [
     "lint"
