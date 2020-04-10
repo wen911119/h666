@@ -11,15 +11,16 @@ import {
   FormNumberInput,
   FormPickerInput,
   FormSwitchInput,
-  FormTreePickerInput
+  FormTreePickerInput,
+  FormTextAreaInput,
 } from '@ruiyun/preact-m-form-component'
 
 import { required, range } from '../../components/Validate'
 import SalaryInput from './components/salaryInput'
 import DemoPage from '../../components/DemoPage'
 
-const phoneCheck = async phoneNum => {
-  const p = new Promise(resolve => {
+const phoneCheck = async (phoneNum) => {
+  const p = new Promise((resolve) => {
     setTimeout(resolve, 3000)
   })
   await p
@@ -81,7 +82,7 @@ const cityOptions = [
   '金华',
   '银川',
   '长春',
-  '长沙'
+  '长沙',
 ]
 
 const regionOptions = [
@@ -118,41 +119,44 @@ const regionOptions = [
   '宁夏回族自治区',
   '新疆维吾尔自治区',
   '香港特别行政区',
-  '澳门特别行政区'
+  '澳门特别行政区',
 ]
 
 export default class FormDemo extends Component {
   state = {
-    name: 'wenjun'
+    name: 'wenjun',
   }
+
   onReset = () => {
     this.form.init({
-      ad: true
+      ad: true,
     })
   }
+
   onSubmit = () => {
     this.form.validate(
-      formData => {
+      (formData) => {
         console.log('formData', formData)
       },
-      errors => {
+      (errors) => {
         console.log('error', errors)
       }
     )
   }
-  getChildren = async parent => {
+
+  getChildren = async (parent) => {
     if (!this.mockData) {
       this.mockData = []
       const ret = await Ajax.get(
         'https://uapi.dev.quancheng-ec.com/uac/groups',
         {
           params: {
-            type: 'GT_REGION'
+            type: 'GT_REGION',
           },
           headers: {
             loading: 'false',
-            identifier: 'hrg-mp'
-          }
+            identifier: 'hrg-mp',
+          },
         }
       )
       if (ret && ret.success) {
@@ -160,19 +164,21 @@ export default class FormDemo extends Component {
       }
     }
     const parentId = parent ? parent.id : ''
-    return this.mockData.filter(item => item.pid === parentId)
+    return this.mockData.filter((item) => item.pid === parentId)
   }
+
   componentDidMount() {
     this.form.init({
-      ad: true
+      ad: true,
     })
   }
+
   render() {
     return (
       <DemoPage title='Form'>
         <div>{'serviceWorker' in navigator ? 'ojbk' : 'not ok'}</div>
         <ColumnView padding={[0, 30, 0, 30]}>
-          <Form ref={form => (this.form = form)}>
+          <Form ref={(form) => (this.form = form)}>
             <Form.Field label='姓名' field='name' validate={[required]}>
               <FormTextInput required maxLength={3} placeholder='请输入姓名' />
             </Form.Field>
@@ -200,7 +206,7 @@ export default class FormDemo extends Component {
             <Line />
             <Form.Field label='地区' field='regions'>
               <FormTreePickerInput
-                getLabel={item => item.name}
+                getLabel={(item) => item.name}
                 placeholder='请选择地区'
                 getChildren={this.getChildren}
               />
@@ -210,7 +216,14 @@ export default class FormDemo extends Component {
               <FormSwitchInput />
             </Form.Field>
             <Line />
-
+            <Form.Field label='个人介绍' field='profile' validate={[required]}>
+              <FormTextAreaInput
+                placeholder='请填写个人简介'
+                max={200}
+                required
+              />
+            </Form.Field>
+            <Line />
             <Form.Fragment namespace='apply'>
               <Form.Field label='申请的职位' field='role'>
                 <FormActionSheetInput
