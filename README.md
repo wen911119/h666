@@ -7,15 +7,20 @@ h666是以h5为主的hybird跨端解决方案。具体包括：组件库、cli�
 【h5】
 <div><img src="https://h666-demo.ruiyun2015.com/h666-h5.png" width="140"></div>
 【hybrid】
-<div><img src="https://h666-demo.ruiyun2015.com/h666-h5.png" width="140"></div>
+安卓
+<div><img src="https://h666-demo.ruiyun2015.com/h666-android.png" width="140"></div>
 【支付宝小程序】
-<div><img src="https://h666-demo.ruiyun2015.com/h666-h5.png" width="140"></div>
-【头条小程序】
-<div><img src="https://h666-demo.ruiyun2015.com/h666-h5.png" width="140"></div>
-【其它小程序】
 
 ```
-有需要再适配
+todo
+```
+【头条小程序】
+```
+todo
+```
+【其它小程序】
+```
+todo
 ```
 ### 怎么用
 全局安装cli工具
