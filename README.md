@@ -3,12 +3,12 @@ h666是以h5为主的hybird跨端解决方案。具体包括：组件库、cli�
 
 ### 怎么样
 【微信小程序】
-<div><img src="https://h666-demo.ruiyun2015.com/h666-wechat.png" width="120"></div>
+<div><img src="https://github.com/wen911119/h666/assets/h666-wechat.png" width="120"></div>
 【h5】
-<div><img src="https://h666-demo.ruiyun2015.com/h666-h5.png" width="140"></div>
+<div><img src="https://github.com/wen911119/h666/assets/h666-h5.png" width="140"></div>
 【hybrid】
 安卓
-<div><img src="https://h666-demo.ruiyun2015.com/h666-android.png" width="140"></div>
+<div><img src="https://github.com/wen911119/h666/assets/h666-android.png" width="140"></div>
 【支付宝小程序】
 
 ```
