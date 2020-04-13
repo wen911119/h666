@@ -126,7 +126,8 @@
     "redundantPage3": "redundant3",
     "dateRangePickerDemo": "日期区间选择器",
     "searchPickerDemo": "搜索选择器",
-    "datePickerDemo": "日期选择器演示"
+    "datePickerDemo": "日期选择器演示",
+    "appDownload": "app下载"
   },
   "include": [
     "@ruiyun",
