@@ -6,7 +6,7 @@ export default class AppDownload extends Component {
     return (
       <div>
         <div>
-          <a href='https://h666-demo.ruiyun2015.com/h666Hybird.apk' download>
+          <a href='https://h666-demo.oss-cn-shanghai.aliyuncs.com/h666Hybird.apk' download>
             安卓下载
           </a>
         </div>
