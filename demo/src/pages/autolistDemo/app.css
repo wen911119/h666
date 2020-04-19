@@ -4,9 +4,20 @@
   right: 0.4rem;
   z-index: 1;
   background-color: rgba(0,0,0,0.3);
-  border-radius: 0.6rem;
-  width: 1.2rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
-  text-align: center;
+  border-radius: 50%;
+}
+
+.icon-upward::before {
+  height: .65em; width: .65em;
+  border-style: solid;
+  border-width: 2px 0 0 2px;
+  -ms-transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
+  color: #fff;
+}
+.icon-upward::after {
+  height: .8em;
+  border-left: 2px solid;
+  top: 55%;
+  color: #fff;
 }

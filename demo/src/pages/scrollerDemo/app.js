@@ -15,11 +15,8 @@ export default class ScrollerDemo extends Component {
     list2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     list3: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     list4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    list3nomore: false,
-    list4nomore: false,
-    list3loading: false,
-    list4loading: false,
   }
+
   onRefresh = (done) => {
     setTimeout(() => {
       this.setState(
@@ -30,11 +27,9 @@ export default class ScrollerDemo extends Component {
       )
     }, 1500)
   }
-  onLoadMore = () => {
-    this.setState({
-      list3loading: true
-    })
-    let newList = Array.from(this.state.list3)
+
+  onLoadMore = (done) => {
+    const newList = Array.from(this.state.list3)
     for (let l = newList.length, j = l + 1; j <= l + 10; j++) {
       newList.push(j)
     }
@@ -42,27 +37,22 @@ export default class ScrollerDemo extends Component {
     setTimeout(() => {
       this.setState({
         list3: newList,
-        list3nomore: isNoMore,
-        list3loading: false
       })
+      done({ success: true, nomore: isNoMore })
     }, 1500)
   }
+
   onRefreshForList4 = (done) => {
     setTimeout(() => {
-      this.setState(
-        {
-          list4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-          list4nomore: false
-        },
-        done
-      )
+      this.setState({
+        list4: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      })
+      done({ success: true })
     }, 1500)
   }
-  onLoadMoreForList4 = () => {
-    this.setState({
-      list4loading: true
-    })
-    let newList = Array.from(this.state.list4)
+
+  onLoadMoreForList4 = (done) => {
+    const newList = Array.from(this.state.list4)
     for (let l = newList.length, j = l + 1; j <= l + 10; j++) {
       newList.push(j)
     }
@@ -70,22 +60,13 @@ export default class ScrollerDemo extends Component {
     setTimeout(() => {
       this.setState({
         list4: newList,
-        list4nomore: isNoMore,
-        list4loading: false
       })
+      done({ success: true, nomore: isNoMore })
     }, 1500)
   }
+
   render() {
-    const {
-      list1,
-      list2,
-      list3,
-      list4,
-      list3nomore,
-      list4nomore,
-      list3loading,
-      list4loading,
-    } = this.state
+    const { list1, list2, list3, list4 } = this.state
     return (
       <DemoPage title='Scroller'>
         <ColumnView padding={[0, 30, 0, 30]}>
@@ -126,12 +107,7 @@ export default class ScrollerDemo extends Component {
           <XCenterView height={100}>
             <Text size={28}>带加载更多的Scroller</Text>
           </XCenterView>
-          <ScrollerWithLoadMore
-            height='300px'
-            onLoadMore={this.onLoadMore}
-            nomore={list3nomore}
-            loading={list3loading}
-          >
+          <ScrollerWithLoadMore height='350px' onLoadMore={this.onLoadMore}>
             {list3.map((item) => (
               <RowView
                 key={item}
@@ -152,8 +128,6 @@ export default class ScrollerDemo extends Component {
             height='300px'
             onRefresh={this.onRefreshForList4}
             onLoadMore={this.onLoadMoreForList4}
-            nomore={list4nomore}
-            loading={list4loading}
           >
             {list4.map((item) => (
               <RowView
