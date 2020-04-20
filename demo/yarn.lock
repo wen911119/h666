@@ -948,15 +948,15 @@
   dependencies:
     p-to-r "^1.0.4"
 
-"@ruiyun/preact-image-uploader@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-image-uploader/-/preact-image-uploader-1.7.2.tgz#b01fd488121d300029aa823e365640934fde2efd"
-  integrity sha512-mzMKQps1vOin/D0SR+t93RaF1roOJC2ULmBopnAewwB3/pOexYFwtui+pW3jWASl1PdQ9jU3tLwZGKWaWjn2RA==
+"@ruiyun/preact-image-uploader@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-image-uploader/-/preact-image-uploader-1.9.3.tgz#c204073ca3e9a6edea044093c696b6ad502f9310"
+  integrity sha512-jEe7yUFT9t0MUIzrDgnB59UWVGvGJ3YwZJGr0Ea2TiH6YRzgfX+QhXyoa3UJJXtwF1fhlyttwYwwSigXXYlXLw==
   dependencies:
     "@ruiyun/preact-image" "^1.2.77"
     "@ruiyun/preact-layout-suite" "^1.2.77"
     "@ruiyun/preact-loading" "^1.2.39"
-    "@ruiyun/preact-m-image-preview" "^1.7.2"
+    "@ruiyun/preact-m-image-preview" "^1.9.3"
     lodash.chunk "^4.2.0"
 
 "@ruiyun/preact-image@^1.2.77":
@@ -1037,20 +1037,20 @@
     "@ruiyun/preact-text" "^1.9.1"
     "@ruiyun/preact-textarea" "^1.8.12"
 
-"@ruiyun/preact-m-form-component@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-form-component/-/preact-m-form-component-1.9.2.tgz#1f081164cb0757f0adb47142b20ad6bd76610cfd"
-  integrity sha512-UuBP/xDlI7fdRrtNWun3GaHsxn7qMcANa5hbL73gLpAbEVXzQyza+r9h6ayfOKTUbWfi71kaGX20P0LR3vcdvQ==
+"@ruiyun/preact-m-form-component@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-form-component/-/preact-m-form-component-1.9.3.tgz#11793f26fa8dedadba7d6c9dd04fe5dc5ae717ce"
+  integrity sha512-6jC/D8O9WLkz+Gqjj6GVa7HuyByVFyTSYyWa1aSiHbpRh5JiR66dL95u7odceaoUktG5vrcgo5N7Wz+iqqobSQ==
   dependencies:
     "@ruiyun/preact-countdown" "^1.9.1"
-    "@ruiyun/preact-image-uploader" "^1.7.2"
+    "@ruiyun/preact-image-uploader" "^1.9.3"
     "@ruiyun/preact-input" "^1.2.66"
     "@ruiyun/preact-layout-suite" "^1.2.77"
     "@ruiyun/preact-line" "^1.2.39"
     "@ruiyun/preact-m-actionsheet" "^1.9.1"
     "@ruiyun/preact-m-date-range-picker" "^1.9.1"
     "@ruiyun/preact-m-picker" "^1.9.2"
-    "@ruiyun/preact-m-tree-picker" "^1.9.2"
+    "@ruiyun/preact-m-tree-picker" "^1.9.3"
     "@ruiyun/preact-number-input" "^1.8.15"
     "@ruiyun/preact-switch" "^1.2.39"
     "@ruiyun/preact-text" "^1.9.1"
@@ -1059,14 +1059,14 @@
     h666-sentry "^1.2.38"
     p-to-r "^1.0.4"
 
-"@ruiyun/preact-m-image-preview@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-image-preview/-/preact-m-image-preview-1.7.2.tgz#aaf7499e8bb93d296aaf78ab821e830f6be69eea"
-  integrity sha512-aYX+i95r4sbPTnFQybuNLh+X2PNtcndk27T9mruZvHQjcqmQ8p3klaaroftaweI6uUXMOgar1a4FLAqkeMvPBg==
+"@ruiyun/preact-m-image-preview@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-image-preview/-/preact-m-image-preview-1.9.3.tgz#f8bc7a4d79e9d9b8d076779481049926c6003153"
+  integrity sha512-KizTK+na7Sxp68kSTtvrDgVdDeTq30uZoLZepRXU8dTEhiq94jXqDyg0Z/wFRtrVmwJH7y9JY30O73FS+ZoOvQ==
   dependencies:
     "@ruiyun/platform-env" "^0.1.2"
     "@ruiyun/preact-image" "^1.2.77"
-    "@ruiyun/preact-m-swiper" "^1.2.63"
+    "@ruiyun/preact-m-swiper" "^1.9.3"
     "@ruiyun/preact-modal" "^1.6.3"
 
 "@ruiyun/preact-m-picker@^1.9.2":
@@ -1132,10 +1132,10 @@
     "@ruiyun/preact-m-auto-list" "^1.9.2"
     "@ruiyun/preact-m-search-bar" "^1.8.20"
 
-"@ruiyun/preact-m-swiper@^1.2.63":
-  version "1.2.63"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-swiper/-/preact-m-swiper-1.2.63.tgz#4653b7f02744a50cdc51b552811b5bdc789bc20a"
-  integrity sha512-kcY5AL6RXoetZTSmZbAOsjcv67YMboAuWAN3BkBH8R/iIHtCTAz37gElPQNK5cM0gI1dX3XLdu4iz0Y8ozYlMQ==
+"@ruiyun/preact-m-swiper@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-swiper/-/preact-m-swiper-1.9.3.tgz#b3b02b5e5040edb229e6ccaae358c706d4d76ddf"
+  integrity sha512-b/UkrJ7WfUnoozCpRpWAn2Ko8SoQMgd63Y3wsltYnHnd3zgP+6SU3leaEcz1jGucG99r1B5D4VCpwN7BOhDU1Q==
 
 "@ruiyun/preact-m-tabbar@^1.9.1":
   version "1.9.1"
@@ -1147,13 +1147,13 @@
     "@ruiyun/preact-text" "^1.9.1"
     p-to-r "^1.0.4"
 
-"@ruiyun/preact-m-tabs@^1.9.1":
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-tabs/-/preact-m-tabs-1.9.1.tgz#4e95b6df961037267a5cb357f02c1239714f7c60"
-  integrity sha512-w/2AYobxpQi4F+XTeJrYKMUAy/3jBeQlSrMhIVPLby/H6157g9eYBajAw+/GkxcTa6/lbgs4KDD61LqMS4WD2Q==
+"@ruiyun/preact-m-tabs@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-tabs/-/preact-m-tabs-1.9.3.tgz#b879913e72a1138ae6e1e5c81408b63151620762"
+  integrity sha512-O7shuinIOmwt+TJtn5eOzdYK9e/wiBuk81Nr3OzhsP8JN6zImgDBJ4WJDF4pwgjAB/zQl1bxkOvd/2CcpQ4+bw==
   dependencies:
     "@ruiyun/preact-layout-suite" "^1.2.77"
-    "@ruiyun/preact-m-swiper" "^1.2.63"
+    "@ruiyun/preact-m-swiper" "^1.9.3"
     "@ruiyun/preact-text" "^1.9.1"
     p-to-r "^1.0.4"
 
@@ -1166,16 +1166,16 @@
     "@ruiyun/preact-modal" "^1.2.20"
     "@ruiyun/preact-text" "^1.2.39"
 
-"@ruiyun/preact-m-tree-picker@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-tree-picker/-/preact-m-tree-picker-1.9.2.tgz#2549fe7e720d5844f060d1a0d4ee11a9f4869b4f"
-  integrity sha512-Z864hNWajvVXMKaAwMNB4ChxTsxUevAUzK0tgG7ZTr1EamK5K4f53L88RA2XnZ7wrZC67LD34WFTdTNAsFCyZA==
+"@ruiyun/preact-m-tree-picker@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-m-tree-picker/-/preact-m-tree-picker-1.9.3.tgz#90dd722e8a127ed9a3b64d54a60373a8a3d38323"
+  integrity sha512-Uxf+6/wyDE2v2mfdL1FVMac6zI343ADv6YwtUTz7Hub7O+mHdaTsSrYGmsVqxhtIKhFAhh4frsjaJJZpqAx11w==
   dependencies:
     "@ruiyun/preact-layout-suite" "^1.2.77"
     "@ruiyun/preact-line" "^1.2.39"
     "@ruiyun/preact-loading" "^1.2.20"
     "@ruiyun/preact-m-scroller" "^1.9.2"
-    "@ruiyun/preact-m-tabs" "^1.9.1"
+    "@ruiyun/preact-m-tabs" "^1.9.3"
     "@ruiyun/preact-modal" "^1.6.3"
     "@ruiyun/preact-text" "^1.9.1"
     p-to-r "^1.0.4"

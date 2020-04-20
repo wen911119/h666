@@ -6,7 +6,7 @@ import Text from '@ruiyun/preact-text'
 
 import DemoPage from '../../components/DemoPage'
 
-const Item1 = props => {
+const Item1 = (props) => {
   console.log('render-item-1', props.active)
   return (
     <RowView
@@ -20,7 +20,7 @@ const Item1 = props => {
   )
 }
 
-const Item2 = props => {
+const Item2 = (props) => {
   console.log('render-item-2', props.active)
   return (
     <RowView
@@ -34,7 +34,7 @@ const Item2 = props => {
   )
 }
 
-const Item3 = props => {
+const Item3 = (props) => {
   console.log('render-item-3', props.active)
   return (
     <RowView
@@ -51,15 +51,18 @@ const Item3 = props => {
 }
 export default class ScrollerDemo extends Component {
   state = {
-    current: 0
+    current: 0,
   }
-  onSwipe = index => {
+
+  onSwipe = (index) => {
     this.setState({ current: index })
   }
+
   doSwipe = () => {
     this.setState({ current: 1, text: '第一张2' })
   }
-  render () {
+
+  render() {
     return (
       <DemoPage title='Swiper'>
         <Swiper onChange={this.onSwipe} activeIndex={this.state.current}>

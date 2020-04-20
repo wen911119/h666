@@ -12,25 +12,25 @@ const tabbarConfig = {
   options: [
     {
       text: '基础组件',
-      icon: 'icon-zujian'
+      icon: 'icon-zujian',
     },
     {
       text: '复合组件',
-      icon: 'icon-zujian1'
+      icon: 'icon-zujian1',
     },
     {
       text: 'API',
-      icon: 'icon-api1'
+      icon: 'icon-api1',
     },
     {
       text: '指标',
-      icon: 'icon-zhibiao2'
-    }
+      icon: 'icon-zhibiao2',
+    },
   ],
   color: '#A9AEB1',
   activeColor: '#30AD1C',
   textSize: 24,
-  iconSize: 40
+  iconSize: 40,
 }
 
 export default class Index extends Component {
