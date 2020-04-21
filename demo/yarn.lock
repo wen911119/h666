@@ -934,10 +934,10 @@
     "@ruiyun/preact-loading" "^1.2.39"
     h666-sentry "^1.2.38"
 
-"@ruiyun/preact-form@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@ruiyun/preact-form/-/preact-form-1.4.5.tgz#737f7b61e51aa8060f39111cce6d246c8ed1eb32"
-  integrity sha512-2y5gnQ19gWO1UVlxanKck71Xb1e+NzqIe9S/IlWSkCo2rinumFwsWOc9GjkfKX+9kkKvkvUf/h5mAgR5E/MADg==
+"@ruiyun/preact-form@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@ruiyun/preact-form/-/preact-form-1.9.4.tgz#d39f1dc6f1abbfe1011ad47b17cb59ebc522fe70"
+  integrity sha512-tNYgaC3fo9qKOORK7sa9uVi/aMJ8fEFcrQn64Ae8gAIlr+eNJT/vU+OdQcsUXrocDTkhSnw1XQWF8Cn/n/tlpw==
   dependencies:
     dlv "^1.1.3"
 

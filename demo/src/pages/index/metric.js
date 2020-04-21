@@ -10,22 +10,22 @@ export default class Metric extends Component {
     demos: [
       {
         name: '访问信息',
-        route: 'analytics'
+        route: 'analytics',
       },
       {
         name: '加载性能',
-        route: 'timing'
+        route: 'timing',
       },
       {
         name: '错误日志',
-        route: 'errorLog'
+        route: 'errorLog',
       },
       {
         name: '关于',
         route: 'appInfo',
-        action: 'pushToNative'
+        action: 'pushToNative',
       },
-    ]
+    ],
   }
   render() {
     return (
@@ -37,10 +37,13 @@ export default class Metric extends Component {
               h666默认会收集以下指标
             </Text>
           </SlotColumnView>
-          {this.state.demos.map(demo => (
+          {this.state.demos.map((demo) => (
             <DemoLink demo={demo} key={demo.route} action={demo.action} />
           ))}
         </ColumnView>
+        <Text>
+          ServiceWorker is {'serviceWorker' in navigator ? 'ok' : 'not ok'}
+        </Text>
       </Scroller>
     )
   }

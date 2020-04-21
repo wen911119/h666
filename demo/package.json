@@ -18,7 +18,7 @@
   "dependencies": {
     "@ruiyun/ajax": "^1.0.5",
     "@ruiyun/preact-button": "^1.9.1",
-    "@ruiyun/preact-form": "^1.4.5",
+    "@ruiyun/preact-form": "^1.9.4",
     "@ruiyun/preact-icon": "^1.2.39",
     "@ruiyun/preact-image": "^1.2.77",
     "@ruiyun/preact-image-uploader": "^1.9.3",
