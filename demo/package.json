@@ -55,7 +55,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.set": "^4.3.2",
     "p-to-r": "^1.0.4",
-    "preact": "^10.4.0"
+    "preact": "^10.4.1"
   },
   "devDependencies": {
     "@ruiyun/h666-cli": "^2.0.0-rc.19",
