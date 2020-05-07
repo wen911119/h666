@@ -11,7 +11,7 @@ module.exports = function (port) {
   webpackConfig.output.filename = '[name].bundle.js'
   const compiler = webpack(webpackConfig)
   const devServerOptions = {
-    host: ip.address(),
+    // host: ip.address(),
     hot: true,
     stats: {
       colors: true
@@ -20,8 +20,8 @@ module.exports = function (port) {
 
   const server = new WebpackDevServer(compiler, devServerOptions)
 
-  server.listen(port, ip.address(), () => {
-    console.log(`Starting server on http://${ip.address()}:${port}`)
+  server.listen(port, '0.0.0.0', () => {
+    console.log(`Starting server on http://${ip.address()}:${port} or localhost::${port}`)
   })
   // 改小程序的endpoint
   const wechatAppJsPath = process.cwd() + '/wechat/app.js'
