@@ -11,7 +11,7 @@ module.exports = function (port) {
   webpackConfig.output.filename = '[name].bundle.js'
   const compiler = webpack(webpackConfig)
   const devServerOptions = {
-    // host: ip.address(),
+    host: ip.address(),
     hot: true,
     stats: {
       colors: true
