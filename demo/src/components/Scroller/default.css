@@ -1,0 +1,37 @@
+
+css-icon {
+  display: inline-block;
+  height: 1em; width: 1em;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: -9999px;
+  vertical-align: middle;
+  position: relative;
+}
+css-icon::before,
+css-icon::after {
+  content: '';
+  box-sizing: inherit;
+  position: absolute;
+  left: 50%; top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #999;
+}
+
+.icon-downward {
+  transition: transform 330ms;
+}
+
+.icon-downward::before {
+  height: .65em; width: .65em;
+  border-style: solid;
+  border-width: 2px 0 0 2px;
+  -ms-transform: translate(-50%, -50%) rotate(-135deg);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+.icon-downward::after {
+  height: 1em;
+  border-left: 2px solid;
+  top: 40%;
+}

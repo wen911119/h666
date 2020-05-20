@@ -1,0 +1,18 @@
+.scrollerWithHeight {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollerWithNoHeight {
+  overflow: hidden;
+}
+
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overscroll-behavior-y: contain;
+}

@@ -1,14 +1,22 @@
 import { h, Component } from 'preact'
-import Scroller, {
-  ScrollerWithRefreshAndLoadMore,
-  ScrollerWithRefresh,
+// import Scroller, {
+//   ScrollerWithRefreshAndLoadMore,
+//   ScrollerWithRefresh,
+//   ScrollerWithLoadMore,
+// } from '@ruiyun/preact-m-scroller'
+import { WithModal } from '@ruiyun/preact-modal'
+import {
   ScrollerWithLoadMore,
-} from '@ruiyun/preact-m-scroller'
+  BaseScroller,
+  ScrollerFixed,
+} from '../../components/Scroller'
 import { XCenterView, ColumnView, RowView } from '@ruiyun/preact-layout-suite'
+
 import Text from '@ruiyun/preact-text'
 
 import DemoPage from '../../components/DemoPage'
 
+@WithModal
 export default class ScrollerDemo extends Component {
   state = {
     list1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -65,15 +73,40 @@ export default class ScrollerDemo extends Component {
     }, 1500)
   }
 
+  openModal = () => {
+    console.log(this.s)
+    this.props.$modal.show({
+      content: () => (
+        <ColumnView bgColor='#fff'>
+          <ScrollerFixed height='300px'>
+            {this.state.list1.map((item) => (
+              <RowView
+                key={item}
+                height={200}
+                bgColor='#99CCCC'
+                hAlign='center'
+                margin={[0, 0, 30, 0]}
+              >
+                <Text color='#fff'>item-{item}</Text>
+              </RowView>
+            ))}
+          </ScrollerFixed>
+        </ColumnView>
+      ),
+      position: 'bottom',
+      allowContentTouchMove: true,
+    })
+  }
+
   render() {
     const { list1, list2, list3, list4 } = this.state
     return (
-      <DemoPage title='Scroller'>
+      <BaseScroller title='Scroller' height='100%'>
         <ColumnView padding={[0, 30, 0, 30]}>
           <XCenterView height={100}>
             <Text size={28}>固定高度(300px)的默认Scroller</Text>
           </XCenterView>
-          <Scroller height='300px'>
+          <BaseScroller height='300px'>
             {list1.map((item) => (
               <RowView
                 key={item}
@@ -85,12 +118,12 @@ export default class ScrollerDemo extends Component {
                 <Text color='#fff'>item-{item}</Text>
               </RowView>
             ))}
-          </Scroller>
+          </BaseScroller>
           <RowView height={100} />
-          <XCenterView height={100}>
+          {/* <XCenterView height={100}>
             <Text size={28}>带下拉刷新的Scroller</Text>
-          </XCenterView>
-          <ScrollerWithRefresh height='300px' onRefresh={this.onRefresh}>
+          </XCenterView> */}
+          {/* <ScrollerWithRefresh height='300px' onRefresh={this.onRefresh}>
             {list2.map((item) => (
               <RowView
                 key={item}
@@ -102,29 +135,35 @@ export default class ScrollerDemo extends Component {
                 <Text color='#fff'>item-{item}</Text>
               </RowView>
             ))}
-          </ScrollerWithRefresh>
+          </ScrollerWithRefresh> */}
           <RowView height={100} />
-          <XCenterView height={100}>
+          <XCenterView height={100} onClick={this.openModal}>
             <Text size={28}>带加载更多的Scroller</Text>
           </XCenterView>
-          <ScrollerWithLoadMore height='350px' onLoadMore={this.onLoadMore}>
-            {list3.map((item) => (
-              <RowView
-                key={item}
-                height={200}
-                bgColor='#99CCFF'
-                hAlign='center'
-                margin={[0, 0, 30, 0]}
-              >
-                <Text color='#fff'>item-{item}</Text>
-              </RowView>
-            ))}
+          <ScrollerWithLoadMore
+            onLoadMore={this.onLoadMore}
+            ref={(s) => (this.s = s)}
+          >
+            {list3.map((item) => {
+              console.log(item)
+              return (
+                <RowView
+                  key={item}
+                  height={200}
+                  bgColor='#99CCFF'
+                  hAlign='center'
+                  margin={[0, 0, 30, 0]}
+                >
+                  <Text color='#fff'>item-{item}</Text>
+                </RowView>
+              )
+            })}
           </ScrollerWithLoadMore>
-          <RowView height={100} />
+          {/* <RowView height={100} />
           <XCenterView height={100}>
             <Text size={28}>带下拉刷新和加载更多的Scroller</Text>
-          </XCenterView>
-          <ScrollerWithRefreshAndLoadMore
+          </XCenterView> */}
+          {/* <ScrollerWithRefreshAndLoadMore
             height='300px'
             onRefresh={this.onRefreshForList4}
             onLoadMore={this.onLoadMoreForList4}
@@ -140,10 +179,10 @@ export default class ScrollerDemo extends Component {
                 <Text color='#fff'>item-{item}</Text>
               </RowView>
             ))}
-          </ScrollerWithRefreshAndLoadMore>
-          <RowView height={300} />
+          </ScrollerWithRefreshAndLoadMore> */}
+          {/* <RowView height={300} /> */}
         </ColumnView>
-      </DemoPage>
+      </BaseScroller>
     )
   }
 }

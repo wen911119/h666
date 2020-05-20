@@ -13,7 +13,7 @@ module.exports = async function (directory) {
       }
     ])).directory
   }
-
+  console.log('正在下载模版，请稍等...')
   const archive = await gittar.fetch('wen911119/h666')
   await gittar.extract(archive, path.resolve(process.cwd(), directory), {
     strip: 2,
