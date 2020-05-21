@@ -3,6 +3,7 @@
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
 }
 
 .scrollerWithNoHeight {

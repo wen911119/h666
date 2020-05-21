@@ -1,15 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'preact/compat'
-import { getScrollEventTarget } from './utils'
+import { getScrollEventTarget, throttle } from './utils'
+
 const usePosition = (scrollerId, willBottomThreshold = 200) => {
   const [position, updatePosition] = useState(0)
   useEffect(() => {
     const scrollEventTarget = getScrollEventTarget(
       document.getElementById(scrollerId)
     )
-    if (scrollEventTarget.__LISTEN_BY__) {
-      return
-    }
-    scrollEventTarget.__LISTEN_BY__ = scrollerId
     let scrollEle, observerEle
     if (scrollEventTarget === window) {
       scrollEle = document.documentElement
@@ -43,20 +40,25 @@ const usePosition = (scrollerId, willBottomThreshold = 200) => {
       }
       updatePosition(newPosition)
     }
-    scrollEventTarget.addEventListener('scroll', computePosition, {
+    const computePositionThrottle1 = throttle(computePosition, 10, 100)
+    const computePositionThrottle2 = throttle(computePosition, 10, 100)
+    const computePositionThrottle3 = throttle(computePosition, 10, 300)
+    scrollEventTarget.addEventListener('scroll', computePositionThrottle1, {
       passive: true,
     })
+    window.addEventListener('resize', computePositionThrottle3)
     // eslint-disable-next-line
-    const observer = new MutationObserver(computePosition)
+    let observer = new MutationObserver(computePositionThrottle2)
     observer.observe(observerEle, {
       childList: true,
       subtree: true,
     })
     computePosition()
     return function clearUp() {
-      scrollEventTarget.removeEventListener('scroll', computePosition, {
+      scrollEventTarget.removeEventListener('scroll', computePositionThrottle1, {
         passive: true,
       })
+      window.removeEventListener('resize', computePositionThrottle3)
       observer.disconnect()
       observer = null
     }

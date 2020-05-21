@@ -4,7 +4,7 @@ import p2r from 'p-to-r'
 import classNames from './scroller.css'
 
 import useId from './useId'
-import useFixed from './useFixed'
+import usePreventBounce from './usePreventBounce'
 import usePosition from './usePosition'
 import useLoadMore from './useLoadMore'
 import useRefresh from './useRefresh'
@@ -41,10 +41,10 @@ export const BaseScroller = ({
   )
 }
 
-export const ScrollerFixed = (props) => {
+export const ScrollerWithPreventBounce = (props) => {
   const id = useId()
   const position = usePosition(id)
-  useFixed(id, position)
+  usePreventBounce(id, position)
   return <BaseScroller id={id} {...props} />
 }
 

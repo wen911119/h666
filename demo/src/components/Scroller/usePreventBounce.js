@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback, useRef } from 'preact/compat'
+import { useEffect, useRef } from 'preact/compat'
 import { computePosition } from './utils'
 
 // 解决滚动穿透问题
 // 等overscroll-behavior普及时就可以去掉了
-const useFixed = (id, position) => {
+const usePreventBounce = (id, position) => {
   useEffect(() => {
     const ele = document.getElementById(id)
     const touchstartPoint = useRef(null)
@@ -17,11 +17,12 @@ const useFixed = (id, position) => {
       )
       if (
         (position < 2 && yDistance > 0 && Math.abs(angle) < 30) ||
-        (position === 4 && yDistance < 0 && Math.abs(angle) < 30)
+        ((position === 0 || position === 4) && yDistance < 0 && Math.abs(angle) < 30)
       ) {
-        // 在顶部下拉或者底部下拉
+        // 在顶部阻止下拉
+        // 在底部阻止上拉
+        // 内容高度不足以滚动时阻止上下拉
         event.preventDefault()
-        event.stopPropagation()
       }
     }
     if (position < 2 || position === 4) {
@@ -33,6 +34,7 @@ const useFixed = (id, position) => {
       })
     }
     return function cleanup() {
+      // 清理
       ele.removeEventListener('touchstart', onTouchStartHandler, {
         passive: true,
       })
@@ -43,4 +45,4 @@ const useFixed = (id, position) => {
   }, [id, position])
 }
 
-export default useFixed
+export default usePreventBounce
