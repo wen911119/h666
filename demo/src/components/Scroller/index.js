@@ -11,8 +11,6 @@ import useRefresh from './useRefresh'
 
 import { DefaultLoadMoreFooter, DefaultRefreshHeader } from './default'
 
-
-
 export const BaseScroller = ({
   children,
   height,
@@ -24,7 +22,11 @@ export const BaseScroller = ({
   const style = {}
   if (height) {
     classNamesArr.push(classNames.scrollerWithHeight)
-    style.height = p2r(height)
+    if (height === 'flex1') {
+      classNamesArr.push(classNames.flex1)
+    } else {
+      style.height = p2r(height)
+    }
   } else {
     classNamesArr.push(classNames.scrollerWithNoHeight)
   }
@@ -41,11 +43,11 @@ export const BaseScroller = ({
   )
 }
 
-export const ScrollerWithPreventBounce = (props) => {
+export const ScrollerWithPreventBounce = ({ degree, ...otherProps }) => {
   const id = useId()
   const position = usePosition(id)
-  usePreventBounce(id, position)
-  return <BaseScroller id={id} {...props} />
+  usePreventBounce(id, position, degree)
+  return <BaseScroller id={id} {...otherProps} />
 }
 
 export const ScrollerWithLoadMore = ({
@@ -70,14 +72,25 @@ export const ScrollerWithRefresh = ({
   children,
   RefreshHeader = DefaultRefreshHeader,
   refreshHeaderHeight,
+  refreshDamping,
+  degree,
   ...otherProps
 }) => {
   const id = useId()
   const position = usePosition(id)
-  const [stage, distance] = useRefresh(id, position, onRefresh)
+  console.log(position, 11111, id)
+  const { stage, distance } = useRefresh(id, position, onRefresh, undefined, {
+    refreshHeaderHeight,
+    refreshDamping,
+    degree,
+  })
   return (
     <BaseScroller id={id} {...otherProps}>
-      <RefreshHeader stage={stage} distance={distance} refreshHeaderHeight={refreshHeaderHeight} />
+      <RefreshHeader
+        stage={stage}
+        distance={distance}
+        refreshHeaderHeight={refreshHeaderHeight}
+      />
       {children}
     </BaseScroller>
   )
@@ -90,15 +103,25 @@ export const ScrollerWithRefreshAndLoadMore = ({
   RefreshHeader = DefaultRefreshHeader,
   LoadMoreFooter = DefaultLoadMoreFooter,
   refreshHeaderHeight,
+  refreshDamping,
+  degree,
   ...otherProps
 }) => {
   const id = useId()
   const position = usePosition(id)
   const [stage, retry, reset] = useLoadMore(position, onLoadMore)
-  const [step, distance] = useRefresh(id, position, onRefresh, reset)
+  const { stage: step, distance } = useRefresh(id, position, onRefresh, reset, {
+    refreshHeaderHeight,
+    refreshDamping,
+    degree,
+  })
   return (
     <BaseScroller id={id} {...otherProps}>
-      <RefreshHeader stage={step} distance={distance} refreshHeaderHeight={refreshHeaderHeight} />
+      <RefreshHeader
+        stage={step}
+        distance={distance}
+        refreshHeaderHeight={refreshHeaderHeight}
+      />
       {children}
       <LoadMoreFooter stage={stage} onRetry={retry} />
     </BaseScroller>

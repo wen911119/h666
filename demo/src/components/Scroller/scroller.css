@@ -2,12 +2,14 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
-  -webkit-overflow-scrolling: touch;
-  flex: 1;
 }
 
 .scrollerWithNoHeight {
   overflow: hidden;
+}
+
+.flex1 {
+  flex: 1;
 }
 
 .hideScrollBar::-webkit-scrollbar {

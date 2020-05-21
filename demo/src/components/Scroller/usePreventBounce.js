@@ -3,7 +3,7 @@ import { computePosition } from './utils'
 
 // 解决滚动穿透问题
 // 等overscroll-behavior普及时就可以去掉了
-const usePreventBounce = (id, position) => {
+const usePreventBounce = (id, position, degree = 90) => {
   useEffect(() => {
     const ele = document.getElementById(id)
     const touchstartPoint = useRef(null)
@@ -16,8 +16,8 @@ const usePreventBounce = (id, position) => {
         event.touches[0]
       )
       if (
-        (position < 2 && yDistance > 0 && Math.abs(angle) < 30) ||
-        ((position === 0 || position === 4) && yDistance < 0 && Math.abs(angle) < 30)
+        (position < 2 && yDistance > 0 && Math.abs(angle) < degree) ||
+        ((position === 0 || position === 4) && yDistance < 0 && Math.abs(angle) < degree)
       ) {
         // 在顶部阻止下拉
         // 在底部阻止上拉
@@ -42,7 +42,7 @@ const usePreventBounce = (id, position) => {
         passive: false,
       })
     }
-  }, [id, position])
+  }, [id, position, degree])
 }
 
 export default usePreventBounce
