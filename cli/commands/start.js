@@ -21,7 +21,7 @@ module.exports = function (port) {
   const server = new WebpackDevServer(compiler, devServerOptions)
 
   server.listen(port, '0.0.0.0', () => {
-    console.log(`Starting server on http://${ip.address()}:${port} or localhost::${port}`)
+    console.log(`Starting server on http://${ip.address()}:${port} or localhost:${port}`)
   })
   // 改小程序的endpoint
   const wechatAppJsPath = process.cwd() + '/wechat/app.js'
