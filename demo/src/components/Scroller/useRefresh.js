@@ -48,7 +48,7 @@ const useRefresh = (id, position, onRefresh, resetLoadMore, config) => {
       }
     }
     const onTouchEndHandler = (event) => {
-      if (refreshState.stage === 2) {
+      if (refreshState.stage < 3) {
         const { yDistance } = computePosition(
           startPoint.current,
           event.changedTouches[0]
