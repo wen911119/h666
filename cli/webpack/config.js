@@ -34,7 +34,7 @@ const serviceWorker = packageInfo.ServiceWorker ? `
 if ('serviceWorker' in navigator) {
   if (new RegExp(${packageInfo.ServiceWorker}).test(navigator.userAgent)) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      navigator.serviceWorker.register('./sw.js').then(function(reg) {
         console.log('service worker 注册完成', reg);
         setInterval(reg.update, 300000)
       }, function(err) {
