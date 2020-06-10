@@ -57,6 +57,9 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
+  "resolutions": {
+    "http-proxy-middleware": "^1.0.4"
+  },
   "publishConfig": {
     "access": "public"
   }
