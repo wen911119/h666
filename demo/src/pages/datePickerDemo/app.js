@@ -8,13 +8,15 @@ import Text from '@ruiyun/preact-text'
 @WithDateRangePicker
 export default class DatePickerDemo extends Component {
   state = {
-    date: undefined
+    date: undefined,
   }
+
   onChose = (date) => {
     this.setState({
-      date
+      date,
     })
   }
+
   open = () => {
     const { date } = this.state
     this.props.$dateRangePicker.show({
@@ -22,9 +24,10 @@ export default class DatePickerDemo extends Component {
       min: dayjs().subtract(30, 'day').format('YYYY/MM/DD'),
       max: dayjs().add(30, 'day').format('YYYY/MM/DD'),
       cb: this.onChose,
-      single: true
+      single: true,
     })
   }
+
   render() {
     const { date } = this.state
     return (

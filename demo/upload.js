@@ -1,6 +1,6 @@
 const region = process.env.region
-let accessKeyId = process.env.accessKeyId
-let accessKeySecret = process.env.accessKeySecret
+const accessKeyId = process.env.accessKeyId
+const accessKeySecret = process.env.accessKeySecret
 const bucket = process.env.bucket
 const targetDir = process.env.targetDir || '/'
 
@@ -12,11 +12,12 @@ if (region && accessKeyId && accessKeySecret && bucket) {
     region,
     accessKeyId,
     accessKeySecret,
-    bucket
+    bucket,
   })
   const basePath = path.resolve('./dist')
-  fs.readdir(basePath, function(err, files) {
-    files.forEach(function(file) {
+  fs.readdir(basePath, function (err, files) {
+    console.log(err)
+    files.forEach(function (file) {
       console.log(basePath + '/' + file)
       const cacheControl = file.includes('.html')
         ? 'max-age=0, s-maxage=63072000'
@@ -26,13 +27,13 @@ if (region && accessKeyId && accessKeySecret && bucket) {
       client
         .put(targetDir + file, basePath + '/' + file, {
           headers: {
-            'Cache-Control': cacheControl
-          }
+            'Cache-Control': cacheControl,
+          },
         })
-        .then(result => {
+        .then((result) => {
           console.log('put success: %j', result)
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('error: %j', error)
           throw new Error('upload oss fail !')
         })

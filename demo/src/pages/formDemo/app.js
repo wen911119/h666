@@ -5,7 +5,7 @@ import Form from '@ruiyun/preact-form'
 import { required, range } from '@ruiyun/preact-form/validate'
 import Line from '@ruiyun/preact-line'
 import Ajax from '@ruiyun/ajax'
-import Scroller from '@ruiyun/preact-m-scroller'
+import { ScrollerWithPreventBounce } from '@ruiyun/preact-m-scroller'
 
 import {
   FormTextInput,
@@ -20,7 +20,11 @@ import Indicator from 'h5-indicator'
 
 import SalaryInput from './components/salaryInput'
 import DemoTitle from '../../components/DemoTitle'
-import { REGIONS_OPTIONS, CITY_OPTIONS, JOB_OPTIONS } from '../../constans/other'
+import {
+  REGIONS_OPTIONS,
+  CITY_OPTIONS,
+  JOB_OPTIONS,
+} from '../../constans/other'
 
 const phoneCheck = async (phoneNum) => {
   const lid = Indicator.showLoading()
@@ -102,7 +106,7 @@ export default class FormDemo extends Component {
   render() {
     return (
       <ColumnView height='100%'>
-        <Scroller>
+        <ScrollerWithPreventBounce>
           <DemoTitle title='Form' />
           <ColumnView padding={[0, 30, 0, 30]}>
             <Form ref={(form) => (this.form = form)}>
@@ -199,13 +203,16 @@ export default class FormDemo extends Component {
             </Form>
             <RowView height={200} />
           </ColumnView>
-        </Scroller>
+        </ScrollerWithPreventBounce>
         <RowView
           height={100}
           hAlign='between'
           padding={[0, 30, 0, 30]}
           bgColor='#fff'
-          style={{ boxShadow: 'rgba(0, 0, 0, 0.1) 0px -5px 5px -5px', zIndex: 1 }}
+          style={{
+            boxShadow: 'rgba(0, 0, 0, 0.1) 0px -5px 5px -5px',
+            zIndex: 1,
+          }}
         >
           <Button
             onClick={this.onReset}

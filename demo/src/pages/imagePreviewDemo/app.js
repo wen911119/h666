@@ -11,13 +11,15 @@ export default class ImagePreviewDemo extends Component {
     images: [
       'https://h666-demo.ruiyun2015.com/1910151352-1.jpg',
       'https://h666-demo.ruiyun2015.com/1910151352-2.jpg',
-      'https://h666-demo.ruiyun2015.com/1910151352-5.jpg'
-    ]
+      'https://h666-demo.ruiyun2015.com/1910151352-5.jpg',
+    ],
   }
-  preview = index => {
+
+  preview = (index) => {
     this.props.$preview(this.state.images, index)
   }
-  render () {
+
+  render() {
     return (
       <DemoPage title='ImagePreview'>
         <RowView hAlign='center'>

@@ -6,9 +6,10 @@ import DemoPage from '../../components/DemoPage'
 
 export default class LoadingDemo extends Component {
   state = {
-    name: 'wenjun'
+    name: 'wenjun',
   }
-  render () {
+
+  render() {
     return (
       <DemoPage title='Loading'>
         <SlotColumnView

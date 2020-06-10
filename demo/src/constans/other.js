@@ -90,9 +90,4 @@ export const REGIONS_OPTIONS = [
   '澳门特别行政区',
 ]
 
-export const JOB_OPTIONS = [
-  '开发工程师',
-  '测试工程师',
-  '运营专员',
-  '产品经理',
-]
+export const JOB_OPTIONS = ['开发工程师', '测试工程师', '运营专员', '产品经理']

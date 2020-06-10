@@ -11,9 +11,10 @@ import DemoPage from '../../components/DemoPage'
 export default class NavDemo3 extends Component {
   goRoot = () => {
     this.props.$router.back(2, {
-      age: Date.now()
+      age: Date.now(),
     })
   }
+
   componentDidMount() {
     // this.props.$router.onWakeUp(() => {
     //   Indicator.toast('页面唤醒', {
@@ -21,6 +22,7 @@ export default class NavDemo3 extends Component {
     //   })
     // })
   }
+
   render() {
     return (
       <DemoPage title='Navigation2'>

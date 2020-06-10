@@ -6,20 +6,22 @@ const salaryRange = {
   产品经理: '8000~30000',
   测试工程师: '6000~20000',
   开发工程师: '10000~50000',
-  运营专员: '4500~12000'
+  运营专员: '4500~12000',
 }
 
 export default class FormInput extends Component {
-  onChange = value => {
+  onChange = (value) => {
     this.props.sync(value)
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.role !== this.props.role) {
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.role !== this.props.role) {
       // 清空本输入框
       setTimeout(this.props.sync, 0)
     }
   }
-  render () {
+
+  render() {
     const { label, err, role, required, height, ...otherProps } = this.props
     console.log('render-salary-input')
     return (

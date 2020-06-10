@@ -17,8 +17,8 @@ const PickerItem = ({ onClick, values, children }) => (
     <Text>{children}</Text>
     <SlotColumnView>
       {values
-        .map(i => options[i])
-        .map(item => (
+        .map((i) => options[i])
+        .map((item) => (
           <Text color='#CC6699' key={item}>
             {item}
           </Text>
@@ -34,42 +34,49 @@ export default class PickerDemo extends Component {
   state = {
     name: '打开picker',
     picker1: [],
-    picker2: []
+    picker2: [],
   }
+
   openPicker1 = () => {
     this.props
       .$picker({
         title: '请选择籍贯',
         options,
-        values: this.state.picker1
+        values: this.state.picker1,
       })
-      .then(indexs => {
+      .then((indexs) => {
         this.setState({
-          picker1: indexs
+          picker1: indexs,
         })
       })
   }
+
   openPicker2 = () => {
     this.props
       .$picker({
         title: '请选择喜欢的城市',
         options,
         mode: 3,
-        values: this.state.picker2
+        values: this.state.picker2,
       })
-      .then(indexs => {
+      .then((indexs) => {
         this.setState({
-          picker2: indexs
+          picker2: indexs,
         })
       })
   }
-  render () {
+
+  render() {
     const { picker1, picker2 } = this.state
     return (
       <DemoPage title='Picker'>
         <SlotColumnView padding={[0, 30, 0, 30]} slot={30}>
-          <PickerItem values={picker1} onClick={this.openPicker1}>打开picker(单选)</PickerItem>
-          <PickerItem values={picker2} onClick={this.openPicker2}>打开picker(多选)</PickerItem>
+          <PickerItem values={picker1} onClick={this.openPicker1}>
+            打开picker(单选)
+          </PickerItem>
+          <PickerItem values={picker2} onClick={this.openPicker2}>
+            打开picker(多选)
+          </PickerItem>
         </SlotColumnView>
       </DemoPage>
     )

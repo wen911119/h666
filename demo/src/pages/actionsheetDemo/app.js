@@ -15,17 +15,24 @@ export default class ActionSheetDemo extends Component {
         ['增值税普通发票', '电子发票', '定额发票'],
         { cancelColor: '#f8584f' }
       )
-      .then(index => {
+      .then((index) => {
         console.log(index)
       })
   }
 
-  render () {
+  render() {
     return (
       <DemoPage title='ActionSheet'>
         <SlotColumnView slot={30} hAlign='center'>
           <Image src={codeImg} width={626} height={334} />
-          <Button width={600} height={80} color='#99CC66' onClick={this.openActionSheet}>打开ActionSheet</Button>
+          <Button
+            width={600}
+            height={80}
+            color='#99CC66'
+            onClick={this.openActionSheet}
+          >
+            打开ActionSheet
+          </Button>
         </SlotColumnView>
       </DemoPage>
     )

@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { AutoListWithRefresh } from '@ruiyun/preact-m-auto-list'
+import AutoList from '@ruiyun/preact-m-auto-list'
 import {
   ColumnView,
   SlotColumnView,
@@ -163,8 +163,9 @@ export default class AutolistDemo extends Component {
         >
           <css-icon className={classNames['icon-upward']} />
         </XCenterView>
-        <AutoListWithRefresh
-          pageSize={20}
+        <AutoList
+          height='flex1'
+          pageSize={40}
           params={params}
           fetchListData={this.fetchListData}
           renderItem={this.renderItem}
@@ -173,6 +174,7 @@ export default class AutolistDemo extends Component {
           ref={(s) => (this.list = s)}
           itemClickHandler={this.onItemClick}
           extraData={extraData}
+          refreshable
         />
       </ColumnView>
     )

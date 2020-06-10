@@ -41,31 +41,36 @@ export default class TabsDemo extends Component {
   openCenterModal = () => {
     this.props.$modal.show({ content: renderModalContent, mask: 0.5 })
   }
+
   openLeftModal = () => {
     this.props.$modal.show({
       content: renderLeftModalContent,
-      position: 'left'
+      position: 'left',
     })
   }
+
   openRightModal = () => {
     this.props.$modal.show({
       content: renderRightModalContent,
-      position: 'right'
+      position: 'right',
     })
   }
+
   openTopModal = () => {
     this.props.$modal.show({
       content: renderTopModalContent,
-      position: 'top'
+      position: 'top',
     })
   }
+
   openBottomModal = () => {
     this.props.$modal.show({
       content: renderBottomModalContent,
-      position: 'bottom'
+      position: 'bottom',
     })
   }
-  render () {
+
+  render() {
     return (
       <DemoPage title='Modal'>
         <SlotColumnView hAlign='center' slot={30}>

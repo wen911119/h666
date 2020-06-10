@@ -13,7 +13,12 @@ const InputDemo = () => {
   const [keywords, updateKeywords] = useState()
   return (
     <DemoPage title='Input'>
-      <SlotColumnView hAlign='center' vAlign='center' slot={20} padding={[0, 0, 100, 0]}>
+      <SlotColumnView
+        hAlign='center'
+        vAlign='center'
+        slot={20}
+        padding={[0, 0, 100, 0]}
+      >
         <Text color='#FF9966'>最基本的文本输入框(最多5个字)</Text>
         <Input
           className={classNames.input}
@@ -58,13 +63,28 @@ const InputDemo = () => {
         />
         <SlotColumnView hAlign='center'>
           <Text color='#CC6699'>搜索输入框带</Text>
-          <Text color='#CC6699' size={24}>带清除按钮</Text>
-          <Text color='#CC6699' size={24}>输入去抖</Text>
-          <Text color='#CC6699' size={24}>修复ios搜索键盘</Text>
-          <Text color='#CC6699' size={24}>修复拼音输入备选词触发的bug</Text>
-          <Text color='#336699' size={26}>【{keywords}】</Text>
+          <Text color='#CC6699' size={24}>
+            带清除按钮
+          </Text>
+          <Text color='#CC6699' size={24}>
+            输入去抖
+          </Text>
+          <Text color='#CC6699' size={24}>
+            修复ios搜索键盘
+          </Text>
+          <Text color='#CC6699' size={24}>
+            修复拼音输入备选词触发的bug
+          </Text>
+          <Text color='#336699' size={26}>
+            【{keywords}】
+          </Text>
         </SlotColumnView>
-        <RowView height={60} width={550} bgColor='#fff' padding={[0, 15, 0, 15]}>
+        <RowView
+          height={60}
+          width={550}
+          bgColor='#fff'
+          padding={[0, 15, 0, 15]}
+        >
           <SearchInput
             className={classNames.searchinput}
             placeholder='请输入关键字搜索'

@@ -4,20 +4,22 @@ import style from './app.css'
 
 export default class Timing extends Component {
   state = {
-    name: 'wenjun'
+    name: 'wenjun',
   }
-  componentDidMount () {
+
+  componentDidMount() {
     document.addEventListener(
       'plusready',
       () => {
         Indicator.toast('plusready', {
-          timeout: 10000
+          timeout: 10000,
         })
       },
       false
     )
   }
-  render () {
+
+  render() {
     return (
       <div>
         Timing

@@ -1,12 +1,12 @@
 import { h } from 'preact'
-import Scroller from '@ruiyun/preact-m-scroller'
+import { ScrollerWithPreventBounce } from '@ruiyun/preact-m-scroller'
 import DemoTitle from '../DemoTitle'
 
 const DemoPage = ({ children, height = '100%', title }) => (
-  <Scroller height={height}>
+  <ScrollerWithPreventBounce height={height}>
     <DemoTitle title={title} />
     {children}
-  </Scroller>
+  </ScrollerWithPreventBounce>
 )
 
 export default DemoPage

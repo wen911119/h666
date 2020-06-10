@@ -7,29 +7,30 @@ import Line from '@ruiyun/preact-line'
 import DemoPage from '../../components/DemoPage'
 
 // 可以是async异步获取
-const getOSSConfig = () =>
-  ({
-    region: 'oss-cn-shanghai',
-    accessKeyId: 'LTAIpnyXCaVMB88z',
-    accessKeySecret: 'y4tw2Qv8oHK91QVBwWyMg8rXkAFTvH',
-    bucket: 'hua-chao-shang-mao'
-  })
+const getOSSConfig = () => ({
+  region: 'oss-cn-shanghai',
+  accessKeyId: 'LTAIpnyXCaVMB88z',
+  accessKeySecret: 'y4tw2Qv8oHK91QVBwWyMg8rXkAFTvH',
+  bucket: 'hua-chao-shang-mao',
+})
 
 const ImageUploaderWithOSS = WithOSS({
   getOSSConfig,
-  genFileName: file => '/test/' + file.name.replace('.', `-${Date.now()}.`)
+  genFileName: (file) => '/test/' + file.name.replace('.', `-${Date.now()}.`),
 })(Uploader)
 
 export default class ImageUploaderDemo extends Component {
   state = {
     name: 'wenjun',
-    images: []
+    images: [],
   }
-  onUpload = urls => {
+
+  onUpload = (urls) => {
     this.setState({
-      images: urls
+      images: urls,
     })
   }
+
   renderPlaceHolder = () => (
     <SlotColumnView hAlign='center' vAlign='center'>
       <Text size={90} color='#ccc'>
@@ -40,7 +41,8 @@ export default class ImageUploaderDemo extends Component {
       </Text>
     </SlotColumnView>
   )
-  render () {
+
+  render() {
     return (
       <DemoPage title='ImageUploader'>
         <SlotColumnView slot={30} padding={[0, 0, 100, 0]}>

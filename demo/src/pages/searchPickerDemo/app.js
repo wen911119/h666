@@ -9,29 +9,33 @@ import className from './app.css'
 @WithSearchPicker
 export default class SearchPicker extends Component {
   state = {
-    name: '打开search-picker'
+    name: '打开search-picker',
   }
+
   openSearchPicker = () => {
-    this.props.$searchPicker.show({
-      searchbar: {
-        textSize: 24
-      },
-      autolist: {
-        fetchListData: this.fetchListData,
-        keyExtractor: this.keyExtractor,
-        format: this.format,
-        renderItem: this.renderItem,
-        pageSize: 20,
-        params: {
-          type: 'hospital'
-        }
-      },
-      slot: updateParams => (
-        // eslint-disable-next-line
+    this.props.$searchPicker
+      .show({
+        searchbar: {
+          textSize: 24,
+        },
+        autolist: {
+          fetchListData: this.fetchListData,
+          keyExtractor: this.keyExtractor,
+          format: this.format,
+          renderItem: this.renderItem,
+          pageSize: 20,
+          params: {
+            type: 'hospital',
+          },
+        },
+        slot: (updateParams) => (
+          // eslint-disable-next-line
         <Text onClick={updateParams.bind(this, { type: 'wj' })}>slot</Text>
-      )
-    }).then(console.log)
+        ),
+      })
+      .then(console.log)
   }
+
   fetchListData = async ({ pageSize, pageNum, ...otherProps }) => {
     const ret = await Ajax.get(
       'https://uapi.dev.quancheng-ec.com/rhea/hospitals',
@@ -39,11 +43,11 @@ export default class SearchPicker extends Component {
         params: {
           page: pageNum,
           page_size: pageSize,
-          ...otherProps
+          ...otherProps,
         },
         headers: {
-          loading: 'false'
-        }
+          loading: 'false',
+        },
       }
     )
     if (ret && ret.success) {
@@ -52,22 +56,24 @@ export default class SearchPicker extends Component {
     return {
       data: [],
       pageInfo: {
-        currentPage: pageNum
-      }
+        currentPage: pageNum,
+      },
     }
   }
-  keyExtractor = item => item.hospitalId
-  format = ret => {
-    let res = {
+
+  keyExtractor = (item) => item.hospitalId
+  format = (ret) => {
+    const res = {
       list: ret.data,
       pageInfo: {
         totalPage: Math.ceil(ret.pageInfo.total / ret.pageInfo.pageSize),
-        currentPage: ret.pageInfo.currentPage
-      }
+        currentPage: ret.pageInfo.currentPage,
+      },
     }
     return res
   }
-  renderItem = item => (
+
+  renderItem = (item) => (
     <div className={className.item}>
       <ColumnView padding={[0, 30, 0, 30]} bgColor='#fff'>
         <RowView height={88}>
@@ -79,6 +85,7 @@ export default class SearchPicker extends Component {
       </ColumnView>
     </div>
   )
+
   render() {
     return (
       <div>

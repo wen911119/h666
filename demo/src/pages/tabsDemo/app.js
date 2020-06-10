@@ -2,11 +2,11 @@ import { h } from 'preact'
 import {
   XCenterView,
   RowView,
-  SlotColumnView
+  SlotColumnView,
 } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import Tabs from '@ruiyun/preact-m-tabs'
-import { useState, useCallback } from 'preact/hooks'
+import { useState } from 'preact/hooks'
 import Switch from '@ruiyun/preact-switch'
 
 import DemoPage from '../../components/DemoPage'
@@ -34,10 +34,12 @@ const TabsDemo = () => {
     activeTitleColor: '#f8584f',
     indicatorColor: '#f8584f',
     headerHeight: 100,
-    shadow: true
+    shadow: true,
   })
-  const updateConfigOf = attribute => v =>
-    updateConfig(oldConfig => Object.assign({}, oldConfig, { [attribute]: v }))
+  const updateConfigOf = (attribute) => (v) =>
+    updateConfig((oldConfig) =>
+      Object.assign({}, oldConfig, { [attribute]: v })
+    )
   return (
     <DemoPage title='Tabs'>
       <SlotColumnView slot={20} padding={[30, 30, 30, 30]}>

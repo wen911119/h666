@@ -16,11 +16,12 @@ export default class NavDemo2 extends Component {
       placeholder: '请输入年龄',
       btns: ['取消', '确定'],
       config: {
-        btnsColor: ['#999']
+        btnsColor: ['#999'],
       },
-      cb: this.goBackWithParams
+      cb: this.goBackWithParams,
     })
   }
+
   goBackWithParams = (index, value) => {
     if (index === 1) {
       setTimeout(() => {
@@ -28,9 +29,11 @@ export default class NavDemo2 extends Component {
       }, 300)
     }
   }
+
   goNext = () => {
     this.props.$router.push('navDemo3')
   }
+
   render() {
     return (
       <DemoPage title='Navigation2'>

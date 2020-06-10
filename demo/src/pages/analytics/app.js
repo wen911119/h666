@@ -3,9 +3,10 @@ import style from './app.css'
 
 export default class Analytics extends Component {
   state = {
-    name: 'wenjun'
+    name: 'wenjun',
   }
-  render () {
+
+  render() {
     return (
       <div>
         Analytics

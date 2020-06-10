@@ -13,42 +13,50 @@ import DemoPage from '../../components/DemoPage'
 @WithRouter
 export default class NavDemo extends Component {
   state = {
-    nextPageParams: {}
+    nextPageParams: {},
   }
+
   onPrompt = (index, value) => {
     if (index === 1) {
       setTimeout(() => {
-        this.props.$router.push('navDemo2', { name: value }, {
-          title: '自定义标题',
-          bgColor: '#f8584f'
-        })
+        this.props.$router.push(
+          'navDemo2',
+          { name: value },
+          {
+            title: '自定义标题',
+            bgColor: '#f8584f',
+          }
+        )
       }, 300)
     }
   }
+
   goNext = () => {
     this.props.$prompt({
       title: '访客姓名',
       placeholder: '请输入姓名',
       btns: ['取消', '确定'],
       config: {
-        btnsColor: ['#999']
+        btnsColor: ['#999'],
       },
-      cb: this.onPrompt
+      cb: this.onPrompt,
     })
     // eslint-disable-next-line
     // plus.gallery.pick()
   }
+
   componentDidMount() {
-    this.props.$router.onPop(params => {
+    this.props.$router.onPop((params) => {
       this.setState({ nextPageParams: params })
     })
-    this.props.$router.onBack(params => {
+    this.props.$router.onBack((params) => {
       this.setState({ nextPageParams: params })
     })
     // this.props.$router.onWakeUp(() => {
     //   Indicator.toast('onWakeUp')
     // })
   }
+
   render() {
     const { nextPageParams } = this.state
     return (

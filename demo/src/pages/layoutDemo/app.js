@@ -7,7 +7,7 @@ import {
   SlotRowView,
   RowView,
   XCenterView,
-  ColumnView
+  ColumnView,
 } from '@ruiyun/preact-layout-suite'
 import Line from '@ruiyun/preact-line'
 import { WithActionSheet } from '@ruiyun/preact-m-actionsheet'
@@ -45,7 +45,7 @@ const BgColorUpdater = ({ onChange, value }) => (
     </Text>
     <input
       value={value}
-      onChange={event => onChange(event.target.value)}
+      onChange={(event) => onChange(event.target.value)}
       className={classNames.colorinput}
       type='color'
     />
@@ -98,11 +98,12 @@ class AlignUpdater extends Component {
   onClick = () => {
     this.props
       .$actionsheet('请选择', this.options, { cancelColor: '#f8584f' })
-      .then(index => {
+      .then((index) => {
         this.onChange(this.options[index])
       })
   }
-  constructor (props) {
+
+  constructor(props) {
     super(props)
     this.onChange = props.onChange(props.type)
     if (props.type === 'vAlign') {
@@ -111,7 +112,8 @@ class AlignUpdater extends Component {
       this.options = ['left', 'right', 'center', 'between', 'around']
     }
   }
-  render () {
+
+  render() {
     const { value, type } = this.props
     return (
       <RowView>
@@ -137,14 +139,14 @@ const LayoutDemo = () => {
     vAlign: 'center',
     bgColor: '#ffffff',
     height: 200,
-    padding: [0, 30, 0, 30]
+    padding: [0, 30, 0, 30],
   })
   const [columnViewConfig, updateColumnViewConfig] = useState({
     hAlign: 'left',
     vAlign: 'top',
     bgColor: '#ffffff',
     height: 400,
-    padding: [30, 30, 30, 30]
+    padding: [30, 30, 30, 30],
   })
   const [slotRowViewConfig, updateSlotRowViewConfig] = useState({
     hAlign: 'left',
@@ -152,7 +154,7 @@ const LayoutDemo = () => {
     bgColor: '#ffffff',
     height: 200,
     padding: [0, 30, 0, 30],
-    slot: 20
+    slot: 20,
   })
   const [slotColumnViewConfig, updateSlotColumnViewConfig] = useState({
     hAlign: 'left',
@@ -160,20 +162,21 @@ const LayoutDemo = () => {
     bgColor: '#ffffff',
     height: 400,
     padding: [30, 30, 30, 30],
-    slot: 20
+    slot: 20,
   })
   const [xCenterViewConfig, updateXCenterViewConfig] = useState({
     bgColor: '#ffffff',
     height: 400,
-    width: 400
+    width: 400,
   })
-  const loadTheUpdater = updater => attribute => v => updater(oldConfig =>
-    SafeSet(
-      Object.assign({}, oldConfig),
-      attribute,
-      isNaN(parseInt(v)) ? v : parseInt(v)
+  const loadTheUpdater = (updater) => (attribute) => (v) =>
+    updater((oldConfig) =>
+      SafeSet(
+        Object.assign({}, oldConfig),
+        attribute,
+        isNaN(parseInt(v)) ? v : parseInt(v)
+      )
     )
-  )
   const updateRowViewConfigOf = loadTheUpdater(updateRowViewConfig)
   const updateColumnViewConfigOf = loadTheUpdater(updateColumnViewConfig)
   const updateSlotRowViewConfigOf = loadTheUpdater(updateSlotRowViewConfig)

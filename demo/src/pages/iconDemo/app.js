@@ -2,7 +2,7 @@ import { h } from 'preact'
 import {
   XCenterView,
   SlotColumnView,
-  SlotRowView
+  SlotRowView,
 } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 import Icon from '@ruiyun/preact-icon'
