@@ -140,7 +140,8 @@
     "h5-indicator"
   ],
   "resolutions": {
-    "websocket-extensions": "^0.1.4"
+    "websocket-extensions": "^0.1.4",
+    "lodash": "^4.17.19"
   },
   "browsers": [
     "android >= 4.4",
