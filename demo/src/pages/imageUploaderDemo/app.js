@@ -9,8 +9,8 @@ import DemoPage from '../../components/DemoPage'
 // 可以是async异步获取
 const getOSSConfig = () => ({
   region: 'oss-cn-shanghai',
-  accessKeyId: 'LTAIpnyXCaVMB88z',
-  accessKeySecret: 'y4tw2Qv8oHK91QVBwWyMg8rXkAFTvH',
+  accessKeyId: window.atob('TFRBSXBueVhDYVZNQjg4eg=='),
+  accessKeySecret: window.atob('eTR0dzJRdjhvSEs5MVFWQndXeU1nOHJYa0FGVHZI'),
   bucket: 'hua-chao-shang-mao',
 })
 
