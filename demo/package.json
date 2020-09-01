@@ -61,7 +61,7 @@
     "preact": "^10.4.6"
   },
   "devDependencies": {
-    "@ruiyun/h666-cli": "^2.0.0-rc.25",
+    "@ruiyun/h666-cli": "^2.0.0-rc.26",
     "ali-oss": "^6.10.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
