@@ -133,7 +133,8 @@
     "appDownload": "app下载",
     "scrollerWithRefreshDemo": "带下拉刷新的scroller",
     "scrollerWithLoadMoreDemo": "加载更多的Scroller",
-    "scrollerWithRefreshAndLoadMoreDemo": "下拉刷新和加载更多"
+    "scrollerWithRefreshAndLoadMoreDemo": "下拉刷新和加载更多",
+    "bffkongdemo": "分享演示"
   },
   "include": [
     "@ruiyun",
