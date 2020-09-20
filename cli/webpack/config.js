@@ -36,7 +36,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('./sw.js').then(function(reg) {
         console.log('service worker 注册完成', reg);
-        setInterval(reg.update, 300000)
+        setInterval(function () {
+          reg.update();
+          console.log('service worker 更新成功');
+        }, 300000);
       }, function(err) {
         console.log('注册失败', err);
       });
