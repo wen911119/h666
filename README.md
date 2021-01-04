@@ -215,3 +215,13 @@ export default function onEntry () {
 }
 ```
 来自定义加入需要后编译的包名。
+
+### 自定义全局常量
+可在在package.json中加入全局常量对象，此配置将被[webpack.DefinePlugin](https://webpack.js.org/plugins/define-plugin/)接收。请注意属性值需要是一个合法的JSON字符串。
+```json
+{
+  "globalConstants": {
+    "APP_VERSION": "'1.0.0'"
+  }
+}
+```
