@@ -15,6 +15,7 @@ const packageInfo = require(path.resolve(
   TARGET_PROJECT_PATH,
   "./package.json"
 ));
+const customGlobalConstants = packageInfo.globalConstants || {}
 const customInclude = packageInfo.include || [];
 const pageTitlesMap = packageInfo.pages || {};
 
@@ -250,6 +251,7 @@ module.exports = {
       defaultAttribute: "defer"
     }),
     new webpack.DefinePlugin({
+      ...customGlobalConstants,
       $BUILD_TARGET$: JSON.stringify(process.env.BUILD_TARGET),
       $P_2_R_BASE$: JSON.stringify(packageInfo.p2rBase || 750)
     }),
